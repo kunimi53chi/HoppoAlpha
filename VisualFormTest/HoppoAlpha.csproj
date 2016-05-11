@@ -281,7 +281,6 @@
     </Compile>
     <Compile Include="SortieReportDataBase.cs" />
     <Compile Include="UIMethods.cs" />
-    <Compile Include="UserAgent.cs" />
     <Compile Include="UserControls\BattleDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>

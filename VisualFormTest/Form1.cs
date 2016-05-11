@@ -115,9 +115,6 @@ namespace VisualFormTest
             //位置の変更
             this.Location = Config.FormLocation;
 
-            //UA変更
-            //UserAgent.SetUserAgent();
-
             //クライアントへリクエストを送る前に呼ばれるイベント
             Fiddler.FiddlerApplication.BeforeRequest
                 += new Fiddler.SessionStateHandler(FiddlerApplication_BeforeRequest);
@@ -140,7 +137,6 @@ namespace VisualFormTest
             {
                 MethodInvoker mi = delegate() 
                 {
-                    //dwPageCollection.Browser.extraWebBrowser1.Navigate(@"http://www.ugtop.com/spill.shtml");
                     dwPageCollection.Browser.extraWebBrowser1.Navigate(@"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"); 
                 };
                 IntPtr browserhandle = dwPageCollection.Browser.Handle;//ハンドルを関連付ける
