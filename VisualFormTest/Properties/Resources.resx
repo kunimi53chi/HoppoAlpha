@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="speech_balloon_orange_g" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\speech-balloon-orange-g.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="speech_balloon_orange_f" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\speech-balloon-orange-f.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="speech_balloon_orange_j" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\speech-balloon-orange-j.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="speech_balloon_orange_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\speech-balloon-orange-s.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="speech_balloon_orange_u" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\speech-balloon-orange-u.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="speech_balloon_orange_a" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\speech-balloon-orange-a.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="speech_balloon_orange_m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\speech-balloon-orange-m.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="speech_balloon_orange_c" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\speech-balloon-orange-c.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FleetDBHtmlConvertHeader" xml:space="preserve">
+    <value>&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" text/html; charset=Shift_JIS"&gt;
+&lt;style type=text/css&gt;
+@charset "UTF-8";
+
+/* ========BASIC======== */
+html {
+   overflow-y:scroll;
+}
+
+body {
+   margin:0;
+   padding:0;
+   line-height:1.6;
+   letter-spacing:1px;
+   font-family:Verdana, Helvetica, sans-serif;
+   font-size:12px;
+   color:#333;
+   background:#fff;
+}
+
+br {
+   letter-spacing:normal;
+}
+
+a {
+   color:#0089a1;
+   text-decoration:none;
+}
+
+a:hover {
+   color:#0089a1;
+   text-decoration:underline;
+}
+
+img {
+   border:0;
+   vertical-align:bottom;
+}
+
+h1,h2,h3,h4,h5,h6 {
+   margin:0;
+}
+
+
+/* ========TEMPLATE LAYOUT======== */
+#main {
+   float:left;
+   width:540px;
+   padding:10px;
+}
+
+/* ========MAIN CONTENTS CUSTOMIZE======== */
+#main h2 {
+   margin-bottom:5px;
+   padding:5px 0;
+   font-size:16px;
+   border-bottom:3px double #ccc;
+}
+
+#main h3 {
+   margin-bottom:5px;
+   padding:5px;
+   font-size:14px;
+   border-left:5px solid #0089a1;
+   border-bottom:1px dotted #ccc;
+}
+
+#main h4 {
+   margin-bottom:5px;
+   padding:5px;
+   font-size:13px;
+   color:#fff;
+   background:#0089a1;
+}
+
+#main h5 {
+   margin-bottom:5px;
+   font-size:13px;
+   border-bottom:1px dotted #ccc;
+}
+
+#main h6 {
+   margin-bottom:5px;
+   font-size:13px;
+}
+
+
+#main p {
+   margin:0 0 1em 0;
+}
+
+#main dt {
+   margin-bottom:3px;
+}
+
+#main dd {
+   padding:0;
+   margin:0 0 0.5em 1em;
+   padding:3px;
+   background:#eee;
+}
+
+/* INFORMATION CUSTOMIZE */
+* html body #main dl.information dd div {
+   display:inline-block;
+}
+
+#main dl.information dt {
+   float:left;
+   width:10em;
+   margin:0;
+   padding:0;
+}
+
+#main dl.information dd {
+   margin:0 0 0.5em 10em;
+   padding:0;
+   background:transparent;
+}
+
+#main table {
+   width:100%;
+   border-collapse:collapse;
+}
+
+#main table th {
+   padding:5px;
+   font-size:12px;
+   text-align:center;
+   border:1px solid #aaa;
+   background:#f0f7fc;
+   width:15%;
+}
+
+#main table th2 {
+   padding:5px;
+   font-size:12px;
+   text-align:left;
+   border:1px solid #aaa;
+   background:#f0f7fc;
+   width:15%;
+}
+
+#main table td {
+   padding:5px;
+   font-size:12px;
+   text-align:left;
+   border:1px solid #aaa;
+   width:35%;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div id="main"&gt;</value>
+  </data>
+  <data name="circle_plus_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circle-plus@2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cloud_plus_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cloud-plus@2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="confused_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\confused@2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="geek_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\geek@2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="speech_balloon_orange_l" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\speech-balloon-orange-l.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="crop_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\crop@2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="basic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\config\300\basic.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="kanbura" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\config\300\kanbura.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="row2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\config\300\basic2.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="FrameScript" xml:space="preserve">
+    <value>try {
+	var hideStyle = {width:"0px",height:"0px",visibility:"hidden",display:"none"};
+	var fillStyle = {margin:"0px",padding:"0px",position:"fixed",left:"0px",top:"0px",width:"100%",height:"100%",overflow:"hidden"};
+	var jqBody=document.body;
+	$(jqBody).css("zoom","normal");
+	$(jqBody).css({margin:"0px",padding:"0px",overflow:"hidden"});
+	$("#spacing_top").css(hideStyle);
+	$("#adFlashWrap").css(fillStyle);
+	$("#wsFlashWrap").css(fillStyle);
+	$("#flashWrap").css(fillStyle);
+	var elmExternalSwf=document.getElementById("externalswf");
+	if(elmExternalSwf != null) {
+		elmExternalSwf.setAttribute("width","100%");
+		elmExternalSwf.setAttribute("height","100%");
+	}
+	$("#sectionWrap").css(hideStyle);
+	$("#globalNavi").css(hideStyle);
+	$(".rollover").css(hideStyle);
+	$("img").css(hideStyle);
+	$(".badge").css(hideStyle);
+	$("#contentsWrap").css(hideStyle);
+}
+catch(e) {
+	alert("フレームCSS適用に失敗しました: "+e);
+}</value>
+  </data>
+  <data name="PageScript" xml:space="preserve">
+    <value>try {
+	var hideStyle = {width:"0px",height:"0px",visibility:"hidden",display:"none"};
+	var fillStyle = {margin:"0px",padding:"0px",position:"fixed",left:"0px",top:"0px",width:"100%",height:"100%",overflow:"hidden"};
+	$(document.body).css({margin:"0px",padding:"0px",overflow:"hidden"});
+	$("img").css(hideStyle);
+	//$("#dmm_ntgnavi").css(hideStyle);
+	$("#dmm-ntgnavi-renew").css(hideStyle);
+	$("#w").css(fillStyle);
+	$("#main-ntg").css(fillStyle);
+	$("#page").css(fillStyle);
+	$("#area-game").css(fillStyle);
+	var jqGameFrame=$("#game_frame");
+	jqGameFrame.css(fillStyle);
+	jqGameFrame.attr("scrolling","no");
+	jqGameFrame.attr("width","100%");
+	jqGameFrame.attr("height","100%");
+	$("[class^=area-naviapp]").css(hideStyle);
+	$("#foot").css(hideStyle);
+}
+catch(e) {
+	alert("ページCSS適用に失敗しました: "+e);
+}</value>
+  </data>
+  <data name="compact" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\config\300\compact.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="kvt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kvt.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_091" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\091.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_092" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\092.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_093" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\093.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_094" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\094.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

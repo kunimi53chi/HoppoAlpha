@@ -1,0 +1,969 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6238D20E-D930-43C4-A919-518E565EA0EC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VisualFormTest</RootNamespace>
+    <AssemblyName>hoppoalpha</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>46524056_p7_master1200.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>DeclareDPIAware.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CoreAudioApi">
+      <HintPath>..\..\..\dlls\CoreAudioApi.dll</HintPath>
+    </Reference>
+    <Reference Include="FiddlerCore4">
+      <HintPath>C:\Users\Owner\Desktop\FiddlerCoreAPI\DotNet4\FiddlerCore4.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleChartSharp">
+      <HintPath>..\material\GoogleChartSharp-1.0.2\GoogleChartSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="KCVDB.Client, Version=0.0.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\KCVDB.Client.0.0.17.0\lib\net45\KCVDB.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.4.0.16114, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\down\Opera\dockpanelsuite-development_3.0\dockpanelsuite-development_3.0\WinFormsUI\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIs\APIBattle.cs" />
+    <Compile Include="APIs\APIGetMember.cs" />
+    <Compile Include="APIs\APIMaster.cs" />
+    <Compile Include="APIs\APIPort.cs" />
+    <Compile Include="APIs\APIReqHensei.cs" />
+    <Compile Include="APIs\APIReqHokyu.cs" />
+    <Compile Include="APIs\APIReqKaisou.cs" />
+    <Compile Include="APIs\APIReqKousyou.cs" />
+    <Compile Include="APIs\APIReqMap.cs" />
+    <Compile Include="APIs\APIReqMember.cs" />
+    <Compile Include="APIs\APIReqMission.cs" />
+    <Compile Include="APIs\APIReqNyukyo.cs" />
+    <Compile Include="APIs\APIReqPractice.cs" />
+    <Compile Include="APIs\APIReqQuest.cs" />
+    <Compile Include="APIs\APIReqRanking.cs" />
+    <Compile Include="AprilFool.cs" />
+    <Compile Include="DataLibraryHelper\ApiPracticeExt.cs" />
+    <Compile Include="DataLibraryHelper\CounterItemExt.cs" />
+    <Compile Include="DataLibraryHelper\DataLibraryCenter.cs" />
+    <Compile Include="DataLibraryHelper\DropRecordExt.cs" />
+    <Compile Include="DataLibraryHelper\HPConditionViewExt.cs" />
+    <Compile Include="DataLibraryHelper\KanaEx.cs" />
+    <Compile Include="DataLibraryHelper\UnitQueryExt.cs" />
+    <Compile Include="DefaultSlotitemDataBase.cs" />
+    <Compile Include="DockingWindows\DockWindowBattleDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowBattleDetail.Designer.cs">
+      <DependentUpon>DockWindowBattleDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowBattleDetailSquare2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowBattleDetailSquare2.Designer.cs">
+      <DependentUpon>DockWindowBattleDetailSquare2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowBattleDetailSquare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowBattleDetailSquare.Designer.cs">
+      <DependentUpon>DockWindowBattleDetailSquare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowCompactScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowCompactScreen.Designer.cs">
+      <DependentUpon>DockWindowCompactScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowCompactScreenVertical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowCompactScreenVertical.Designer.cs">
+      <DependentUpon>DockWindowCompactScreenVertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowDropAnalyzer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowDropAnalyzer.Designer.cs">
+      <DependentUpon>DockWindowDropAnalyzer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataLibraryHelper\HelperDataLibrary.cs" />
+    <Compile Include="DockingWindows\DockWindowKCVDBLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowKCVDBLog.Designer.cs">
+      <DependentUpon>DockWindowKCVDBLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowPresetDeckViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowPresetDeckViewer.Designer.cs">
+      <DependentUpon>DockWindowPresetDeckViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowRankingViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowRankingViewer.Designer.cs">
+      <DependentUpon>DockWindowRankingViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowShortTabFleet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowShortTabFleet.Designer.cs">
+      <DependentUpon>DockWindowShortTabFleet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowShortTabMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowShortTabMaterial.Designer.cs">
+      <DependentUpon>DockWindowShortTabMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowShortTabSenka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowShortTabSenka.Designer.cs">
+      <DependentUpon>DockWindowShortTabSenka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowSortieReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowSortieReportViewer.Designer.cs">
+      <DependentUpon>DockWindowSortieReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DropAnalyzerDateSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DropAnalyzerDateSelect.Designer.cs">
+      <DependentUpon>DropAnalyzerDateSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicJson.cs" />
+    <Compile Include="HelperDockWindow.cs" />
+    <Compile Include="DockingWindows\DockWindowMapInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowMapInfo.Designer.cs">
+      <DependentUpon>DockWindowMapInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowQuestViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowQuestViewer.Designer.cs">
+      <DependentUpon>DockWindowQuestViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowTabCollection.cs" />
+    <Compile Include="DockingWindows\DockWindowTabPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowTabPage.Designer.cs">
+      <DependentUpon>DockWindowTabPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowToolBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowToolBox.Designer.cs">
+      <DependentUpon>DockWindowToolBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\IMyDockingWindow.cs" />
+    <Compile Include="DropDataBase.cs" />
+    <Compile Include="EnemyFleetDataBase.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="HelperScreen.cs" />
+    <Compile Include="ImageEdit.cs" />
+    <Compile Include="JsonLogger.cs" />
+    <Compile Include="KancolleDb\KancolleDbPost.cs" />
+    <Compile Include="KancolleInfoFleet_ConvertDeckBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KancolleInfoFleet_ConvertDeckBuilder.Designer.cs">
+      <DependentUpon>KancolleInfoFleet_ConvertDeckBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KancolleVerifyDb\KCVDBMain.cs" />
+    <Compile Include="KancolleVerifyDb\KCVDBApiItem.cs" />
+    <Compile Include="KancolleVerifyDb\KCVDBObjects.cs" />
+    <Compile Include="KancolleVerifyDb\NotifyDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KancolleVerifyDb\NotifyDialog.Designer.cs">
+      <DependentUpon>NotifyDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApiKeys\Keys.cs" />
+    <Compile Include="LogConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogConvert.designer.cs">
+      <DependentUpon>LogConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogConvertLogic.cs" />
+    <Compile Include="LogSystem.cs" />
+    <Compile Include="QueryEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryEdit.Designer.cs">
+      <DependentUpon>QueryEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QueryNestedEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryNestedEdit.Designer.cs">
+      <DependentUpon>QueryNestedEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SortieReportDataBase.cs" />
+    <Compile Include="UIMethods.cs" />
+    <Compile Include="UserAgent.cs" />
+    <Compile Include="UserControls\BattleDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BattleDetail.Designer.cs">
+      <DependentUpon>BattleDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BattleDetailSquare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BattleDetailSquare.Designer.cs">
+      <DependentUpon>BattleDetailSquare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BattleState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BattleState.Designer.cs">
+      <DependentUpon>BattleState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BorderPredict.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BorderPredict.Designer.cs">
+      <DependentUpon>BorderPredict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CallBacks.cs" />
+    <Compile Include="ChartViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChartViewer.Designer.cs">
+      <DependentUpon>ChartViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.cs" />
+    <Compile Include="DockingWindows\DockWindowBattleState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowBattleState.Designer.cs">
+      <DependentUpon>DockWindowBattleState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowHoppoBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowHoppoBrowser.Designer.cs">
+      <DependentUpon>DockWindowHoppoBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowSankWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowSankWarning.Designer.cs">
+      <DependentUpon>DockWindowSankWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowShipSlotitemNum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowShipSlotitemNum.Designer.cs">
+      <DependentUpon>DockWindowShipSlotitemNum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowTimerViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowTimerViewer.Designer.cs">
+      <DependentUpon>DockWindowTimerViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistoricalData.cs" />
+    <Compile Include="UserControls\CompactScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CompactScreen.Designer.cs">
+      <DependentUpon>CompactScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CompactScreenVertical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CompactScreenVertical.Designer.cs">
+      <DependentUpon>CompactScreenVertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DropAnalyzer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DropAnalyzer.Designer.cs">
+      <DependentUpon>DropAnalyzer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\HoppoBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\HoppoBrowser.Designer.cs">
+      <DependentUpon>HoppoBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KancolleBattle.cs" />
+    <Compile Include="KancolleInfoCounter.cs" />
+    <Compile Include="KancolleInfo.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KancolleInfoFleet.cs" />
+    <Compile Include="KancolleInfoGeneral.cs" />
+    <Compile Include="KancolleInfoMaterial.cs" />
+    <Compile Include="KancolleInfoSenka.cs" />
+    <Compile Include="KancolleInfoUnitList.cs" />
+    <Compile Include="KanmusuList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KanmusuList.Designer.cs">
+      <DependentUpon>KanmusuList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyBalloon.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\ITabControl.cs" />
+    <Compile Include="UserControls\KCVDBLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\KCVDBLog.Designer.cs">
+      <DependentUpon>KCVDBLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MapInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MapInfo.Designer.cs">
+      <DependentUpon>MapInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PresetDeckViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PresetDeckViewer.Designer.cs">
+      <DependentUpon>PresetDeckViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuestViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuestViewer.Designer.cs">
+      <DependentUpon>QuestViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RankingViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RankingViewer.Designer.cs">
+      <DependentUpon>RankingViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RankingViewer_SubmarinerSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\RankingViewer_SubmarinerSetting.Designer.cs">
+      <DependentUpon>RankingViewer_SubmarinerSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SankWarning.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SankWarning.Designer.cs">
+      <DependentUpon>SankWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BrowserHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowserHelper.Designer.cs">
+      <DependentUpon>BrowserHelper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsViewer.Designer.cs">
+      <DependentUpon>SettingsViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KancolleInfoSlotitemSearch.cs" />
+    <Compile Include="UserControls\ShipSlotitemNum.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ShipSlotitemNum.Designer.cs">
+      <DependentUpon>ShipSlotitemNum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SlotitemViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SlotitemViewer.Designer.cs">
+      <DependentUpon>SlotitemViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PortConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PortConfig.Designer.cs">
+      <DependentUpon>PortConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sounds.cs" />
+    <Compile Include="UserControls\SortieReportViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SortieReportViewer.Designer.cs">
+      <DependentUpon>SortieReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabCounter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabCounter.Designer.cs">
+      <DependentUpon>TabCounter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabEquipSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabEquipSearch.Designer.cs">
+      <DependentUpon>TabEquipSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabFleet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabFleet.Designer.cs">
+      <DependentUpon>TabFleet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabFleetShort.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabFleetShort.Designer.cs">
+      <DependentUpon>TabFleetShort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabFleet_MakeQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabFleet_MakeQuery.Designer.cs">
+      <DependentUpon>TabFleet_MakeQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabGeneral.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabGeneral.Designer.cs">
+      <DependentUpon>TabGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabJson.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabJson.Designer.cs">
+      <DependentUpon>TabJson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabMaterial.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabMaterial.Designer.cs">
+      <DependentUpon>TabMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabMaterialShort.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabMaterialShort.Designer.cs">
+      <DependentUpon>TabMaterialShort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabSenka.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabSenka.Designer.cs">
+      <DependentUpon>TabSenka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabSenkaShort.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabSenkaShort.Designer.cs">
+      <DependentUpon>TabSenkaShort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabSenka_BorderSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabSenka_BorderSetting.Designer.cs">
+      <DependentUpon>TabSenka_BorderSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabSenka_Popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabSenka_Popup.Designer.cs">
+      <DependentUpon>TabSenka_Popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabSystemLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabSystemLog.Designer.cs">
+      <DependentUpon>TabSystemLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabUnit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabUnit.Designer.cs">
+      <DependentUpon>TabUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TimerViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TimerViewer.Designer.cs">
+      <DependentUpon>TimerViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitListViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitListViewer.Designer.cs">
+      <DependentUpon>UnitListViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ToolBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ToolBox.Designer.cs">
+      <DependentUpon>ToolBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Volume.cs" />
+    <Compile Include="Win32.cs" />
+    <EmbeddedResource Include="DockingWindows\DockWindowBattleDetail.resx">
+      <DependentUpon>DockWindowBattleDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowBattleDetailSquare2.resx">
+      <DependentUpon>DockWindowBattleDetailSquare2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowBattleDetailSquare.resx">
+      <DependentUpon>DockWindowBattleDetailSquare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowCompactScreen.resx">
+      <DependentUpon>DockWindowCompactScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowCompactScreenVertical.resx">
+      <DependentUpon>DockWindowCompactScreenVertical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowDropAnalyzer.resx">
+      <DependentUpon>DockWindowDropAnalyzer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowKCVDBLog.resx">
+      <DependentUpon>DockWindowKCVDBLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowMapInfo.resx">
+      <DependentUpon>DockWindowMapInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowPresetDeckViewer.resx">
+      <DependentUpon>DockWindowPresetDeckViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowQuestViewer.resx">
+      <DependentUpon>DockWindowQuestViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowRankingViewer.resx">
+      <DependentUpon>DockWindowRankingViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowShortTabFleet.resx">
+      <DependentUpon>DockWindowShortTabFleet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowShortTabMaterial.resx">
+      <DependentUpon>DockWindowShortTabMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowShortTabSenka.resx">
+      <DependentUpon>DockWindowShortTabSenka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowSortieReportViewer.resx">
+      <DependentUpon>DockWindowSortieReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowToolBox.resx">
+      <DependentUpon>DockWindowToolBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DropAnalyzerDateSelect.resx">
+      <DependentUpon>DropAnalyzerDateSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KancolleInfoFleet_ConvertDeckBuilder.resx">
+      <DependentUpon>KancolleInfoFleet_ConvertDeckBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KancolleVerifyDb\NotifyDialog.resx">
+      <DependentUpon>NotifyDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogConvert.resx">
+      <DependentUpon>LogConvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryEdit.resx">
+      <DependentUpon>QueryEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryNestedEdit.resx">
+      <DependentUpon>QueryNestedEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\BattleDetail.resx">
+      <DependentUpon>BattleDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\BattleDetailSquare.resx">
+      <DependentUpon>BattleDetailSquare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\BattleState.resx">
+      <DependentUpon>BattleState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BorderPredict.resx">
+      <DependentUpon>BorderPredict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChartViewer.resx">
+      <DependentUpon>ChartViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowBattleState.resx">
+      <DependentUpon>DockWindowBattleState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowHoppoBrowser.resx">
+      <DependentUpon>DockWindowHoppoBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowSankWarning.resx">
+      <DependentUpon>DockWindowSankWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowShipSlotitemNum.resx">
+      <DependentUpon>DockWindowShipSlotitemNum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowTimerViewer.resx">
+      <DependentUpon>DockWindowTimerViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CompactScreen.resx">
+      <DependentUpon>CompactScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CompactScreenVertical.resx">
+      <DependentUpon>CompactScreenVertical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DropAnalyzer.resx">
+      <DependentUpon>DropAnalyzer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\HoppoBrowser.resx">
+      <DependentUpon>HoppoBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KanmusuList.resx">
+      <DependentUpon>KanmusuList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PortConfig.resx">
+      <DependentUpon>PortConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserControls\KCVDBLog.resx">
+      <DependentUpon>KCVDBLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MapInfo.resx">
+      <DependentUpon>MapInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PresetDeckViewer.resx">
+      <DependentUpon>PresetDeckViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuestViewer.resx">
+      <DependentUpon>QuestViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RankingViewer.resx">
+      <DependentUpon>RankingViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RankingViewer_SubmarinerSetting.resx">
+      <DependentUpon>RankingViewer_SubmarinerSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SankWarning.resx">
+      <DependentUpon>SankWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrowserHelper.resx">
+      <DependentUpon>BrowserHelper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsViewer.resx">
+      <DependentUpon>SettingsViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ShipSlotitemNum.resx">
+      <DependentUpon>ShipSlotitemNum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SlotitemViewer.resx">
+      <DependentUpon>SlotitemViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SortieReportViewer.resx">
+      <DependentUpon>SortieReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabCounter.resx">
+      <DependentUpon>TabCounter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabEquipSearch.resx">
+      <DependentUpon>TabEquipSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabFleet.resx">
+      <DependentUpon>TabFleet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabFleetShort.resx">
+      <DependentUpon>TabFleetShort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabFleet_MakeQuery.resx">
+      <DependentUpon>TabFleet_MakeQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabGeneral.resx">
+      <DependentUpon>TabGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabJson.resx">
+      <DependentUpon>TabJson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabMaterial.resx">
+      <DependentUpon>TabMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabMaterialShort.resx">
+      <DependentUpon>TabMaterialShort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabSenka.resx">
+      <DependentUpon>TabSenka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabSenkaShort.resx">
+      <DependentUpon>TabSenkaShort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabSenka_BorderSetting.resx">
+      <DependentUpon>TabSenka_BorderSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabSenka_Popup.resx">
+      <DependentUpon>TabSenka_Popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabSystemLog.resx">
+      <DependentUpon>TabSystemLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabUnit.resx">
+      <DependentUpon>TabUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TimerViewer.resx">
+      <DependentUpon>TimerViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitListViewer.resx">
+      <DependentUpon>UnitListViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ToolBox.resx">
+      <DependentUpon>ToolBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DeclareDPIAware.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="external.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="46524056_p7_master1200.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speech-balloon-orange-a.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speech-balloon-orange-c.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speech-balloon-orange-f.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speech-balloon-orange-g.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speech-balloon-orange-j.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speech-balloon-orange-m.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speech-balloon-orange-s.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speech-balloon-orange-u.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 および x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="SHDocVw">
+      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle-plus%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloud-plus%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\confused%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\geek%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HoppoAlpha.DataLibrary\HoppoAlpha.DataLibrary.csproj">
+      <Project>{b0da7876-7301-40fb-af8b-93277087ac13}</Project>
+      <Name>HoppoAlpha.DataLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HoppoAlpha.SoundLibrary\HoppoAlpha.SoundLibrary.csproj">
+      <Project>{0a438bc1-df12-42fd-9320-99791e7c0522}</Project>
+      <Name>HoppoAlpha.SoundLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speech-balloon-orange-l.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crop%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\config\300\basic.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\config\300\basic2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\config\300\kanbura.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\config\300\compact.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kvt.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\091.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\092.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\093.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\094.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

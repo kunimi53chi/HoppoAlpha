@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoppoAlpha", "VisualFormTest\HoppoAlpha.csproj", "{6238D20E-D930-43C4-A919-518E565EA0EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Updater", "Updater\Updater.csproj", "{BAF71362-4E3E-4BA6-B0B5-9524FFD36013}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoppoAlpha.SoundSrv", "Sounds\HoppoAlpha.SoundSrv.csproj", "{47DE457C-CB39-467D-9FC5-F10EFF7F34D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoppoAlpha.DataLibrary", "HoppoAlpha.DataLibrary\HoppoAlpha.DataLibrary.csproj", "{B0DA7876-7301-40FB-AF8B-93277087AC13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoppoAlpha.SoundLibrary", "HoppoAlpha.SoundLibrary\HoppoAlpha.SoundLibrary.csproj", "{0A438BC1-DF12-42FD-9320-99791E7C0522}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6238D20E-D930-43C4-A919-518E565EA0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6238D20E-D930-43C4-A919-518E565EA0EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6238D20E-D930-43C4-A919-518E565EA0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6238D20E-D930-43C4-A919-518E565EA0EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF71362-4E3E-4BA6-B0B5-9524FFD36013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF71362-4E3E-4BA6-B0B5-9524FFD36013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF71362-4E3E-4BA6-B0B5-9524FFD36013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF71362-4E3E-4BA6-B0B5-9524FFD36013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47DE457C-CB39-467D-9FC5-F10EFF7F34D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47DE457C-CB39-467D-9FC5-F10EFF7F34D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47DE457C-CB39-467D-9FC5-F10EFF7F34D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47DE457C-CB39-467D-9FC5-F10EFF7F34D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0DA7876-7301-40FB-AF8B-93277087AC13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0DA7876-7301-40FB-AF8B-93277087AC13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0DA7876-7301-40FB-AF8B-93277087AC13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0DA7876-7301-40FB-AF8B-93277087AC13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A438BC1-DF12-42FD-9320-99791E7C0522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A438BC1-DF12-42FD-9320-99791E7C0522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A438BC1-DF12-42FD-9320-99791E7C0522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A438BC1-DF12-42FD-9320-99791E7C0522}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

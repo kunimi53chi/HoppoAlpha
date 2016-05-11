@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B0DA7876-7301-40FB-AF8B-93277087AC13}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HoppoAlpha.DataLibrary</RootNamespace>
+    <AssemblyName>HoppoAlpha.DataLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\HoppoAlpha.DataLibrary.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="protobuf-net">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Const\CsvList.cs" />
+    <Compile Include="DataObject\AirSupResult.cs" />
+    <Compile Include="DataObject\ConfigSerializeItem.cs" />
+    <Compile Include="DataObject\ExCommon.cs" />
+    <Compile Include="DataObject\ExMasterShip.cs" />
+    <Compile Include="DataObject\ExMasterShipCollection.cs" />
+    <Compile Include="DataObject\ExMasterSlotitem.cs" />
+    <Compile Include="DataObject\ExMasterSlotitemCollection.cs" />
+    <Compile Include="DataObject\HPCondition.cs" />
+    <Compile Include="DataObject\QuestRecord.cs" />
+    <Compile Include="DataObject\SortieReport.cs" />
+    <Compile Include="DataObject\SortieReportCollection.cs" />
+    <Compile Include="DataObject\SortieReportHash.cs" />
+    <Compile Include="DataObject\UnitMaskMode.cs" />
+    <Compile Include="DataObject\UserEnemyID.cs" />
+    <Compile Include="DataObject\WarnState.cs" />
+    <Compile Include="KancolleCalcConvert\ToDeckBuilder.cs" />
+    <Compile Include="RawApi\ApiGetMember\ApiMapInfo.cs" />
+    <Compile Include="RawApi\ApiGetMember\PresetDeck.cs" />
+    <Compile Include="RawApi\ApiGetMember\RequireInfo.cs" />
+    <Compile Include="RawApi\ApiReqQuest\ApiQuest.cs" />
+    <Compile Include="DataObject\CounterItem.cs" />
+    <Compile Include="DataType.cs" />
+    <Compile Include="DataTypeExt.cs" />
+    <Compile Include="DataObject\DropRecord.cs" />
+    <Compile Include="DataObject\DropRecordCollection.cs" />
+    <Compile Include="DataObject\EnemyFleetRecord.cs" />
+    <Compile Include="DataObject\ExpRecord.cs" />
+    <Compile Include="Files.cs" />
+    <Compile Include="DataObject\MaterialRecord.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RawApi\ApiGetMember\ApiShipDeck.cs" />
+    <Compile Include="RawApi\ApiGetMember\Basic.cs" />
+    <Compile Include="RawApi\ApiGetMember\Furniture.cs" />
+    <Compile Include="RawApi\ApiGetMember\Kdock.cs" />
+    <Compile Include="RawApi\ApiGetMember\Slotitem.cs" />
+    <Compile Include="RawApi\ApiGetMember\Useitem.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstBgm.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstConst.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstFurniture.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstFurnituregraph.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstItemShop.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstMaparea.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstMapbgm.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstMapcell.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstMapinfo.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstMission.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstPayitem.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstShip.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstShipgraph.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstShipupgrade.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstSlotitem.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstSlotitemEquiptype.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstSlotitemgraph.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstStype.cs" />
+    <Compile Include="RawApi\ApiMaster\ApiMstUseitem.cs" />
+    <Compile Include="RawApi\ApiPort\ApiBasic.cs" />
+    <Compile Include="RawApi\ApiPort\ApiDeckPort.cs" />
+    <Compile Include="RawApi\ApiPort\ApiLog.cs" />
+    <Compile Include="RawApi\ApiPort\ApiMaterial.cs" />
+    <Compile Include="RawApi\ApiPort\ApiNdock.cs" />
+    <Compile Include="RawApi\ApiPort\ApiShip.cs" />
+    <Compile Include="RawApi\ApiReqHokyu\ApiCharge.cs" />
+    <Compile Include="RawApi\ApiReqKousyou\ApiSlotitem.cs" />
+    <Compile Include="RawApi\ApiReqPractice\ApiPractice.cs" />
+    <Compile Include="RawApi\ApiReqRanking\ApiRanking.cs" />
+    <Compile Include="DataObject\SenkaRecord.cs" />
+    <Compile Include="DataObject\UnitQuery.cs" />
+    <Compile Include="SearchModel\Model33.cs" />
+    <Compile Include="SearchModel\Models.cs" />
+    <Compile Include="SearchModel\Old25Model.cs" />
+    <Compile Include="SearchModel\SearchHoppo201.cs" />
+    <Compile Include="SearchModel\UnitSearchResult.cs" />
+    <Compile Include="Version.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <EmbeddedResource Include="slotitems160422.csv" />
+    <EmbeddedResource Include="ships160422.csv" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
