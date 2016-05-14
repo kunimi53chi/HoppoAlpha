@@ -432,9 +432,7 @@ namespace HoppoAlpha.DataLibrary.RawApi.ApiPort
                 //再計算が必要な場合
                 if (calcrequired)
                 {
-                    int seiku_sum_min = 0, seiku_sum_max = 0;//スロごとの制空値の合計
-                    int bonus_sum_min = 0, bonus_sum_max = 0;//制空値の合計のボーナス部分
-                    int sum_original = 0;//艦載機部分の合計
+                    _airsup = new AirSupResult();
 
                     //護衛退避しているかどうか
                     bool iswithdrawn = false;
@@ -467,43 +465,14 @@ namespace HoppoAlpha.DataLibrary.RawApi.ApiPort
                         {
                             var oequip = oslots[i];
                             var equip = dslots[i];
-                            if (equip.IsAirCombatable)
-                            {
-                                //1スロットあたりの艦載機由来の制空値
-                                double slotas = (double)equip.api_tyku * Math.Sqrt((double)api_onslot[i]);
+                            //このスロットの制空値
+                            var slot_airsup = AirSupResult.SingleSlotitemAirSup(equip, api_onslot[i], oequip.api_alv);
 
-                                //熟練度ボーナス
-                                double trainmin = AirSupResult.AircraftTrainingBonus(equip, oequip.api_alv, false);
-                                double trainmax = AirSupResult.AircraftTrainingBonus(equip, oequip.api_alv, true);
-
-                                //このスロットの制空値
-                                int sum_min = (int)(slotas + trainmin);
-                                int sum_max = (int)(slotas + trainmax);
-
-                                //ボーナス部分をintに変換
-                                int trainmin_int = sum_min - (int)slotas;
-                                int trainmax_int = sum_max - (int)slotas;;
-
-                                //合計に加算
-                                seiku_sum_min += sum_min;
-                                seiku_sum_max += sum_max;
-                                bonus_sum_min += trainmin_int;
-                                bonus_sum_max += trainmax_int;
-                                sum_original += (int)slotas;
-                            }
+                            //全体にマージ
+                            _airsup = _airsup.Merge(slot_airsup);
                         }
                     }
 
-                    //キャッシュする値
-                    _airsup = new AirSupResult()
-                    {
-                        AirSupValueMax = seiku_sum_max,
-                        AirSupValueMin = seiku_sum_min,
-                        IsCorrect = true,
-                        OriginalValue = sum_original,
-                        TrainigValueMin = bonus_sum_min,
-                        TrainingValueMax = bonus_sum_max,
-                    };
                     _lastWithdrawnArray = withdrawnArray;
                 }
                 return _airsup;

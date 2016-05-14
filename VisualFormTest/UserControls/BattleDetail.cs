@@ -186,6 +186,8 @@ namespace VisualFormTest.UserControls
         //航空戦
         public class AirBattleLabels
         {
+            public Label AirBaseFriend { get; set; }
+            public Label AirBaseEnemy { get; set; }
             public Label Stage1Friend { get; set; }
             public Label Stage1Enemy { get; set; }
             public Label Stage2Friend { get; set; }

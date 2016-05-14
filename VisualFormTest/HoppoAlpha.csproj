@@ -103,6 +103,7 @@
     <Compile Include="APIs\APIGetMember.cs" />
     <Compile Include="APIs\APIMaster.cs" />
     <Compile Include="APIs\APIPort.cs" />
+    <Compile Include="APIs\ApiReqAirCorps.cs" />
     <Compile Include="APIs\APIReqHensei.cs" />
     <Compile Include="APIs\APIReqHokyu.cs" />
     <Compile Include="APIs\APIReqKaisou.cs" />
@@ -123,6 +124,12 @@
     <Compile Include="DataLibraryHelper\KanaEx.cs" />
     <Compile Include="DataLibraryHelper\UnitQueryExt.cs" />
     <Compile Include="DefaultSlotitemDataBase.cs" />
+    <Compile Include="DockingWindows\DockWindowAirBaseCorps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowAirBaseCorps.Designer.cs">
+      <DependentUpon>DockWindowAirBaseCorps.cs</DependentUpon>
+    </Compile>
     <Compile Include="DockingWindows\DockWindowBattleDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +250,7 @@
     <Compile Include="ImageEdit.cs" />
     <Compile Include="JsonLogger.cs" />
     <Compile Include="KancolleDb\KancolleDbPost.cs" />
+    <Compile Include="KancolleInfoAirBaseCorps.cs" />
     <Compile Include="KancolleInfoFleet_ConvertDeckBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +289,12 @@
     </Compile>
     <Compile Include="SortieReportDataBase.cs" />
     <Compile Include="UIMethods.cs" />
+    <Compile Include="UserControls\AirBaseCorps.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AirBaseCorps.Designer.cs">
+      <DependentUpon>AirBaseCorps.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\BattleDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -582,6 +596,9 @@
     </Compile>
     <Compile Include="Volume.cs" />
     <Compile Include="Win32.cs" />
+    <EmbeddedResource Include="DockingWindows\DockWindowAirBaseCorps.resx">
+      <DependentUpon>DockWindowAirBaseCorps.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockingWindows\DockWindowBattleDetail.resx">
       <DependentUpon>DockWindowBattleDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -647,6 +664,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QueryNestedEdit.resx">
       <DependentUpon>QueryNestedEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AirBaseCorps.resx">
+      <DependentUpon>AirBaseCorps.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\BattleDetail.resx">
       <DependentUpon>BattleDetail.cs</DependentUpon>

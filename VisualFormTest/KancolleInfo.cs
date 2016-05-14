@@ -111,20 +111,7 @@ namespace VisualFormTest
             }
             else
             {
-                nowslotitem = 0;
-                foreach(var s in APIPort.ShipsDictionary)
-                {
-                    //装備中のスロット
-                    foreach(var slot in s.Value.api_slot)
-                    {
-                        if(slot > 0) nowslotitem++;
-                    }
-                    //拡張スロット
-                    if(s.Value.api_slot_ex > 0) nowslotitem++;
-                }
-
-                //未装備の装備
-                nowslotitem += APIGetMember.Unsetslot.slottype.Select(x => x.Count).Sum();
+                nowslotitem = APIGetMember.GetSlotitemNumOnSortie();
             }
             if (nowslotitem >= maxslotitem - 3)
             {
@@ -195,27 +182,7 @@ namespace VisualFormTest
             }
             else
             {
-                nowslotitem = 0;
-                foreach (var s in APIPort.ShipsDictionary)
-                {
-                    //装備中のスロット
-                    foreach (var slot in s.Value.api_slot)
-                    {
-                        if (slot > 0) nowslotitem++;
-                    }
-                    //拡張スロット
-                    if (s.Value.api_slot_ex > 0) nowslotitem++;
-                }
-
-                //未装備の装備
-                nowslotitem += APIGetMember.Unsetslot.slottype.Select(x => x.Count).Sum();
-                /*
-                var slot_ship_query = from s in APIPort.ShipsDictionary.Values
-                                      from x in s.api_slot
-                                      select (x >> 31) + 1;
-                var slot_unset_query = from t in APIGetMember.Unsetslot.slottype
-                                       select t.Count;
-                nowslotitem = slot_ship_query.Sum() + slot_unset_query.Sum();*/
+                nowslotitem = APIGetMember.GetSlotitemNumOnSortie();
             }
             if (nowslotitem >= maxslotitem - 3)
             {

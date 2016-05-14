@@ -64,8 +64,11 @@
     <Compile Include="DataObject\WarnState.cs" />
     <Compile Include="KancolleCalcConvert\ToDeckBuilder.cs" />
     <Compile Include="RawApi\ApiGetMember\ApiMapInfo.cs" />
+    <Compile Include="RawApi\ApiGetMember\BaseAirCorp.cs" />
     <Compile Include="RawApi\ApiGetMember\PresetDeck.cs" />
     <Compile Include="RawApi\ApiGetMember\RequireInfo.cs" />
+    <Compile Include="RawApi\ApiReqAirCorps\SetPlane.cs" />
+    <Compile Include="RawApi\ApiReqAirCorps\Supply.cs" />
     <Compile Include="RawApi\ApiReqQuest\ApiQuest.cs" />
     <Compile Include="DataObject\CounterItem.cs" />
     <Compile Include="DataType.cs" />

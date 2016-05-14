@@ -335,8 +335,7 @@ namespace VisualFormTest
                 //ドロップを封じているかどうか
                 DropDisabled = !((APIPort.ShipsDictionary.Count < APIPort.Basic.api_max_chara) && //キャラの条件
                                  (APIPort.Basic.api_max_slotitem 
-                                    - APIPort.ShipsDictionary.Values.SelectMany(x => x.api_slot).Select(x => (x >> 31) + 1).Sum() 
-                                    - APIGetMember.Unsetslot.slottype.Select(x => x.Count).Sum()//装備空きが3より大きい場合落ちる（maxslot + 3 で最大装備数）
+                                    - APIGetMember.GetSlotitemNumOnSortie()//装備空きが3より大きい場合落ちる（maxslot + 3 で最大装備数）
                                     > 0)),
             };
             //DBに追加

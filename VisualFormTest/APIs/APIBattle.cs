@@ -129,6 +129,18 @@ namespace VisualFormTest
             var ojson = DynamicJson.Parse(str).api_data;
             //オブジェクトの作成
             BattleInfo binfo = ojson.Deserialize<BattleInfo>();
+            //基地航空戦
+            if(ojson.IsDefined("api_airbase_attack") && ojson.api_airbase_attack != null)
+            {
+                foreach(var ab in ojson.api_airbase_attack)
+                {
+                    if(ab.IsDefined("api_stage3") && ab.api_stage3 != null)
+                    {
+                        DamageBasic d_ab = ab.api_stage3.Deserialize<DamageBasic>();
+                        binfo.AddDamage(d_ab);
+                    }
+                }
+            }
             //航空戦
             if(ojson.api_kouku.api_stage3 != null)
             {
@@ -871,6 +883,7 @@ namespace VisualFormTest
         public object[] api_formation { get; set; }//陣形
         public ApiKouku api_kouku { get; set; }//航空戦
         public ApiKouku api_kouku2 { get; set; }//航空戦Phase2
+        public List<ApiAirBaseAttack> api_air_base_attack { get; set; }//基地航空戦
 
         //内部クラス
         #region 内部クラス
@@ -879,6 +892,11 @@ namespace VisualFormTest
         {
             public ApiStage1 api_stage1 { get; set; }
             public ApiStage2 api_stage2 { get; set; }
+        }
+
+        public class ApiAirBaseAttack : ApiKouku
+        {
+            public int api_base_id { get; set; }
         }
 
         //Stage1

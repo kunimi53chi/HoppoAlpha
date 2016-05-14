@@ -46,6 +46,27 @@ namespace HoppoAlpha.DataLibrary.DataObject
         static int[] suibaku_seiku_bonus = new int[] { 0, 0, 1, 1, 1, 3, 3, 6 };
  
         /// <summary>
+        /// 制空値をマージして別インスタンスで返します
+        /// </summary>
+        /// <param name="target">マージ対象の制空値</param>
+        /// <returns>マージされた制空値</returns>
+        public AirSupResult Merge(AirSupResult target)
+        {
+            var result = new AirSupResult()
+            {
+                AirSupValueMax = this.AirSupValueMax + target.AirSupValueMax,
+                AirSupValueMin = this.AirSupValueMin + target.AirSupValueMin,
+                IsCorrect = this.IsCorrect & target.IsCorrect,
+                OriginalValue = this.OriginalValue + target.OriginalValue,
+                TrainigValueMin = this.TrainigValueMin + target.TrainigValueMin,
+                TrainingValueMax = this.TrainingValueMax + target.TrainingValueMax,
+            };
+
+            return result;
+        }
+
+
+        /// <summary>
         /// 制空値の熟練度ボーナスを計算します
         /// </summary>
         /// <param name="dslot">装備のマスターデータ</param>
@@ -54,28 +75,10 @@ namespace HoppoAlpha.DataLibrary.DataObject
         /// <returns>熟練度による制空値のボーナス</returns>
         public static double AircraftTrainingBonus(ExMasterSlotitem dslot, int alevel, bool isMax)
         {
-            /*
-            //暫定的に熟練度MAXのみ加算
-            switch (dslot.EquipType)
-            {
-                case 6://艦戦
-                    if (alevel == 7) return 25;
-                    else return 0;
-                case 7://艦爆
-                    if (alevel == 7) return 3;
-                    else return 0;
-                case 8://艦攻
-                    goto case 7;
-                case 11://水爆
-                    if (alevel == 7) return 9;
-                    else return 0;
-                default:
-                    return 0;
-            }*/
             //--装備種類ごとの制空ボーナス
             double seikuEquipBonus = 0.0;
-            //艦戦の場合
-            if(dslot.EquipType == 6)
+            //艦戦の場合（水戦を追加）
+            if(dslot.EquipType == 6 || dslot.EquipType == 45)
             {
                 if (alevel >= 0 && alevel <= 7) seikuEquipBonus = (double)kansen_seiku_bonus[alevel];
             }
@@ -95,6 +98,45 @@ namespace HoppoAlpha.DataLibrary.DataObject
             }
             //--合計制空ボーナス
             return Math.Sqrt(trainval / 10.0) + seikuEquipBonus;
+        }
+
+        /// <summary>
+        /// 1スロットあたりの制空値を計算します
+        /// </summary>
+        /// <param name="equip">装備マスターデータ</param>
+        /// <param name="onSlotNum">スロット数</param>
+        /// <param name="trainingLevel">熟練度レベル</param>
+        /// <returns>制空値</returns>
+        public static AirSupResult SingleSlotitemAirSup(ExMasterSlotitem equip, double onSlotNum, int trainingLevel)
+        {
+            if (!equip.IsAirCombatable) return new AirSupResult();
+
+            //1スロットあたりの艦載機由来の制空値
+            double slotas = (double)equip.api_tyku * Math.Sqrt(onSlotNum);
+
+            //熟練度ボーナス
+            double trainmin = AircraftTrainingBonus(equip, trainingLevel, false);
+            double trainmax = AircraftTrainingBonus(equip, trainingLevel, true);
+
+            //このスロットの制空値
+            int sum_min = (int)(slotas + trainmin);
+            int sum_max = (int)(slotas + trainmax);
+
+            //ボーナス部分をintに変換
+            int trainmin_int = sum_min - (int)slotas;
+            int trainmax_int = sum_max - (int)slotas; ;
+
+            var result = new AirSupResult()
+            {
+                AirSupValueMin = sum_min,
+                AirSupValueMax = sum_max,
+                IsCorrect = true,
+                TrainigValueMin = trainmin_int,
+                TrainingValueMax = trainmax_int,
+                OriginalValue = (int)slotas,
+            };
+
+            return result;
         }
     }
 }

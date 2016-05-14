@@ -63,6 +63,8 @@ namespace VisualFormTest.UserControls
                 Stage2Enemy = label_air_st22,
                 AirSupValueFriend = label_air_supval1,
                 AirSupValueEnemy = label_air_supval2,
+                AirBaseFriend = label_airbase_val1,
+                AirBaseEnemy = label_airbase_val2,
             };
 
             //総ダメージ（自軍＋敵軍　縦長のとは異なる）

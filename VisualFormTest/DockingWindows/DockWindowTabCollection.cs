@@ -264,6 +264,13 @@ namespace VisualFormTest.DockingWindows
             }
         }
 
+        public UserControls.AirBaseCorps AirBaseCorps
+        {
+            get
+            {
+                return (Pages[(int)NonTabPageType.AirBaseCorps] as DockingWindows.DockWindowAirBaseCorps).airBaseCorps1; 
+            }
+        }
         #endregion
         #endregion
 
@@ -310,6 +317,7 @@ namespace VisualFormTest.DockingWindows
             public ToolStripMenuItem TRankingViewer { get; set; }
             public ToolStripMenuItem TKCVDBLog { get; set; }
             public ToolStripMenuItem TPresetDeckViewer { get; set; }
+            public ToolStripMenuItem TAirBaseCorps { get; set; }
         }
 
         public class TabUnitPageFactory
@@ -488,6 +496,7 @@ namespace VisualFormTest.DockingWindows
             else if (content is DockingWindows.DockWindowRankingViewer) tool = this.ToolStripHandler.TRankingViewer;
             else if (content is DockingWindows.DockWindowKCVDBLog) tool = this.ToolStripHandler.TKCVDBLog;
             else if (content is DockingWindows.DockWindowPresetDeckViewer) tool = this.ToolStripHandler.TPresetDeckViewer;
+            else if (content is DockingWindows.DockWindowAirBaseCorps) tool = this.ToolStripHandler.TAirBaseCorps;
 
             if (tool == null) throw new NullReferenceException();
             else return tool;
@@ -527,6 +536,7 @@ namespace VisualFormTest.DockingWindows
             if (item == this.ToolStripHandler.TRankingViewer) return GetDockContent(NonTabPageType.RankingViewer);
             if (item == this.ToolStripHandler.TKCVDBLog) return GetDockContent(NonTabPageType.KCVDBLog);
             if (item == this.ToolStripHandler.TPresetDeckViewer) return GetDockContent(NonTabPageType.PresetDeck);
+            if (item == this.ToolStripHandler.TAirBaseCorps) return GetDockContent(NonTabPageType.AirBaseCorps);
 
             throw new NullReferenceException();
         }

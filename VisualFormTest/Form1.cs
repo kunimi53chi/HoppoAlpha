@@ -678,6 +678,11 @@ namespace VisualFormTest
                             APIGetMember.ReadPresetDeck(json);
                             dwPageCollection.PresetDeckViewer.CheckDuplicate();
                             return;
+                        //api_get_member/base_air_corpsの場合
+                        case "base_air_corps":
+                            APIGetMember.ReadBaseAirCorps(json);
+                            dwPageCollection.AirBaseCorps.UpdateStatus();
+                            return;
                     }
                     break;
                 //api_portの場合
@@ -1090,6 +1095,20 @@ namespace VisualFormTest
                             return;
                     }
                     break;
+                //基地航空隊
+                case "api_req_air_corps":
+                    switch(secondAddress)
+                    {
+                        case "supply":
+                            ApiReqAirCorps.ReadSupply(reqb, json);
+                            UpdateMaterial();
+                            return;
+                        case "set_plane":
+                            ApiReqAirCorps.ReadSetPlane(reqb, json);
+                            UpdateMaterial();
+                            return;
+                    }
+                    break;
             }
         }
         #endregion
@@ -1204,6 +1223,7 @@ namespace VisualFormTest
                 TToolBox = toolStripMenuItem_wo_toolbox,
                 TMapInfo = toolStripMenuItem_wo_mapinfo,
                 TQuestViewer = toolStripMenuItem_wo_questviewer,
+                TAirBaseCorps = toolStripMenuItem_wo_airbasecorps,
 
                 TDropAnalyzer = toolStripMenuItem_wa_dropanalyze,
                 TSortieReportViewer = toolStripMenuItem_wa_sortiereport,
@@ -1252,6 +1272,7 @@ namespace VisualFormTest
             toolStripMenuItem_wo_toolbox.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
             toolStripMenuItem_wo_mapinfo.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
             toolStripMenuItem_wo_questviewer.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
+            toolStripMenuItem_wo_airbasecorps.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
 
             toolStripMenuItem_wa_dropanalyze.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
             toolStripMenuItem_wa_sortiereport.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
@@ -1573,25 +1594,13 @@ namespace VisualFormTest
         //艦隊情報のアップデート
         private void FleetInfoUpdate()
         {
-            //dwPageCollection.Fleet.TabUpdate();//非同期
             dwPageCollection.Fleet.TabUpdate_Q();
-            //dwPageCollection.TabFleetShort.TabUpdate();//非同期
             dwPageCollection.TabFleetShort.TabUpdate_Q();//非同期
             dwPageCollection.CompactScreen.FleetUpdate_Q();//非同期
             dwPageCollection.CompactScreenVertical.FleetUpdate_Q();
             dwPageCollection.UnitPage_AllAutoRefreshCheck_Q();//タブの自動更新、非同期
         }
 
-        //艦隊情報のアップデート（待機可能）
-        /*
-        private Task FleetInfoUpdateAwaitable()
-        {
-            dwPageCollection.UnitPage_AllAutoRefreshCheck();//タブの自動更新、非同期（投げっぱなし）
-            dwPageCollection.CompactScreen.FleetUpdate();//非同期（投げっぱなし）
-            dwPageCollection.CompactScreenVertical.FleetUpdate();
-            dwPageCollection.TabFleetShort.TabUpdate(); ;//非同期（投げっぱなし）
-            return dwPageCollection.Fleet.TabUpdate();//非同期
-        }*/
         //演習
         public void UpdatePractice()
         {
@@ -1722,6 +1731,7 @@ namespace VisualFormTest
             dwPageCollection.BattleDetailSquare2.ControlUpdate_Q();
             dwPageCollection.CompactScreen.BattleUpdate_Q();
             dwPageCollection.CompactScreenVertical.BattleUpdate_Q();
+            dwPageCollection.AirBaseCorps.UpdateBattle();
         }
 
         //マップ情報

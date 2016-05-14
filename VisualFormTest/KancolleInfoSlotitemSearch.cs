@@ -200,7 +200,7 @@ namespace VisualFormTest
             //クエリ
             List<SearchResult> query = new List<SearchResult>();
             //Unsetslot
-            foreach (var unsets in APIGetMember.Unsetslot.slottype)
+            foreach (var unsets in APIGetMember.Unsetslots.slottype)
             {
                 foreach (int x in unsets)
                 {

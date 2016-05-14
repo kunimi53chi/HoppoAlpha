@@ -34,5 +34,7 @@ namespace HoppoAlpha.DataLibrary.RawApi.ApiMaster
         public List<int> api_broken { get; set; }
         public string api_info { get; set; }
         public string api_usebull { get; set; }
+        public int api_cost { get; set; }
+        public int api_distance { get; set; }
     }
 }

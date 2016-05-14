@@ -39,12 +39,14 @@ namespace HoppoAlpha.DataLibrary.DataObject
             {
                 switch(EquipType)
                 {
-                    //制空争いに参加する装備：艦戦(6), 艦爆(7), 艦攻(8), 水上攻撃機(11), 水上戦闘機(45)
+                    //制空争いに参加する装備：艦戦(6), 艦爆(7), 艦攻(8), 水上攻撃機(11), 水上戦闘機(45), 陸上攻撃機(47),　局地戦闘機(48)
                     case 6:
                     case 7:
                     case 8:
                     case 11:
                     case 45:
+                    case 47:
+                    case 48:
                         return true;
                     default:
                         return false;
@@ -96,7 +98,7 @@ namespace HoppoAlpha.DataLibrary.DataObject
             Tyku, Tais, Atap, Houm, Raim,
             Houk, Raik, Bakk, Saku, Sakb,
             Luck, Leng, Rare, Broken, Info,
-            Usebull,
+            Usebull, Cost, Distance,
         }
 
         /// <summary>
@@ -122,7 +124,7 @@ namespace HoppoAlpha.DataLibrary.DataObject
                 "対空", "対潜", "api_atap", "命中", "雷撃命中",
                 "回避", "雷撃回避", "爆装回避", "索敵", "索敵妨害",
                 "運", "射程", "レアリティ", "破棄時資材", "説明",
-                "弾薬消費",
+                "弾薬消費", "配備コスト", "戦闘行動半径",
             };
             ExMasterSlotitemValueType = new ExCommon.ValueType[]
             {
@@ -131,7 +133,7 @@ namespace HoppoAlpha.DataLibrary.DataObject
                 ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int,
                 ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int,
                 ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.ListInt, ExCommon.ValueType.String,
-                ExCommon.ValueType.String,
+                ExCommon.ValueType.String, ExCommon.ValueType.Int, ExCommon.ValueType.Int,
             };
             ExMasterSlotitemArrayLength = new int[]
             {
@@ -140,7 +142,7 @@ namespace HoppoAlpha.DataLibrary.DataObject
                 0,0,0,0,0,
                 0,0,0,0,0,
                 0,0,0,4,0,
-                0,
+                0,0,0,
             };
         }
 
@@ -174,6 +176,8 @@ namespace HoppoAlpha.DataLibrary.DataObject
             this.api_broken = mstSlotitem.api_broken;
             this.api_info = ExCommon.SafeStringImport(mstSlotitem.api_info);
             this.api_usebull = ExCommon.SafeStringImport(mstSlotitem.api_usebull);
+            this.api_cost = mstSlotitem.api_cost;
+            this.api_distance = mstSlotitem.api_distance;
         }
 
         //インポート部分
@@ -227,6 +231,8 @@ namespace HoppoAlpha.DataLibrary.DataObject
                 case ExMasterSlotitemParameter.Type: this.api_type = val; break;
 
                 case ExMasterSlotitemParameter.Usebull: this.api_usebull = val; break;
+                case ExMasterSlotitemParameter.Cost: this.api_cost = val; break;
+                case ExMasterSlotitemParameter.Distance: this.api_distance = val; break;
             }
         }
 
@@ -262,6 +268,8 @@ namespace HoppoAlpha.DataLibrary.DataObject
             if(master.api_broken != null) this.api_broken = master.api_broken;
             if(master.api_info != null) this.api_info = ExCommon.SafeStringImport(master.api_info);
             if(master.api_usebull != null) this.api_usebull = ExCommon.SafeStringImport(master.api_usebull);
+            this.api_cost = master.api_cost;
+            this.api_distance = master.api_distance;
         }
         #endregion
 
@@ -306,6 +314,8 @@ namespace HoppoAlpha.DataLibrary.DataObject
             csv.Add(this.api_info ?? ExCommon.NullString);
 
             csv.Add(this.api_usebull ?? ExCommon.NullString);
+            csv.Add(this.api_cost.ToString());
+            csv.Add(this.api_distance.ToString());
 
             return csv;
         }

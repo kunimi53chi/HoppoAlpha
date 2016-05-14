@@ -64,8 +64,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label_air_st11 = new System.Windows.Forms.Label();
@@ -74,6 +72,20 @@
             this.label_air_st22 = new System.Windows.Forms.Label();
             this.label_air_supval1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label_damage_combined_65 = new System.Windows.Forms.Label();
+            this.label_damage_combined_55 = new System.Windows.Forms.Label();
+            this.label_damage_combined_45 = new System.Windows.Forms.Label();
+            this.label_damage_combined_35 = new System.Windows.Forms.Label();
+            this.label_damage_combined_25 = new System.Windows.Forms.Label();
+            this.label_damage_combined_15 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label_damage_65 = new System.Windows.Forms.Label();
+            this.label_damage_55 = new System.Windows.Forms.Label();
+            this.label_damage_45 = new System.Windows.Forms.Label();
+            this.label_damage_35 = new System.Windows.Forms.Label();
+            this.label_damage_25 = new System.Windows.Forms.Label();
+            this.label_damage_15 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
             this.label_enemy_equip65 = new System.Windows.Forms.Label();
             this.label_enemy_equip64 = new System.Windows.Forms.Label();
@@ -210,20 +222,8 @@
             this.toolStripMenuItem_screenshot = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem_keep = new System.Windows.Forms.ToolStripMenuItem();
-            this.label_damage_15 = new System.Windows.Forms.Label();
-            this.label_damage_25 = new System.Windows.Forms.Label();
-            this.label_damage_35 = new System.Windows.Forms.Label();
-            this.label_damage_45 = new System.Windows.Forms.Label();
-            this.label_damage_55 = new System.Windows.Forms.Label();
-            this.label_damage_65 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label_damage_combined_15 = new System.Windows.Forms.Label();
-            this.label_damage_combined_25 = new System.Windows.Forms.Label();
-            this.label_damage_combined_35 = new System.Windows.Forms.Label();
-            this.label_damage_combined_45 = new System.Windows.Forms.Label();
-            this.label_damage_combined_55 = new System.Windows.Forms.Label();
-            this.label_damage_combined_65 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
+            this.label_airbase_val2 = new System.Windows.Forms.Label();
+            this.label_airbase_val1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -711,12 +711,12 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.Controls.Add(this.label_airbase_val1, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label_airbase_val2, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.label_air_supval2, 2, 4);
             this.tableLayoutPanel3.Controls.Add(this.label18, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.label12, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label13, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label14, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label15, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.label16, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.label17, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.label_air_st11, 1, 2);
@@ -728,12 +728,12 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 5;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(160, 92);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(160, 100);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // label_air_supval2
@@ -743,10 +743,10 @@
             this.label_air_supval2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_air_supval2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_air_supval2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_air_supval2.Location = new System.Drawing.Point(100, 76);
+            this.label_air_supval2.Location = new System.Drawing.Point(100, 80);
             this.label_air_supval2.Margin = new System.Windows.Forms.Padding(0);
             this.label_air_supval2.Name = "label_air_supval2";
-            this.label_air_supval2.Size = new System.Drawing.Size(60, 16);
+            this.label_air_supval2.Size = new System.Drawing.Size(60, 20);
             this.label_air_supval2.TabIndex = 14;
             this.label_air_supval2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -757,10 +757,10 @@
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label18.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label18.Location = new System.Drawing.Point(0, 76);
+            this.label18.Location = new System.Drawing.Point(0, 80);
             this.label18.Margin = new System.Windows.Forms.Padding(0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(40, 16);
+            this.label18.Size = new System.Drawing.Size(40, 20);
             this.label18.TabIndex = 8;
             this.label18.Text = "制空";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -778,7 +778,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(160, 20);
             this.label12.TabIndex = 2;
-            this.label12.Text = "航空戦";
+            this.label12.Text = "航空戦(自軍/敵軍:喪失)";
             // 
             // label13
             // 
@@ -790,40 +790,10 @@
             this.label13.Location = new System.Drawing.Point(0, 20);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(40, 16);
+            this.label13.Size = new System.Drawing.Size(40, 20);
             this.label13.TabIndex = 3;
-            this.label13.Text = "　";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(169)))));
-            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label14.Location = new System.Drawing.Point(40, 20);
-            this.label14.Margin = new System.Windows.Forms.Padding(0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 16);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "自軍損失";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(169)))));
-            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label15.Location = new System.Drawing.Point(100, 20);
-            this.label15.Margin = new System.Windows.Forms.Padding(0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(60, 16);
-            this.label15.TabIndex = 5;
-            this.label15.Text = "敵軍損失";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label13.Text = "基地";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label16
             // 
@@ -832,7 +802,7 @@
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label16.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label16.Location = new System.Drawing.Point(0, 36);
+            this.label16.Location = new System.Drawing.Point(0, 40);
             this.label16.Margin = new System.Windows.Forms.Padding(0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(40, 20);
@@ -847,7 +817,7 @@
             this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label17.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label17.Location = new System.Drawing.Point(0, 56);
+            this.label17.Location = new System.Drawing.Point(0, 60);
             this.label17.Margin = new System.Windows.Forms.Padding(0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(40, 20);
@@ -862,7 +832,7 @@
             this.label_air_st11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_air_st11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label_air_st11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_air_st11.Location = new System.Drawing.Point(40, 36);
+            this.label_air_st11.Location = new System.Drawing.Point(40, 40);
             this.label_air_st11.Margin = new System.Windows.Forms.Padding(0);
             this.label_air_st11.Name = "label_air_st11";
             this.label_air_st11.Size = new System.Drawing.Size(60, 20);
@@ -876,7 +846,7 @@
             this.label_air_st12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_air_st12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label_air_st12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_air_st12.Location = new System.Drawing.Point(100, 36);
+            this.label_air_st12.Location = new System.Drawing.Point(100, 40);
             this.label_air_st12.Margin = new System.Windows.Forms.Padding(0);
             this.label_air_st12.Name = "label_air_st12";
             this.label_air_st12.Size = new System.Drawing.Size(60, 20);
@@ -890,7 +860,7 @@
             this.label_air_st21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_air_st21.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label_air_st21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_air_st21.Location = new System.Drawing.Point(40, 56);
+            this.label_air_st21.Location = new System.Drawing.Point(40, 60);
             this.label_air_st21.Margin = new System.Windows.Forms.Padding(0);
             this.label_air_st21.Name = "label_air_st21";
             this.label_air_st21.Size = new System.Drawing.Size(60, 20);
@@ -904,7 +874,7 @@
             this.label_air_st22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_air_st22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label_air_st22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_air_st22.Location = new System.Drawing.Point(100, 56);
+            this.label_air_st22.Location = new System.Drawing.Point(100, 60);
             this.label_air_st22.Margin = new System.Windows.Forms.Padding(0);
             this.label_air_st22.Name = "label_air_st22";
             this.label_air_st22.Size = new System.Drawing.Size(60, 20);
@@ -918,10 +888,10 @@
             this.label_air_supval1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_air_supval1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_air_supval1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_air_supval1.Location = new System.Drawing.Point(40, 76);
+            this.label_air_supval1.Location = new System.Drawing.Point(40, 80);
             this.label_air_supval1.Margin = new System.Windows.Forms.Padding(0);
             this.label_air_supval1.Name = "label_air_supval1";
-            this.label_air_supval1.Size = new System.Drawing.Size(60, 16);
+            this.label_air_supval1.Size = new System.Drawing.Size(60, 20);
             this.label_air_supval1.TabIndex = 13;
             this.label_air_supval1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -1110,6 +1080,204 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(545, 284);
             this.tableLayoutPanel4.TabIndex = 4;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(169)))));
+            this.label51.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label51.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label51.Location = new System.Drawing.Point(285, 172);
+            this.label51.Margin = new System.Windows.Forms.Padding(0);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(35, 16);
+            this.label51.TabIndex = 148;
+            this.label51.Text = "%";
+            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_damage_combined_65
+            // 
+            this.label_damage_combined_65.AutoSize = true;
+            this.label_damage_combined_65.BackColor = System.Drawing.Color.White;
+            this.label_damage_combined_65.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_combined_65.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_combined_65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_combined_65.Location = new System.Drawing.Point(285, 268);
+            this.label_damage_combined_65.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_combined_65.Name = "label_damage_combined_65";
+            this.label_damage_combined_65.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_combined_65.TabIndex = 147;
+            this.label_damage_combined_65.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_damage_combined_55
+            // 
+            this.label_damage_combined_55.AutoSize = true;
+            this.label_damage_combined_55.BackColor = System.Drawing.Color.White;
+            this.label_damage_combined_55.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_combined_55.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_combined_55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_combined_55.Location = new System.Drawing.Point(285, 252);
+            this.label_damage_combined_55.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_combined_55.Name = "label_damage_combined_55";
+            this.label_damage_combined_55.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_combined_55.TabIndex = 146;
+            this.label_damage_combined_55.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_damage_combined_45
+            // 
+            this.label_damage_combined_45.AutoSize = true;
+            this.label_damage_combined_45.BackColor = System.Drawing.Color.White;
+            this.label_damage_combined_45.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_combined_45.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_combined_45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_combined_45.Location = new System.Drawing.Point(285, 236);
+            this.label_damage_combined_45.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_combined_45.Name = "label_damage_combined_45";
+            this.label_damage_combined_45.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_combined_45.TabIndex = 145;
+            this.label_damage_combined_45.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_damage_combined_35
+            // 
+            this.label_damage_combined_35.AutoSize = true;
+            this.label_damage_combined_35.BackColor = System.Drawing.Color.White;
+            this.label_damage_combined_35.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_combined_35.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_combined_35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_combined_35.Location = new System.Drawing.Point(285, 220);
+            this.label_damage_combined_35.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_combined_35.Name = "label_damage_combined_35";
+            this.label_damage_combined_35.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_combined_35.TabIndex = 144;
+            this.label_damage_combined_35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_damage_combined_25
+            // 
+            this.label_damage_combined_25.AutoSize = true;
+            this.label_damage_combined_25.BackColor = System.Drawing.Color.White;
+            this.label_damage_combined_25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_combined_25.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_combined_25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_combined_25.Location = new System.Drawing.Point(285, 204);
+            this.label_damage_combined_25.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_combined_25.Name = "label_damage_combined_25";
+            this.label_damage_combined_25.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_combined_25.TabIndex = 143;
+            this.label_damage_combined_25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_damage_combined_15
+            // 
+            this.label_damage_combined_15.AutoSize = true;
+            this.label_damage_combined_15.BackColor = System.Drawing.Color.White;
+            this.label_damage_combined_15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_combined_15.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_combined_15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_combined_15.Location = new System.Drawing.Point(285, 188);
+            this.label_damage_combined_15.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_combined_15.Name = "label_damage_combined_15";
+            this.label_damage_combined_15.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_combined_15.TabIndex = 142;
+            this.label_damage_combined_15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(169)))));
+            this.label61.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label61.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label61.Location = new System.Drawing.Point(285, 40);
+            this.label61.Margin = new System.Windows.Forms.Padding(0);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(35, 16);
+            this.label61.TabIndex = 141;
+            this.label61.Text = "%";
+            this.label61.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_damage_65
+            // 
+            this.label_damage_65.AutoSize = true;
+            this.label_damage_65.BackColor = System.Drawing.Color.White;
+            this.label_damage_65.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_65.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_65.Location = new System.Drawing.Point(285, 136);
+            this.label_damage_65.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_65.Name = "label_damage_65";
+            this.label_damage_65.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_65.TabIndex = 140;
+            this.label_damage_65.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_damage_55
+            // 
+            this.label_damage_55.AutoSize = true;
+            this.label_damage_55.BackColor = System.Drawing.Color.White;
+            this.label_damage_55.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_55.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_55.Location = new System.Drawing.Point(285, 120);
+            this.label_damage_55.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_55.Name = "label_damage_55";
+            this.label_damage_55.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_55.TabIndex = 139;
+            this.label_damage_55.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_damage_45
+            // 
+            this.label_damage_45.AutoSize = true;
+            this.label_damage_45.BackColor = System.Drawing.Color.White;
+            this.label_damage_45.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_45.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_45.Location = new System.Drawing.Point(285, 104);
+            this.label_damage_45.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_45.Name = "label_damage_45";
+            this.label_damage_45.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_45.TabIndex = 138;
+            this.label_damage_45.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_damage_35
+            // 
+            this.label_damage_35.AutoSize = true;
+            this.label_damage_35.BackColor = System.Drawing.Color.White;
+            this.label_damage_35.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_35.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_35.Location = new System.Drawing.Point(285, 88);
+            this.label_damage_35.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_35.Name = "label_damage_35";
+            this.label_damage_35.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_35.TabIndex = 137;
+            this.label_damage_35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_damage_25
+            // 
+            this.label_damage_25.AutoSize = true;
+            this.label_damage_25.BackColor = System.Drawing.Color.White;
+            this.label_damage_25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_25.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_25.Location = new System.Drawing.Point(285, 72);
+            this.label_damage_25.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_25.Name = "label_damage_25";
+            this.label_damage_25.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_25.TabIndex = 136;
+            this.label_damage_25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_damage_15
+            // 
+            this.label_damage_15.AutoSize = true;
+            this.label_damage_15.BackColor = System.Drawing.Color.White;
+            this.label_damage_15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_damage_15.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_damage_15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_damage_15.Location = new System.Drawing.Point(285, 56);
+            this.label_damage_15.Margin = new System.Windows.Forms.Padding(0);
+            this.label_damage_15.Name = "label_damage_15";
+            this.label_damage_15.Size = new System.Drawing.Size(35, 16);
+            this.label_damage_15.TabIndex = 135;
+            this.label_damage_15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label82
             // 
@@ -3039,203 +3207,33 @@
             this.toolStripMenuItem_keep.Text = "戦闘終了後も表示を保持する";
             this.toolStripMenuItem_keep.Click += new System.EventHandler(this.toolStripMenuItem_keep_Click);
             // 
-            // label_damage_15
+            // label_airbase_val2
             // 
-            this.label_damage_15.AutoSize = true;
-            this.label_damage_15.BackColor = System.Drawing.Color.White;
-            this.label_damage_15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_15.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_15.Location = new System.Drawing.Point(285, 56);
-            this.label_damage_15.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_15.Name = "label_damage_15";
-            this.label_damage_15.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_15.TabIndex = 135;
-            this.label_damage_15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_airbase_val2.AutoSize = true;
+            this.label_airbase_val2.BackColor = System.Drawing.Color.White;
+            this.label_airbase_val2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_airbase_val2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label_airbase_val2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_airbase_val2.Location = new System.Drawing.Point(100, 20);
+            this.label_airbase_val2.Margin = new System.Windows.Forms.Padding(0);
+            this.label_airbase_val2.Name = "label_airbase_val2";
+            this.label_airbase_val2.Size = new System.Drawing.Size(60, 20);
+            this.label_airbase_val2.TabIndex = 15;
+            this.label_airbase_val2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label_damage_25
+            // label_airbase_val1
             // 
-            this.label_damage_25.AutoSize = true;
-            this.label_damage_25.BackColor = System.Drawing.Color.White;
-            this.label_damage_25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_25.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_25.Location = new System.Drawing.Point(285, 72);
-            this.label_damage_25.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_25.Name = "label_damage_25";
-            this.label_damage_25.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_25.TabIndex = 136;
-            this.label_damage_25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label_damage_35
-            // 
-            this.label_damage_35.AutoSize = true;
-            this.label_damage_35.BackColor = System.Drawing.Color.White;
-            this.label_damage_35.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_35.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_35.Location = new System.Drawing.Point(285, 88);
-            this.label_damage_35.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_35.Name = "label_damage_35";
-            this.label_damage_35.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_35.TabIndex = 137;
-            this.label_damage_35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label_damage_45
-            // 
-            this.label_damage_45.AutoSize = true;
-            this.label_damage_45.BackColor = System.Drawing.Color.White;
-            this.label_damage_45.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_45.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_45.Location = new System.Drawing.Point(285, 104);
-            this.label_damage_45.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_45.Name = "label_damage_45";
-            this.label_damage_45.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_45.TabIndex = 138;
-            this.label_damage_45.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label_damage_55
-            // 
-            this.label_damage_55.AutoSize = true;
-            this.label_damage_55.BackColor = System.Drawing.Color.White;
-            this.label_damage_55.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_55.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_55.Location = new System.Drawing.Point(285, 120);
-            this.label_damage_55.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_55.Name = "label_damage_55";
-            this.label_damage_55.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_55.TabIndex = 139;
-            this.label_damage_55.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label_damage_65
-            // 
-            this.label_damage_65.AutoSize = true;
-            this.label_damage_65.BackColor = System.Drawing.Color.White;
-            this.label_damage_65.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_65.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_65.Location = new System.Drawing.Point(285, 136);
-            this.label_damage_65.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_65.Name = "label_damage_65";
-            this.label_damage_65.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_65.TabIndex = 140;
-            this.label_damage_65.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(169)))));
-            this.label61.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label61.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label61.Location = new System.Drawing.Point(285, 40);
-            this.label61.Margin = new System.Windows.Forms.Padding(0);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(35, 16);
-            this.label61.TabIndex = 141;
-            this.label61.Text = "%";
-            this.label61.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_damage_combined_15
-            // 
-            this.label_damage_combined_15.AutoSize = true;
-            this.label_damage_combined_15.BackColor = System.Drawing.Color.White;
-            this.label_damage_combined_15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_combined_15.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_combined_15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_combined_15.Location = new System.Drawing.Point(285, 188);
-            this.label_damage_combined_15.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_combined_15.Name = "label_damage_combined_15";
-            this.label_damage_combined_15.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_combined_15.TabIndex = 142;
-            this.label_damage_combined_15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label_damage_combined_25
-            // 
-            this.label_damage_combined_25.AutoSize = true;
-            this.label_damage_combined_25.BackColor = System.Drawing.Color.White;
-            this.label_damage_combined_25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_combined_25.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_combined_25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_combined_25.Location = new System.Drawing.Point(285, 204);
-            this.label_damage_combined_25.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_combined_25.Name = "label_damage_combined_25";
-            this.label_damage_combined_25.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_combined_25.TabIndex = 143;
-            this.label_damage_combined_25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label_damage_combined_35
-            // 
-            this.label_damage_combined_35.AutoSize = true;
-            this.label_damage_combined_35.BackColor = System.Drawing.Color.White;
-            this.label_damage_combined_35.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_combined_35.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_combined_35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_combined_35.Location = new System.Drawing.Point(285, 220);
-            this.label_damage_combined_35.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_combined_35.Name = "label_damage_combined_35";
-            this.label_damage_combined_35.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_combined_35.TabIndex = 144;
-            this.label_damage_combined_35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label_damage_combined_45
-            // 
-            this.label_damage_combined_45.AutoSize = true;
-            this.label_damage_combined_45.BackColor = System.Drawing.Color.White;
-            this.label_damage_combined_45.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_combined_45.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_combined_45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_combined_45.Location = new System.Drawing.Point(285, 236);
-            this.label_damage_combined_45.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_combined_45.Name = "label_damage_combined_45";
-            this.label_damage_combined_45.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_combined_45.TabIndex = 145;
-            this.label_damage_combined_45.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label_damage_combined_55
-            // 
-            this.label_damage_combined_55.AutoSize = true;
-            this.label_damage_combined_55.BackColor = System.Drawing.Color.White;
-            this.label_damage_combined_55.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_combined_55.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_combined_55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_combined_55.Location = new System.Drawing.Point(285, 252);
-            this.label_damage_combined_55.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_combined_55.Name = "label_damage_combined_55";
-            this.label_damage_combined_55.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_combined_55.TabIndex = 146;
-            this.label_damage_combined_55.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label_damage_combined_65
-            // 
-            this.label_damage_combined_65.AutoSize = true;
-            this.label_damage_combined_65.BackColor = System.Drawing.Color.White;
-            this.label_damage_combined_65.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_damage_combined_65.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_damage_combined_65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label_damage_combined_65.Location = new System.Drawing.Point(285, 268);
-            this.label_damage_combined_65.Margin = new System.Windows.Forms.Padding(0);
-            this.label_damage_combined_65.Name = "label_damage_combined_65";
-            this.label_damage_combined_65.Size = new System.Drawing.Size(35, 16);
-            this.label_damage_combined_65.TabIndex = 147;
-            this.label_damage_combined_65.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(169)))));
-            this.label51.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label51.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label51.Location = new System.Drawing.Point(285, 172);
-            this.label51.Margin = new System.Windows.Forms.Padding(0);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(35, 16);
-            this.label51.TabIndex = 148;
-            this.label51.Text = "%";
-            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_airbase_val1.AutoSize = true;
+            this.label_airbase_val1.BackColor = System.Drawing.Color.White;
+            this.label_airbase_val1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_airbase_val1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label_airbase_val1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label_airbase_val1.Location = new System.Drawing.Point(40, 20);
+            this.label_airbase_val1.Margin = new System.Windows.Forms.Padding(0);
+            this.label_airbase_val1.Name = "label_airbase_val1";
+            this.label_airbase_val1.Size = new System.Drawing.Size(60, 20);
+            this.label_airbase_val1.TabIndex = 16;
+            this.label_airbase_val1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BattleDetailSquare
             // 
@@ -3292,8 +3290,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label_air_st11;
@@ -3459,5 +3455,7 @@
         private System.Windows.Forms.Label label_damage_35;
         private System.Windows.Forms.Label label_damage_25;
         private System.Windows.Forms.Label label_damage_15;
+        private System.Windows.Forms.Label label_airbase_val1;
+        private System.Windows.Forms.Label label_airbase_val2;
     }
 }

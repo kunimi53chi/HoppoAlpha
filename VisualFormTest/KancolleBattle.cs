@@ -434,6 +434,43 @@ namespace VisualFormTest
                 handler.Situation.AttachFriend.Text = "×"; toolTip.SetToolTip(handler.Situation.AttachFriend, null);
                 handler.Situation.AttachEnemy.Text = "×"; toolTip.SetToolTip(handler.Situation.AttachEnemy, null);
             }
+            //基地航空戦
+            if (handler.AirBattle.AirBaseEnemy != null && handler.AirBattle.AirBaseFriend != null)
+            {
+                if (info.api_air_base_attack != null)
+                {
+                    int friend_total = 0, friend_lost = 0, enemy_total = 0, enemy_lost = 0;
+                    foreach (var ab in info.api_air_base_attack)
+                    {
+                        if (ab.api_stage1 != null)
+                        {
+                            //味方の基地航空戦の総数は加算(Stage1で加算する)
+                            friend_total += ab.api_stage1.api_f_count;
+                            //敵、味方とも損失数は随時加算(Stage1, Stage2とも)
+                            friend_lost += ab.api_stage1.api_f_lostcount;
+                            enemy_lost += ab.api_stage1.api_e_lostcount;
+                            //敵の総数は最大の値を取る
+                            enemy_total = Math.Max(enemy_total, ab.api_stage1.api_e_count);
+                        }
+                        if (ab.api_stage2 != null)
+                        {
+                            //Stage2の総数は無視する
+                            //敵、味方の損失数を加算する
+                            friend_lost += ab.api_stage2.api_f_lostcount;
+                            enemy_lost += ab.api_stage2.api_e_lostcount;
+                        }
+                    }
+                    handler.AirBattle.AirBaseFriend.Text =
+                        string.Format("{0}/{1}", friend_lost, friend_total);
+                    handler.AirBattle.AirBaseEnemy.Text =
+                        string.Format("{0}/{1}", enemy_lost, enemy_total);
+                }
+                else
+                {
+                    handler.AirBattle.AirBaseFriend.Text = "";
+                    handler.AirBattle.AirBaseEnemy.Text = "";
+                }
+            }
             //航空戦
             if (info.api_kouku != null)
             {
@@ -542,9 +579,18 @@ namespace VisualFormTest
                     damage_fore[i, 3] = e_cond_before.GetColorBattleDetail();
                     damage_back[i, 3] = e_cond_before.GetBackColorBattleDetail();
                     //敵の残りのHP
-                    damage_str[i, 4] = info.api_nowhps[i + 7] >= 0 ? info.api_nowhps[i + 7].ToString() : "";
-                    damage_fore[i, 4] = e_cond_after.GetColorBattleDetail();
-                    damage_back[i, 4] = e_cond_after.GetBackColorBattleDetail();
+                    if (i + 7 < info.api_nowhps.Length)
+                    {
+                        damage_str[i, 4] = info.api_nowhps[i + 7] >= 0 ? info.api_nowhps[i + 7].ToString() : "";
+                        damage_fore[i, 4] = e_cond_after.GetColorBattleDetail();
+                        damage_back[i, 4] = e_cond_after.GetBackColorBattleDetail();
+                    }
+                    else
+                    {
+                        damage_str[i, 4] = "";
+                        damage_fore[i, 4] = KancolleInfo.DefaultStringColor;
+                        damage_back[i, 4] = KancolleInfo.DefaultBackColor;
+                    }
                 }
                 //ラベルにセット
                 foreach(int i in Enumerable.Range(0, damage_str.GetLength(0)))
@@ -632,9 +678,18 @@ namespace VisualFormTest
                     damage_fore[i, 5] = e_cond_before.GetColorBattleDetail();
                     damage_back[i, 5] = e_cond_before.GetBackColorBattleDetail();
                     //敵の残りのHP
-                    damage_str[i, 6] = info.api_nowhps[i + 7] >= 0 ? info.api_nowhps[i + 7].ToString() : "";
-                    damage_fore[i, 6] = e_cond_after.GetColorBattleDetail();
-                    damage_back[i, 6] = e_cond_after.GetBackColorBattleDetail();
+                    if (i + 7 < info.api_nowhps.Length)
+                    {
+                        damage_str[i, 6] = info.api_nowhps[i + 7] >= 0 ? info.api_nowhps[i + 7].ToString() : "";
+                        damage_fore[i, 6] = e_cond_after.GetColorBattleDetail();
+                        damage_back[i, 6] = e_cond_after.GetBackColorBattleDetail();
+                    }
+                    else
+                    {
+                        damage_str[i, 6] = "";
+                        damage_fore[i, 6] = KancolleInfo.DefaultStringColor;
+                        damage_fore[i, 6] = KancolleInfo.DefaultBackColor;
+                    }
                 }
                 //ラベルにセット
                 foreach (int i in Enumerable.Range(0, damage_str.GetLength(0)))
@@ -854,6 +909,8 @@ namespace VisualFormTest
             handler.AirBattle.Stage1Friend.Text = ""; handler.AirBattle.Stage1Enemy.Text = "";
             handler.AirBattle.Stage2Friend.Text = ""; handler.AirBattle.Stage2Enemy.Text = "";
             handler.AirBattle.AirSupValueFriend.Text = ""; handler.AirBattle.AirSupValueEnemy.Text = "";
+            if(handler.AirBattle.AirBaseFriend != null) handler.AirBattle.AirBaseFriend.Text = ""; 
+            if(handler.AirBattle.AirBaseEnemy != null) handler.AirBattle.AirBaseEnemy.Text = "";
             //ダメージ
             foreach(var x in handler.Damage)
             {

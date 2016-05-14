@@ -79,6 +79,14 @@ namespace VisualFormTest
                 case 38: return "主II";
                 case 39: return "見張";
                 case 40: return "大ソ";
+                case 41: return "大艇";
+                case 42: return "大灯";
+                case 43: return "糧食";
+                case 44: return "洋補";
+                case 45: return "水戦";
+                case 46: return "内火";
+                case 47: return "陸攻";
+                case 48: return "局戦";
                 default: return slot_eqtype_id.ToString();
             }
         }
