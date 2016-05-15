@@ -1102,10 +1102,12 @@ namespace VisualFormTest
                         case "supply":
                             ApiReqAirCorps.ReadSupply(reqb, json);
                             UpdateMaterial();
+                            dwPageCollection.AirBaseCorps.UpdateStatus();
                             return;
                         case "set_plane":
                             ApiReqAirCorps.ReadSetPlane(reqb, json);
                             UpdateMaterial();
+                            dwPageCollection.AirBaseCorps.UpdateStatus();
                             return;
                     }
                     break;

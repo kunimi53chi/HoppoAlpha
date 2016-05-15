@@ -130,15 +130,16 @@ namespace VisualFormTest
             //オブジェクトの作成
             BattleInfo binfo = ojson.Deserialize<BattleInfo>();
             //基地航空戦
-            if(ojson.IsDefined("api_airbase_attack") && ojson.api_airbase_attack != null)
+            if(ojson.IsDefined("api_air_base_attack") && ojson.api_air_base_attack != null)
             {
-                foreach(var ab in ojson.api_airbase_attack)
+                foreach(var ab in ojson.api_air_base_attack)
                 {
                     if(ab.IsDefined("api_stage3") && ab.api_stage3 != null)
                     {
                         DamageBasic d_ab = ab.api_stage3.Deserialize<DamageBasic>();
                         binfo.AddDamage(d_ab);
                     }
+                    ((BattleInfo.ApiAirBaseAttack)ab).UpdatePlaneCount();//機数の修正(キャストしないとダメ)？
                 }
             }
             //航空戦
@@ -897,6 +898,26 @@ namespace VisualFormTest
         public class ApiAirBaseAttack : ApiKouku
         {
             public int api_base_id { get; set; }
+            public List<ApiSquadronPlane> api_squadron_plane { get; set; }
+
+            public void UpdatePlaneCount()
+            {
+                if(api_squadron_plane != null && APIGetMember.BaseAirCorps != null && api_base_id <= APIGetMember.BaseAirCorps.Count)
+                {
+                    var baseobj = APIGetMember.BaseAirCorps[api_base_id - 1];
+                    foreach(var i in Enumerable.Range(0, Math.Min(baseobj.api_plane_info.Count, api_squadron_plane.Count)))
+                    {
+                        //機数の修正
+                        baseobj.api_plane_info[i].api_count = api_squadron_plane[i].api_count;
+                    }
+                }
+            }
+        }
+
+        public class ApiSquadronPlane
+        {
+            public int api_mst_id { get; set; }
+            public int api_count { get; set; }
         }
 
         //Stage1

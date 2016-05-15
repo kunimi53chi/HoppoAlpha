@@ -440,12 +440,19 @@ namespace VisualFormTest
                 if (info.api_air_base_attack != null)
                 {
                     int friend_total = 0, friend_lost = 0, enemy_total = 0, enemy_lost = 0;
+                    bool[] isAttacked = new bool[HoppoAlpha.DataLibrary.RawApi.ApiGetMember.BaseAirCorp.NumOfAirBase];
+
                     foreach (var ab in info.api_air_base_attack)
                     {
                         if (ab.api_stage1 != null)
                         {
-                            //味方の基地航空戦の総数は加算(Stage1で加算する)
-                            friend_total += ab.api_stage1.api_f_count;
+                            if (ab.api_base_id <= isAttacked.Length && !isAttacked[ab.api_base_id - 1])
+                            {
+                                //味方の基地航空戦の総数はちょっと特殊(Stage1で加算する)
+                                friend_total += ab.api_stage1.api_f_count;
+
+                                isAttacked[ab.api_base_id - 1] = true;
+                            }
                             //敵、味方とも損失数は随時加算(Stage1, Stage2とも)
                             friend_lost += ab.api_stage1.api_f_lostcount;
                             enemy_lost += ab.api_stage1.api_e_lostcount;

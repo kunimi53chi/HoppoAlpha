@@ -249,12 +249,15 @@
             this.label_base3_1_airsupofplayer = new System.Windows.Forms.Label();
             this.label_base3_2_airsupofplayer = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem_screenshot = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -3542,11 +3545,26 @@
             this.label_base3_2_airsupofplayer.TabIndex = 31;
             this.label_base3_2_airsupofplayer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_screenshot});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 26);
+            // 
+            // toolStripMenuItem_screenshot
+            // 
+            this.toolStripMenuItem_screenshot.Name = "toolStripMenuItem_screenshot";
+            this.toolStripMenuItem_screenshot.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem_screenshot.Text = "スクリーンショット";
+            this.toolStripMenuItem_screenshot.Click += new System.EventHandler(this.toolStripMenuItem_screenshot_Click);
+            // 
             // AirBaseCorps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.tableLayoutPanel6);
             this.Controls.Add(this.tableLayoutPanel5);
             this.Controls.Add(this.tableLayoutPanel4);
@@ -3567,6 +3585,7 @@
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3793,5 +3812,7 @@
         private System.Windows.Forms.Label label_base3_1_airsupofplayer;
         private System.Windows.Forms.Label label_base3_2_airsupofplayer;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_screenshot;
     }
 }
