@@ -48,6 +48,8 @@ namespace HoppoAlpha.DataLibrary.RawApi.ApiGetMember
             public ViewStatus()
             {
                 SquadronView = new ApiPlaneInfo.ViewStatus[NumOfSquadron];
+
+
                 TotalAirSup = new AirSupResult();
             }
         }
@@ -66,16 +68,19 @@ namespace HoppoAlpha.DataLibrary.RawApi.ApiGetMember
             foreach(var i in Enumerable.Range(0, NumOfSquadron))
             {
                 var sq = api_plane_info[i].GetStatusViewData(slotData);
+
                 result.SquadronView[i] = sq;
 
                 result.TotalNum += api_plane_info[i].api_count;
-                result.TotalCost += sq.Cost;
+                if (sq != null)
+                {
+                    result.TotalCost += sq.Cost;
 
-                if (result.TotalRedius == 0) result.TotalRedius = sq.Radius;
-                else result.TotalRedius = result.TotalRedius = Math.Min(result.TotalRedius, sq.Radius);
+                    result.TotalRedius = Math.Max(result.TotalRedius, sq.Radius);
 
-                result.TotalDispatch += sq.Dispatch;
-                result.TotalAirSup = result.TotalAirSup.Merge(sq.AirSup);
+                    result.TotalDispatch += sq.Dispatch;
+                    result.TotalAirSup = result.TotalAirSup.Merge(sq.AirSup);
+                }
             }
 
             return result;

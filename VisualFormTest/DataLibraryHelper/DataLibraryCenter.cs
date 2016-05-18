@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HoppoAlpha.DataLibrary;
+using HoppoAlpha.DataLibrary.DataObject;
 
 namespace VisualFormTest
 {
@@ -37,10 +39,21 @@ namespace VisualFormTest
                 //マスターデータの保存
                 if (APIMaster.MstShips != null)
                 {
-                    var saveResult = HoppoAlpha.DataLibrary.Files.Save(
-                        HoppoAlpha.DataLibrary.DataObject.ExMasterShipCollection.FilePath,
-                        HoppoAlpha.DataLibrary.DataType.ExMasterShip, APIMaster.MstShips);
-                    LogSystem.AddLogMessage(HoppoAlpha.DataLibrary.DataType.ExMasterShip, saveResult, true);
+                    //IDを昇順ソート
+                    var mstships = new ExMasterShipCollection(true);
+                    foreach(var m in APIMaster.MstShips.OrderBy(x => x.Key))
+                    {
+                        mstships[m.Key] = m.Value;
+                    }
+                    //保存するアクション
+                    var saveResult = new Files.FileOperationResult();
+                    var saveAction = new Action(() =>
+                        {
+                            saveResult = Files.Save(ExMasterShipCollection.FilePath, DataType.ExMasterShip, mstships);
+                            LogSystem.AddLogMessage(HoppoAlpha.DataLibrary.DataType.ExMasterShip, saveResult, true);
+                        });
+                    //保存
+                    saveAction();
                     if (onclosing && !saveResult.IsSuccess)
                     {
                         while (true)
@@ -50,10 +63,7 @@ namespace VisualFormTest
                             //再試行
                             if (result == System.Windows.Forms.DialogResult.Retry)
                             {
-                                saveResult = HoppoAlpha.DataLibrary.Files.Save(
-                                    HoppoAlpha.DataLibrary.DataObject.ExMasterShipCollection.FilePath,
-                                    HoppoAlpha.DataLibrary.DataType.ExMasterShip, APIMaster.MstShips);
-                                LogSystem.AddLogMessage(HoppoAlpha.DataLibrary.DataType.ExMasterShip, saveResult, true);
+                                saveAction();
                                 if (saveResult.IsSuccess) break;
                             }
                             else if (result == System.Windows.Forms.DialogResult.Cancel)
@@ -67,10 +77,20 @@ namespace VisualFormTest
                 //装備のマスターデータの保存
                 if(APIMaster.MstSlotitems != null)
                 {
-                    var saveResult = HoppoAlpha.DataLibrary.Files.Save(
-                        HoppoAlpha.DataLibrary.DataObject.ExMasterSlotitemCollection.FilePath,
-                        HoppoAlpha.DataLibrary.DataType.ExMasterSlotitem, APIMaster.MstSlotitems);
-                    LogSystem.AddLogMessage(HoppoAlpha.DataLibrary.DataType.ExMasterSlotitem, saveResult, true);
+                    //IDを昇順ソート
+                    var mstslotitems = new ExMasterSlotitemCollection(true);
+                    foreach(var m in APIMaster.MstSlotitems.OrderBy(x => x.Key))
+                    {
+                        mstslotitems[m.Key] = m.Value;
+                    }
+                    //保存するアクション
+                    var saveResult = new Files.FileOperationResult();
+                    var saveAction = new Action(() =>
+                    {
+                        saveResult = Files.Save(ExMasterSlotitemCollection.FilePath, DataType.ExMasterSlotitem, mstslotitems);
+                        LogSystem.AddLogMessage(HoppoAlpha.DataLibrary.DataType.ExMasterSlotitem, saveResult, true);
+                    });
+                    saveAction();
                     if (onclosing && !saveResult.IsSuccess)
                     {
                         while (true)
@@ -80,10 +100,7 @@ namespace VisualFormTest
                             //再試行
                             if (result == System.Windows.Forms.DialogResult.Retry)
                             {
-                                saveResult = HoppoAlpha.DataLibrary.Files.Save(
-                                        HoppoAlpha.DataLibrary.DataObject.ExMasterSlotitemCollection.FilePath,
-                                        HoppoAlpha.DataLibrary.DataType.ExMasterSlotitem, APIMaster.MstSlotitems);
-                                LogSystem.AddLogMessage(HoppoAlpha.DataLibrary.DataType.ExMasterSlotitem, saveResult, true);
+                                saveAction();
                                 if (saveResult.IsSuccess) break;
                             }
                             else if (result == System.Windows.Forms.DialogResult.Cancel)

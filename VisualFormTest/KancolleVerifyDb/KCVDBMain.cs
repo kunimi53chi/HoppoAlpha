@@ -40,8 +40,13 @@ namespace VisualFormTest.KancolleVerifyDb
 
         private static void Init()
         {
+            //バージョンの取得
+            var asm = System.Reflection.Assembly.GetExecutingAssembly();
+            var asm_name = asm.GetName();
+            var version_str = "Ver" + asm_name.Version.Major + "." + asm_name.Version.Minor + "." + asm_name.Version.Build;
+
             //クライアント初期化
-            var agentId = string.Format("ほっぽアルファ_{0}_{1}", APIPort.Basic.api_member_id, APIPort.Basic.api_nickname);
+            var agentId = string.Format("ほっぽアルファ{0}_{1}_{2}", version_str, APIPort.Basic.api_member_id, APIPort.Basic.api_nickname);
             var sessionId = Guid.NewGuid();
             client = KCVDBClientService.Instance.CreateClient(agentId, sessionId.ToString());
             KCVDBObjects.InitClient(sessionId, agentId);

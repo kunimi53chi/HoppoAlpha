@@ -114,7 +114,7 @@ namespace VisualFormTest
         }
 
         //装備の詳細
-        public static string MstSlotitemDetailToString(ApiMstSlotitem dslot)
+        public static string MstSlotitemDetailToString(ExMasterSlotitem dslot)
         {
             StringBuilder sb = new StringBuilder();
             //装備名
@@ -134,6 +134,8 @@ namespace VisualFormTest
             if (dslot.api_tais > 0) sb.AppendLine(string.Format("対潜:{0}", dslot.api_tais));
             if (dslot.api_saku > 0) sb.AppendLine(string.Format("索敵:{0}", dslot.api_saku));
             if (dslot.api_luck > 0) sb.AppendLine(string.Format("運:{0}", dslot.api_luck));
+            if (dslot.TaiBaku > 0) sb.AppendLine(string.Format("対爆:{0}", dslot.TaiBaku));
+            if (dslot.Geigeki > 0) sb.AppendLine(string.Format("迎撃:{0}", dslot.Geigeki));
             //返り値
             return sb.ToString();
         }

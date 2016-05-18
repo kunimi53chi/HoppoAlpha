@@ -1762,6 +1762,7 @@ namespace VisualFormTest
             //--航海日誌拡張版からのコピペ
             //轟沈・撃沈数
             int friendSunk = IsFriendSank.Where(x => x).Select(x => 1).Sum();
+            if (IsCombined && IsFriendCombinedSank != null) friendSunk += IsFriendCombinedSank.Where(x => x).Select(x => 1).Sum();
             int enemySunk = IsEnemySank.Where(x => x).Select(x => 1).Sum();
 
             double[] damageRate = new double[]
@@ -1791,8 +1792,10 @@ namespace VisualFormTest
                 else if (enemyGaugeRate < 20) return WinRankEnum.B;
                 //21%～50%ならC敗北
                 else if (enemyGaugeRate < 50) return WinRankEnum.C;
-                //それ以外ならD敗北（Eは不明？）
-                else return WinRankEnum.D;
+                //51%～80%ならD敗北
+                else if (enemyGaugeRate < 80) return WinRankEnum.D;
+                //それ以外ならE敗北
+                else return WinRankEnum.E;
             }
 
             if (friendSunk == 0)

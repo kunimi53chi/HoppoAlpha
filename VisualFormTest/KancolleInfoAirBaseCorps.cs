@@ -57,13 +57,26 @@ namespace VisualFormTest
 
                     var viewobj = base_viewobj.SquadronView[j];
 
-                    sq_view.PlaneName.Text = viewobj.PlaneName;
-                    sq_view.PlaneNum.Text = sq_clsobj.api_count.ToString();
-                    sq_view.Training.Text = viewobj.Training;
-                    sq_view.Cost.Text = viewobj.Cost.ToString();
-                    sq_view.Radius.Text = viewobj.Radius.ToString();
-                    sq_view.Dispatch.Text = viewobj.Dispatch.ToString();
-                    sq_view.AirSupValue.Text = viewobj.AirSup.AirSupValueMin + "-" + viewobj.AirSup.AirSupValueMax;
+                    if (viewobj != null)
+                    {
+                        sq_view.PlaneName.Text = viewobj.PlaneName;
+                        sq_view.PlaneNum.Text = sq_clsobj.api_count.ToString();
+                        sq_view.Training.Text = viewobj.Training;
+                        sq_view.Cost.Text = viewobj.Cost.ToString();
+                        sq_view.Radius.Text = viewobj.Radius.ToString();
+                        sq_view.Dispatch.Text = viewobj.Dispatch.ToString();
+                        sq_view.AirSupValue.Text = viewobj.AirSup.AirSupValueMin + "-" + viewobj.AirSup.AirSupValueMax;
+                    }
+                    else
+                    {
+                        sq_view.PlaneName.Text = "";
+                        sq_view.PlaneNum.Text = "";
+                        sq_view.Training.Text = "";
+                        sq_view.Cost.Text = "";
+                        sq_view.Radius.Text = "";
+                        sq_view.Dispatch.Text = "";
+                        sq_view.AirSupValue.Text = "";
+                    }
                 }
 
                 //航空隊の合計値

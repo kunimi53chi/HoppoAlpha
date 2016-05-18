@@ -356,6 +356,7 @@ namespace VisualFormTest.UserControls
 
                     if (collection == null) collection = SortieReportDataBase.Reports.DeepCopy();
                     else mergeTargets.Add(SortieReportDataBase.Reports);
+                    continue;
                 }
 
                 //最新でない場合、ファイルを読み込み

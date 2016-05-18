@@ -230,6 +230,41 @@ namespace VisualFormTest
                 }
             }
 
+            //基地航空隊
+            if(APIGetMember.BaseAirCorps != null)
+            {
+                foreach(var air in APIGetMember.BaseAirCorps)
+                {
+                    if(air.api_plane_info == null) continue;
+                    foreach(var plane in air.api_plane_info)
+                    {
+                        foreach (var t in target_item)
+                        {
+                            SlotItem slot;
+                            if (APIGetMember.SlotItemsDictionary.TryGetValue(plane.api_slotid, out slot))
+                            {
+                                if (slot.api_slotitem_id == t.api_id)
+                                {
+                                    SearchResult item = new SearchResult()
+                                    {
+                                        ID = plane.api_slotid,
+                                        Index = query.Count,
+                                        Ship = null,
+                                        SlotItem = slot,
+                                        MasterSlotItem = slot.DSlotitem,
+                                        Num = 1,
+                                        ReinforcedLevel = slot.api_level,
+                                        TrainingLevel = slot.api_alv,
+                                        Page = "基地航空隊",
+                                    };
+                                    query.Add(item);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             //--船がどこに位置しているかを記録しておく
             Dictionary<int, string> shippage = new Dictionary<int, string>();
             //艦隊所属艦
@@ -396,11 +431,22 @@ namespace VisualFormTest
                     //個別検索で装備していない場合
                     if (SearchID != -1)
                     {
-                        item = new System.Windows.Forms.ListViewItem(new string[]
+                        if (result.Page == "基地航空隊")
                         {
-                            result.Index.ToString(), itemlevel, "未装備",
-                            result.MasterSlotItem.api_name, result.ID.ToString(),
-                        });
+                            item = new System.Windows.Forms.ListViewItem(new string[]
+                            {
+                                result.Index.ToString(), itemlevel, "基地航空隊",
+                                result.MasterSlotItem.api_name, result.ID.ToString(),
+                            });
+                        }
+                        else
+                        {
+                            item = new System.Windows.Forms.ListViewItem(new string[]
+                            {
+                                result.Index.ToString(), itemlevel, "未装備",
+                                result.MasterSlotItem.api_name, result.ID.ToString(),
+                            });
+                        }
                     }
                     //全体検索の場合
                     else
@@ -476,7 +522,7 @@ namespace VisualFormTest
         {
             if (KancolleInfoSlotitemSearch.SearchID == -1) return;
             SlotitemViewer view = new SlotitemViewer();
-            ApiMstSlotitem item = APIMaster.MstSlotitems[KancolleInfoSlotitemSearch.SearchID];
+            var item = APIMaster.MstSlotitems[KancolleInfoSlotitemSearch.SearchID];
             view.Init(item);
             view.Show();
         }

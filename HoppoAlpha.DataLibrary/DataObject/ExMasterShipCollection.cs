@@ -25,6 +25,14 @@ namespace HoppoAlpha.DataLibrary.DataObject
             FilePath = Environment.CurrentDirectory + @"\config\ships.csv";
         }
 
+        /// <summary>
+        /// デフォルトで値をセットしないコンストラクタ
+        /// </summary>
+        /// <param name="notInitialSet">値は無視されます</param>
+        public ExMasterShipCollection(bool notInitialSet)
+            : base()
+        { }
+
         public ExMasterShipCollection()
             : this(null)
         { }

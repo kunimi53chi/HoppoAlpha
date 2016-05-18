@@ -17,6 +17,7 @@ namespace VisualFormTest.KancolleVerifyDb
         public static bool ScreenRefreshRequired { get; set; }
         //概況
         public static Guid SessionID { get; private set; }
+        public static string AgentID { get; private set; }
         public static DateTime SessionStarted { get; set; }
         public static int SendApis { get; private set; }
         public static int SendSuccess { get; private set; }
@@ -51,6 +52,7 @@ namespace VisualFormTest.KancolleVerifyDb
 
             //概況
             SessionID = sessionId;
+            AgentID = agentId;
             SessionStarted = DateTime.Now;
             SendApis = 0; SendSuccess = 0; SendFailure = 0;
             TotalKBytes = 0;
@@ -220,7 +222,16 @@ namespace VisualFormTest.KancolleVerifyDb
 
             if (!File.Exists(filename))
             {
-                File.WriteAllText(filename, string.Join("\t", KCVDBApiItem.Header) + Environment.NewLine + LogText.ToString(), enc);
+                var sb = new StringBuilder();
+                sb.Append(string.Join("\t", KCVDBApiItem.Header)).AppendLine();
+                var text = LogText.ToString();
+                if (!text.Contains("Initialize Client"))
+                {
+                    sb.AppendFormat("\t\tInitialize Client!(from past day)(AgentID = {0}, SessionID = {1})", AgentID, SessionID.ToString()).AppendLine();
+                }
+                sb.Append(text);
+
+                File.WriteAllText(filename, sb.ToString(), enc);
             }
             else
             {

@@ -161,18 +161,15 @@ namespace VisualFormTest.UserControls
                         result = string.Compare(itemx.SubItems[_column].Text, itemy.SubItems[_column].Text);
                         break;
                     case ComparerMode.Integer:
-                        int intx = GetLevel(itemx.SubItems[_column].Text);
-                        int inty = GetLevel(itemy.SubItems[_column].Text);
+                        int intx, inty;
+                        int.TryParse(itemx.SubItems[_column].Text, out intx);
+                        int.TryParse(itemy.SubItems[_column].Text, out inty);
                         result = intx.CompareTo(inty);
                         break;
                     case ComparerMode.Level:
-                        int lx, ly;
-
-                        int.TryParse(itemx.SubItems[_column].Text.Replace("◆", "").Replace("★", ""), out lx);
-                        int.TryParse(itemy.SubItems[_column].Text.Replace("◆", "").Replace("★", ""), out ly);
-                        if (itemx.SubItems[_column].Text.Contains("◆")) lx += 10;
-                        if (itemy.SubItems[_column].Text.Contains("◆")) ly += 10;
-                        result = lx.CompareTo(ly);
+                        int levelx = GetLevel(itemx.SubItems[_column].Text);
+                        int levely = GetLevel(itemy.SubItems[_column].Text);
+                        result = levelx.CompareTo(levely);
                         break;
                 }
 
@@ -190,14 +187,14 @@ namespace VisualFormTest.UserControls
                 var reinreg = System.Text.RegularExpressions.Regex.Match(levelstr, "★[0-9]+");
                 if(reinreg.Success)
                 {
-                    int.TryParse(reinreg.Value, out reinforce);
+                    int.TryParse(reinreg.Value.Replace("★", ""), out reinforce);
                 }
                 //熟練度
                 int training = 0;
                 var trainingreg = System.Text.RegularExpressions.Regex.Match(levelstr, "◆[0-9]+");
                 if(trainingreg.Success)
                 {
-                    int.TryParse(trainingreg.Value, out training);
+                    int.TryParse(trainingreg.Value.Replace("◆", ""), out training);
                 }
                 //改修レベル×10＋熟練度
                 return reinforce * 10 + training;

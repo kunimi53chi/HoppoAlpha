@@ -24,6 +24,14 @@ namespace HoppoAlpha.DataLibrary.DataObject
             FilePath = Environment.CurrentDirectory + @"\config\slotitems.csv";
         }
 
+        /// <summary>
+        /// デフォルトで値をセットしないコンストラクタ
+        /// </summary>
+        /// <param name="notInitialSet">値は無視されます</param>
+        public ExMasterSlotitemCollection(bool notInitialSet)
+            : base()
+        { }
+
         public ExMasterSlotitemCollection()
             :this(null)
         { }

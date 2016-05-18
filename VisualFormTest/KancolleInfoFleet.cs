@@ -647,9 +647,15 @@ namespace VisualFormTest
                 searches.Add(us);
                 shiptext.Add(string.Format("制{0}(+{1})/索{2}", seiku.AirSupValueMax, seiku.TrainingValueMax, us.DisplayUnitSearch()));
                 //装備
-                foreach (var dslot in oship.GetDSlotitems(APIGetMember.SlotItemsDictionary))
+                var dslots = oship.GetDSlotitems(APIGetMember.SlotItemsDictionary);
+                var oslots = oship.GetOSlotitems(APIGetMember.SlotItemsDictionary);
+                foreach (var i in Enumerable.Range(0, Math.Min(dslots.Count, oslots.Count)))
                 {
-                    shiptext.Add(dslot.api_name);
+                    string reinforce;
+                    if (oslots[i].api_alv > 0) reinforce = "◆" + oslots[i].api_alv;
+                    else reinforce = "★" + oslots[i].api_level;
+
+                    shiptext.Add(dslots[i].api_name + "(" + reinforce + ")");
                 }
                 //追加
                 fleettext.Add(shiptext);

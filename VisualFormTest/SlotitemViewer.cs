@@ -7,20 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HoppoAlpha.DataLibrary.RawApi.ApiMaster;
+using HoppoAlpha.DataLibrary.DataObject;
 
 namespace VisualFormTest
 {
     public partial class SlotitemViewer : Form
     {
-        public ApiMstSlotitem Slotitem { get; set; }
+        public ExMasterSlotitem Slotitem { get; set; }
 
         public SlotitemViewer()
         {
             InitializeComponent();
         }
 
-        public void Init(ApiMstSlotitem slotitem)
+        public void Init(ExMasterSlotitem slotitem)
         {
             Slotitem = slotitem;
             //名前

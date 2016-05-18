@@ -105,14 +105,20 @@ namespace VisualFormTest
         public static void RemoveShip(ApiShip ship)
         {
             //shipの削除
-            ShipsDictionary.Remove(ship.api_id);
+            if (ShipsDictionary.ContainsKey(ship.api_id))
+            {
+                ShipsDictionary.Remove(ship.api_id);
+            }
             //装備の削除
             foreach(int eqid in ship.api_slot)
             {
                 if (eqid == -1) break;
                 //装備オブジェクトの抽出
-                SlotItem sitem = APIGetMember.SlotItemsDictionary[eqid];
-                APIGetMember.RemoveSlotItem(sitem);
+                SlotItem sitem;
+                if(APIGetMember.SlotItemsDictionary.TryGetValue(eqid, out sitem))
+                {
+                    APIGetMember.RemoveSlotItem(sitem);
+                }
             }
             //編成側の変更
             for(int i=0; i<DeckPorts.Count; i++)

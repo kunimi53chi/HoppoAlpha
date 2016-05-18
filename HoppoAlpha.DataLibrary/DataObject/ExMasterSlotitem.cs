@@ -89,6 +89,15 @@ namespace HoppoAlpha.DataLibrary.DataObject
         }
 
         /// <summary>
+        /// 対爆のパラメーター（api_houmから独立させる）
+        /// </summary>
+        public int TaiBaku { get; set; }
+        /// <summary>
+        /// 迎撃のパラメーター(api_houkから独立させる）
+        /// </summary>
+        public int Geigeki { get; set; }
+
+        /// <summary>
         /// CSV←→パラメーターを相互運用するための列挙体
         /// </summary>
         public enum ExMasterSlotitemParameter
@@ -98,7 +107,7 @@ namespace HoppoAlpha.DataLibrary.DataObject
             Tyku, Tais, Atap, Houm, Raim,
             Houk, Raik, Bakk, Saku, Sakb,
             Luck, Leng, Rare, Broken, Info,
-            Usebull, Cost, Distance,
+            Usebull, Cost, Distance, TaiBaku, Geigeki,
         }
 
         /// <summary>
@@ -124,7 +133,7 @@ namespace HoppoAlpha.DataLibrary.DataObject
                 "対空", "対潜", "api_atap", "命中", "雷撃命中",
                 "回避", "雷撃回避", "爆装回避", "索敵", "索敵妨害",
                 "運", "射程", "レアリティ", "破棄時資材", "説明",
-                "弾薬消費", "配備コスト", "戦闘行動半径",
+                "弾薬消費", "配備コスト", "戦闘行動半径", "対爆", "迎撃",
             };
             ExMasterSlotitemValueType = new ExCommon.ValueType[]
             {
@@ -133,7 +142,7 @@ namespace HoppoAlpha.DataLibrary.DataObject
                 ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int,
                 ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int,
                 ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.ListInt, ExCommon.ValueType.String,
-                ExCommon.ValueType.String, ExCommon.ValueType.Int, ExCommon.ValueType.Int,
+                ExCommon.ValueType.String, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int, ExCommon.ValueType.Int,
             };
             ExMasterSlotitemArrayLength = new int[]
             {
@@ -142,7 +151,7 @@ namespace HoppoAlpha.DataLibrary.DataObject
                 0,0,0,0,0,
                 0,0,0,0,0,
                 0,0,0,4,0,
-                0,0,0,
+                0,0,0,0,0,
             };
         }
 
@@ -163,9 +172,18 @@ namespace HoppoAlpha.DataLibrary.DataObject
             this.api_tyku = mstSlotitem.api_tyku;
             this.api_tais = mstSlotitem.api_tais;
             this.api_atap = mstSlotitem.api_atap;
-            this.api_houm = mstSlotitem.api_houm;
+            if(this.api_type != null && this.api_type.Count==4 && this.api_type[2] == 48)
+            {
+                //陸攻に限り命中→対爆、回避→迎撃に置き換え
+                this.TaiBaku = mstSlotitem.api_houm;
+                this.Geigeki = mstSlotitem.api_houk;
+            }
+            else
+            {
+                this.api_houm = mstSlotitem.api_houm;
+                this.api_houk = mstSlotitem.api_houk;
+            }
             this.api_raim = mstSlotitem.api_raim;
-            this.api_houk = mstSlotitem.api_houk;
             this.api_raik = mstSlotitem.api_raik;
             this.api_bakk = mstSlotitem.api_bakk;
             this.api_saku = mstSlotitem.api_saku;
@@ -233,6 +251,8 @@ namespace HoppoAlpha.DataLibrary.DataObject
                 case ExMasterSlotitemParameter.Usebull: this.api_usebull = val; break;
                 case ExMasterSlotitemParameter.Cost: this.api_cost = val; break;
                 case ExMasterSlotitemParameter.Distance: this.api_distance = val; break;
+                case ExMasterSlotitemParameter.TaiBaku: this.TaiBaku = val; break;
+                case ExMasterSlotitemParameter.Geigeki: this.Geigeki = val; break;
             }
         }
 
@@ -255,9 +275,18 @@ namespace HoppoAlpha.DataLibrary.DataObject
             this.api_tyku = master.api_tyku;
             this.api_tais = master.api_tais;
             this.api_atap = master.api_atap;
-            this.api_houm = master.api_houm;
+            if (this.api_type != null && this.api_type.Count == 4 && this.api_type[2] == 48)
+            {
+                //陸攻に限り命中→対爆、回避→迎撃に置き換え
+                this.TaiBaku = master.api_houm;
+                this.Geigeki = master.api_houk;
+            }
+            else
+            {
+                this.api_houm = master.api_houm;
+                this.api_houk = master.api_houk;
+            }
             this.api_raim = master.api_raim;
-            this.api_houk = master.api_houk;
             this.api_raik = master.api_raik;
             this.api_bakk = master.api_bakk;
             this.api_saku = master.api_saku;
@@ -316,6 +345,8 @@ namespace HoppoAlpha.DataLibrary.DataObject
             csv.Add(this.api_usebull ?? ExCommon.NullString);
             csv.Add(this.api_cost.ToString());
             csv.Add(this.api_distance.ToString());
+            csv.Add(this.TaiBaku.ToString());
+            csv.Add(this.Geigeki.ToString());
 
             return csv;
         }
