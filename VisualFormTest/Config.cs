@@ -168,7 +168,7 @@ namespace VisualFormTest
         //艦これDBのダイアログ表示を行わない（デフォルトでは行う）
         public static bool KancolleVerifyNotifyDialogNotShow = false;
         //KCVDBの画面の更新頻度
-        public static int KancolleVerifyScreenRefreshTimer = 500;
+        public static int KancolleVerifyScreenRefreshTimer = 1000;
 
         //--戦果分析関連
         //潜水マンリスト

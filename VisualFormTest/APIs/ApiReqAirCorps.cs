@@ -102,9 +102,9 @@ namespace VisualFormTest
             //ボーキと燃料の置き換え
             if (APIPort.Materials == null) return;
             var fuel = APIPort.Materials.Where(x => x.api_id == 1).FirstOrDefault();//燃料
-            if (fuel != null) fuel.api_value = supply.api_after_fuel;
+            if (fuel != null && fuel.api_value != 0) fuel.api_value = supply.api_after_fuel;
             var bauxite = APIPort.Materials.Where(x => x.api_id == 4).FirstOrDefault();//ボーキ
-            if (bauxite != null) bauxite.api_value = supply.api_after_bauxite;
+            if (bauxite != null && bauxite.api_value != 0) bauxite.api_value = supply.api_after_bauxite;
         }
     }
 }

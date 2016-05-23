@@ -275,6 +275,12 @@ namespace VisualFormTest.UserControls
             };
         }
 
+        private void toolStripMenuItem_lookup_Click(object sender, EventArgs e)
+        {
+            var lookup = new AirBaseCorps_PlaneLookup();
+            lookup.ShowDialog(this);
+        }
+
     }
 
     public class AirBaseCorpsLabelHandler

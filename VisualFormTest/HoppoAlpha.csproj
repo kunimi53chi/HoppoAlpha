@@ -296,6 +296,12 @@
     <Compile Include="UserControls\AirBaseCorps.Designer.cs">
       <DependentUpon>AirBaseCorps.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AirBaseCorps_PlaneLookup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\AirBaseCorps_PlaneLookup.Designer.cs">
+      <DependentUpon>AirBaseCorps_PlaneLookup.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\BattleDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -668,6 +674,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AirBaseCorps.resx">
       <DependentUpon>AirBaseCorps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AirBaseCorps_PlaneLookup.resx">
+      <DependentUpon>AirBaseCorps_PlaneLookup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\BattleDetail.resx">
       <DependentUpon>BattleDetail.cs</DependentUpon>

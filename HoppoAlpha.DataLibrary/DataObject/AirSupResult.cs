@@ -77,16 +77,20 @@ namespace HoppoAlpha.DataLibrary.DataObject
         {
             //--装備種類ごとの制空ボーナス
             double seikuEquipBonus = 0.0;
-            //艦戦の場合（水戦を追加）
-            if(dslot.EquipType == 6 || dslot.EquipType == 45)
+            switch(dslot.EquipType)
             {
-                if (alevel >= 0 && alevel <= 7) seikuEquipBonus = (double)kansen_seiku_bonus[alevel];
+                //艦戦の場合（水戦、局地戦闘機を追加）
+                case 6:
+                case 45:
+                case 48:
+                    if (alevel >= 0 && alevel <= 7) seikuEquipBonus = (double)kansen_seiku_bonus[alevel];
+                    break;
+                //水爆の場合
+                case 11:
+                    if (alevel >= 0 && alevel <= 7) seikuEquipBonus = (double)suibaku_seiku_bonus[alevel];
+                    break;
             }
-            //水爆の場合
-            else if(dslot.EquipType == 11)
-            {
-                if (alevel >= 0 && alevel <= 7) seikuEquipBonus = (double)suibaku_seiku_bonus[alevel];
-            }
+
             //--内部熟練度
             double trainval = 0.0;
             if(alevel >= 0 && alevel <= 7)
@@ -112,7 +116,8 @@ namespace HoppoAlpha.DataLibrary.DataObject
             if (!equip.IsAirCombatable) return new AirSupResult();
 
             //1スロットあたりの艦載機由来の制空値
-            double slotas = (double)equip.api_tyku * Math.Sqrt(onSlotNum);
+            //迎撃ステータスの制空値の追加
+            double slotas = ((double)equip.api_tyku + (double)equip.Geigeki * 1.5) * Math.Sqrt(onSlotNum);
 
             //熟練度ボーナス
             double trainmin = AircraftTrainingBonus(equip, trainingLevel, false);

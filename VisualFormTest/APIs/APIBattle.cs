@@ -509,6 +509,19 @@ namespace VisualFormTest
             var ojson = DynamicJson.Parse(str).api_data;
             //オブジェクトの作成
             BattleCombinedInfo binfo = ojson.Deserialize<BattleCombinedInfo>();
+            //基地航空戦
+            if (ojson.IsDefined("api_air_base_attack") && ojson.api_air_base_attack != null)
+            {
+                foreach (var ab in ojson.api_air_base_attack)
+                {
+                    if (ab.IsDefined("api_stage3") && ab.api_stage3 != null)
+                    {
+                        DamageBasic d_ab = ab.api_stage3.Deserialize<DamageBasic>();
+                        binfo.AddDamage(d_ab);
+                    }
+                    ((BattleInfo.ApiAirBaseAttack)ab).UpdatePlaneCount();//機数の修正(キャストしないとダメ)？
+                }
+            }
             //航空戦（本隊側）
             if (ojson.api_kouku.api_stage3 != null)
             {
@@ -596,6 +609,19 @@ namespace VisualFormTest
             var ojson = DynamicJson.Parse(str).api_data;
             //オブジェクトの作成
             BattleCombinedInfo binfo = ojson.Deserialize<BattleCombinedInfo>();
+            //基地航空戦
+            if (ojson.IsDefined("api_air_base_attack") && ojson.api_air_base_attack != null)
+            {
+                foreach (var ab in ojson.api_air_base_attack)
+                {
+                    if (ab.IsDefined("api_stage3") && ab.api_stage3 != null)
+                    {
+                        DamageBasic d_ab = ab.api_stage3.Deserialize<DamageBasic>();
+                        binfo.AddDamage(d_ab);
+                    }
+                    ((BattleInfo.ApiAirBaseAttack)ab).UpdatePlaneCount();//機数の修正(キャストしないとダメ)？
+                }
+            }
             //航空戦（本隊側）
             if (ojson.api_kouku.api_stage3 != null)
             {

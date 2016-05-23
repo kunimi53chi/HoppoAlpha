@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Globalization;
 using HoppoAlpha.DataLibrary.RawApi.ApiMaster;
 using HoppoAlpha.DataLibrary.RawApi.ApiPort;
 using HoppoAlpha.DataLibrary.RawApi.ApiGetMember;
@@ -341,5 +344,139 @@ namespace VisualFormTest
                 default: return "";
             }
         }
+
+        //汎用リストビューの比較用クラス
+        #region リストビューのソーター
+        //リストビューのソーター
+        public class ListViewItemComparer : IComparer
+        {
+            //比較する方法
+            public enum ComparerMode
+            {
+                String,
+                Integer,
+                NullableInt,
+                NonSortable,
+            }
+
+            private int _column;
+            private SortOrder _order;
+            private ComparerMode _mode;
+            private ComparerMode[] _columnModes;
+
+            //並べるListViewの列の番号
+            public int Column
+            {
+                get
+                {
+                    return _column;
+                }
+                set
+                {
+                    if (_column == value)
+                    {
+                        if (_order == SortOrder.Ascending) _order = SortOrder.Descending;
+                        else if (_order == SortOrder.Descending) _order = SortOrder.Ascending;
+                    }
+                    _column = value;
+                }
+            }
+
+            //昇順or降順
+            public SortOrder Order
+            {
+                get { return _order; }
+                set { _order = value; }
+            }
+
+            //並び替えの方法
+            public ComparerMode Mode
+            {
+                get { return _mode; }
+                set { _mode = value; }
+            }
+
+            //列ごとの並び替えの方法
+            public ComparerMode[] ColumnModes
+            {
+                set { _columnModes = value; }
+            }
+
+
+            //コンストラクタ
+            public ListViewItemComparer(int col, SortOrder ord, ComparerMode cmod)
+            {
+                _column = col;
+                _order = ord;
+                _mode = cmod;
+            }
+            public ListViewItemComparer()
+            {
+                _column = 0;
+                _order = SortOrder.Ascending;
+                _mode = ComparerMode.Integer;
+            }
+
+            static ListViewItemComparer()
+            {
+                NullableIntCast = (string str) =>
+                {
+                    if (str == "?") return -1;
+                    else
+                    {
+                        int x;
+                        int.TryParse(str, NumberStyles.AllowLeadingSign | NumberStyles.AllowThousands, null, out x);
+                        return x;
+                    }
+                };
+            }
+
+            //比較する
+            static Func<string, int> NullableIntCast;
+            public int Compare(object x, object y)
+            {
+                //並び替えない場合
+                if (_order == SortOrder.None) return 0;
+
+                int result = 0;
+                ListViewItem itemx = (ListViewItem)x;
+                ListViewItem itemy = (ListViewItem)y;
+
+                //並び替えの方法を決定
+                if (_columnModes != null && _columnModes.Length > _column)
+                {
+                    _mode = _columnModes[_column];
+                }
+
+                //xとyの比較
+                switch (_mode)
+                {
+                    case ComparerMode.String:
+                        result = string.Compare(itemx.SubItems[_column].Text, itemy.SubItems[_column].Text);
+                        break;
+                    case ComparerMode.Integer:
+                        int intx, inty;
+                        int.TryParse(itemx.SubItems[_column].Text, NumberStyles.AllowThousands, null, out intx);
+                        int.TryParse(itemy.SubItems[_column].Text, NumberStyles.AllowThousands, null, out inty);
+                        result = intx.CompareTo(inty);
+                        break;
+                    case ComparerMode.NullableInt:
+                        result = NullableIntCast(itemx.SubItems[_column].Text).CompareTo(NullableIntCast(itemy.SubItems[_column].Text));
+                        break;
+                    case ComparerMode.NonSortable:
+                        result = 0;
+                        break;
+                }
+
+                //降順の場合は反転する
+                if (_order == SortOrder.Descending)
+                {
+                    result = -result;
+                }
+
+                return result;
+            }
+        }
+        #endregion
     }
 }

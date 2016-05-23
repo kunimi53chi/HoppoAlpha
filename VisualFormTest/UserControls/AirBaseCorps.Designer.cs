@@ -251,6 +251,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem_screenshot = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem_lookup = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -716,7 +718,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 20);
             this.label7.TabIndex = 6;
-            this.label7.Text = "制空(仮)";
+            this.label7.Text = "制空(仮";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
@@ -1811,7 +1813,7 @@
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(65, 20);
             this.label39.TabIndex = 6;
-            this.label39.Text = "制空(仮)";
+            this.label39.Text = "制空(仮";
             this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label41
@@ -2906,7 +2908,7 @@
             this.label123.Name = "label123";
             this.label123.Size = new System.Drawing.Size(65, 20);
             this.label123.TabIndex = 6;
-            this.label123.Text = "制空(仮)";
+            this.label123.Text = "制空(仮";
             this.label123.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label124
@@ -3548,9 +3550,11 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem_screenshot});
+            this.toolStripMenuItem_screenshot,
+            this.toolStripSeparator1,
+            this.toolStripMenuItem_lookup});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 54);
             // 
             // toolStripMenuItem_screenshot
             // 
@@ -3558,6 +3562,18 @@
             this.toolStripMenuItem_screenshot.Size = new System.Drawing.Size(184, 22);
             this.toolStripMenuItem_screenshot.Text = "スクリーンショット";
             this.toolStripMenuItem_screenshot.Click += new System.EventHandler(this.toolStripMenuItem_screenshot_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
+            // 
+            // toolStripMenuItem_lookup
+            // 
+            this.toolStripMenuItem_lookup.Name = "toolStripMenuItem_lookup";
+            this.toolStripMenuItem_lookup.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem_lookup.Text = "艦載機ルックアップ";
+            this.toolStripMenuItem_lookup.Click += new System.EventHandler(this.toolStripMenuItem_lookup_Click);
             // 
             // AirBaseCorps
             // 
@@ -3814,5 +3830,7 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_screenshot;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_lookup;
     }
 }
