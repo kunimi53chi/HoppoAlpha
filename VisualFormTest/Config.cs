@@ -75,7 +75,8 @@ namespace VisualFormTest
         //JSONを表示している際にJSONデータを保存しないか
         public static bool LoggingDisableOnShowJson = false;
         //ネタバレ防止
-        public static bool ShowBattleInfo = true;
+        public static int ShowBattleInfoState = 0;
+        //public static bool ShowBattleInfo = true;
         //最前面表示
         public static bool ShowTopMost = false;
         //ポート設定
@@ -162,7 +163,7 @@ namespace VisualFormTest
         public static bool KancolleDbPostOnProxyMode = false;
 
         //検証DBを活性化するかどうかのフラグ
-        public static bool KancolleVerifyDbActivate = true;
+        public static bool KancolleVerifyDbActivate = false;
         //艦これ検証DBでへの送信を有効にする（デフォルトで送信しない）
         public static bool KancolleVerifyPostEnable = false;
         //艦これDBのダイアログ表示を行わない（デフォルトでは行う）
@@ -172,11 +173,14 @@ namespace VisualFormTest
 
         //--戦果分析関連
         //潜水マンリスト
-        public static Dictionary<int, string> RankingSubmarinerList = new Dictionary<int, string>();
+        //public static Dictionary<int, string> RankingSubmarinerList = new Dictionary<int, string>();
+        public static HashSet<string> RankingSubmarinerList = new HashSet<string>();
         //潜水マンのEOハンデ
         public static int RankingSubmarinerEOHandicap = 200;
         //表示するボーダーの順位
         public static int[] TabSenkaBorderDisplay = new int[] { 1, 2, 3, 5, 20, 100, 500 };
+        //戦果情報解析用電卓の(1)の計算方法
+        public static int SenkaCalcForAnalyzeFirstMode = 0;
 
         //コンストラクタ
         static Config()
@@ -188,7 +192,7 @@ namespace VisualFormTest
                 LogSystem.AddLogMessage(HoppoAlpha.DataLibrary.DataType.Config, loadResult, false);
 
                 //置き換え
-                ShowJson = item.ShowJson; ShowBattleInfo = item.ShowBattleInfo;
+                ShowJson = item.ShowJson; //ShowBattleInfo = item.ShowBattleInfo;
                 ShowTopMost = item.ShowTopMost; //ShowSodeuraDisable = item.ShowSodeuraDisable;
                 PortNumber = item.PortNumber; if(item.ScreenshotDirectory != null && item.ScreenshotDirectory != "") ScreenshotDirectory = item.ScreenshotDirectory;
                 if(item.ProxyAddress != null) ProxyAddress = item.ProxyAddress;
@@ -208,13 +212,14 @@ namespace VisualFormTest
                 //31-
                 if (item.NazonoOmajonai != null) NazonoOmajonai = item.NazonoOmajonai; if (item.UIRefresTimerhInterval >= 10 && item.UIRefresTimerhInterval <= 1000) UIRefreshTimerInterval = item.UIRefresTimerhInterval;
                 if (item.SortieReportTermIntegrateMode != 0) SortieReportTermMode = (SortieReportTermIntegrateMode)item.SortieReportTermIntegrateMode; OnClosingNotifyDisable = item.OnClosingNotifyDisable;
-                PresetDuplicateCheckAppliesFlagship = item.PresetDuplicateCheckAppliesFlagship;
+                PresetDuplicateCheckAppliesFlagship = item.PresetDuplicateCheckAppliesFlagship; SenkaCalcForAnalyzeFirstMode = item.SenkaCalcForAnalyzeFirstMode;
                 //50--
                 //DisableMultiThreading = item.DisableMultiThreading; 
                 //if (item.ThreadPoolMin != 0) ThreadPoolMin = item.ThreadPoolMin;
                 HighQualityMode = item.HighQualityMode; MapInfoShowtCleard = item.MapInfoShowCleared;
                 if (item.SenkaPredictOutputDirectory != null) SenkaPredictOutputDirectory = item.SenkaPredictOutputDirectory;
                 if (item.BucketHPRatio > 0.0 && item.BucketHPRatio < 1.0) BucketHPRatio = item.BucketHPRatio; SearchUsingModel = item.SearchUsingModel;
+                if (item.ShowBattleInfoState > 0) ShowBattleInfoState = item.ShowBattleInfoState;
                 //ユニットリスト
                 //通知
                 //200-
@@ -238,8 +243,10 @@ namespace VisualFormTest
                 KancolleVerifyPostEnable = item.KancolleVerifyPostEnable; KancolleVerifyNotifyDialogNotShow = item.KancolleVerifyNotifyDialogNotShow;
                 if (item.KancolleVerifyScreenRefreshTimerInterval >= 10 && item.KancolleVerifyScreenRefreshTimerInterval <= 1000) KancolleVerifyScreenRefreshTimer = item.KancolleVerifyScreenRefreshTimerInterval;
                 //400-
-                if (item.RankingSubmarinerList != null) RankingSubmarinerList = item.RankingSubmarinerList; if (item.RankingSubmarinerEOHandicap != 0) RankingSubmarinerEOHandicap = item.RankingSubmarinerEOHandicap;
+                //if (item.RankingSubmarinerList != null) RankingSubmarinerList = item.RankingSubmarinerList; 
+                if (item.RankingSubmarinerEOHandicap != 0) RankingSubmarinerEOHandicap = item.RankingSubmarinerEOHandicap;
                 if (item.TabSenkaBorderDisplay != null && item.TabSenkaBorderDisplay.Length == 7) TabSenkaBorderDisplay = item.TabSenkaBorderDisplay;
+                if (item.RankingSubmarinerNew != null) RankingSubmarinerList = item.RankingSubmarinerNew;
             }
             //DPI調整
             var dpi = HelperScreen.GetSystemDpi();
@@ -253,7 +260,7 @@ namespace VisualFormTest
         public static void Save()
         {
             ConfigSerializeItem item = new ConfigSerializeItem();
-            item.ShowJson = ShowJson; item.ShowBattleInfo = ShowBattleInfo;
+            item.ShowJson = ShowJson; //item.ShowBattleInfo = ShowBattleInfo;
             item.ShowTopMost = ShowTopMost; //item.ShowSodeuraDisable = ShowSodeuraDisable;
             item.PortNumber = PortNumber; item.ScreenshotDirectory = ScreenshotDirectory;
             item.ProxyAddress = ProxyAddress;
@@ -272,13 +279,14 @@ namespace VisualFormTest
             //31-
             item.NazonoOmajonai = NazonoOmajonai; item.UIRefresTimerhInterval = UIRefreshTimerInterval;
             item.SortieReportTermIntegrateMode = (int)SortieReportTermMode; item.OnClosingNotifyDisable = OnClosingNotifyDisable;
-            item.PresetDuplicateCheckAppliesFlagship = PresetDuplicateCheckAppliesFlagship;
+            item.PresetDuplicateCheckAppliesFlagship = PresetDuplicateCheckAppliesFlagship; item.SenkaCalcForAnalyzeFirstMode = SenkaCalcForAnalyzeFirstMode;
             //50-
             //item.DisableMultiThreading = DisableMultiThreading; 
             //item.ThreadPoolMin = ThreadPoolMin;
             item.HighQualityMode = HighQualityMode; item.MapInfoShowCleared = MapInfoShowtCleard;
             item.SenkaPredictOutputDirectory = SenkaPredictOutputDirectory;
             item.BucketHPRatio = BucketHPRatio; item.SearchUsingModel = SearchUsingModel;
+            item.ShowBattleInfoState = ShowBattleInfoState;
             //---
             item.NotShowNotifyBalloonMission = NotShowNotifyBalloonMission; item.NotShowNotifyBalloonNdock = NotShowNotifyBalloonNdock;
             item.SoundMissionDisableFlag = SoundMissionDisableFlag;
@@ -292,11 +300,12 @@ namespace VisualFormTest
             item.KancolleDbUserToken = KancolleDbUserToken;
             item.KancolleDbPostDisable = KancolleDbPostDisable; item.KancolleDbPostOnProxyMode = KancolleDbPostOnProxyMode;
             //---350
-            item.KancolleVerifyPostEnable = KancolleVerifyPostEnable; item.KancolleVerifyNotifyDialogNotShow = KancolleVerifyNotifyDialogNotShow;
+            //item.KancolleVerifyPostEnable = KancolleVerifyPostEnable; item.KancolleVerifyNotifyDialogNotShow = KancolleVerifyNotifyDialogNotShow;
+            item.KancolleVerifyPostEnable = false; item.KancolleVerifyNotifyDialogNotShow = false;
             item.KancolleVerifyScreenRefreshTimerInterval = KancolleVerifyScreenRefreshTimer;
             //--400
-            item.RankingSubmarinerEOHandicap = RankingSubmarinerEOHandicap; item.RankingSubmarinerList = RankingSubmarinerList;
-            item.TabSenkaBorderDisplay = TabSenkaBorderDisplay;
+            item.RankingSubmarinerEOHandicap = RankingSubmarinerEOHandicap; //item.RankingSubmarinerList = RankingSubmarinerList;
+            item.TabSenkaBorderDisplay = TabSenkaBorderDisplay; item.RankingSubmarinerNew = RankingSubmarinerList;
 
             if(!System.IO.Directory.Exists(Directory))
             {

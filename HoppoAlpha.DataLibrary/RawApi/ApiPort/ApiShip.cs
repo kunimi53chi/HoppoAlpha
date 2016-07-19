@@ -466,7 +466,7 @@ namespace HoppoAlpha.DataLibrary.RawApi.ApiPort
                             var oequip = oslots[i];
                             var equip = dslots[i];
                             //このスロットの制空値
-                            var slot_airsup = AirSupResult.SingleSlotitemAirSup(equip, api_onslot[i], oequip.api_alv);
+                            var slot_airsup = AirSupResult.SingleSlotitemAirSup(equip, api_onslot[i], oequip.api_alv, oequip.api_level);
 
                             //全体にマージ
                             _airsup = _airsup.Merge(slot_airsup);

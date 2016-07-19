@@ -58,13 +58,13 @@ namespace VisualFormTest
                 //取得する順位
                 int rank = Convert.ToInt32(x.Tag) - 1;
                 //現在のボーダー
-                int nowborder = senkabase.TopSenka[rank];
+                int nowborder = senkabase.GetPlayerViewSenka(rank);
                 //戦果の差分
                 int diffborder = -1;
                 //直前のセクション
                 if (senkabase.PrevContinuousSection != null)
                 {
-                    int prevborder = senkabase.PrevContinuousSection.TopSenka[rank];
+                    int prevborder = senkabase.PrevContinuousSection.GetPlayerViewSenka(rank);
                     if (nowborder != -1 && prevborder != -1) diffborder = nowborder - prevborder;
                 }
                 //文字の置き換え
@@ -157,7 +157,7 @@ namespace VisualFormTest
                         //ボーダー
                         for (int i = 0; i < display_rank.Length; i++)
                         {
-                            int senkaval = latest.TopSenka[display_rank[i] - 1];
+                            int senkaval = latest.GetPlayerViewSenka(display_rank[i] - 1);
                             if (senkaval >= 0) chart.Series[i].Points.AddXY(latest.StartTime, senkaval);
                         }
                         //自分の戦果
@@ -173,11 +173,15 @@ namespace VisualFormTest
         {
             chart.Series.Clear();
             string[] ser_label = null;
-            int[] display_rank = SenkaRecord.DisplayRank;
-            int n = display_rank.Length;
+            int[] display_rank = Enumerable.Range(0, SenkaRecord.DisplayRank.Length)
+                .Where(x => !info.ExceptSeries.ContainsExceptSeries(x + 1))
+                .Select(x => SenkaRecord.DisplayRank[x]).ToArray();
+            //int n = display_rank.Length;
             //系列の初期化
             if (info.Mode == 1)
             {
+                if (info.ExceptSeries.ContainsExceptSeries(1)) return;
+
                 ser_label = new string[] { "提督経験値" };
                 chart.Series.Add(ser_label[0]);
                 chart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
@@ -189,7 +193,7 @@ namespace VisualFormTest
             {
                 ser_label = new string[display_rank.Length + 1];
                 //ボーダー
-                for (int i = 0; i < n; i++)
+                for (int i = 0; i < display_rank.Length; i++)
                 {
                     ser_label[i] = display_rank[i] + "位";
                     chart.Series.Add(ser_label[i]);
@@ -199,12 +203,15 @@ namespace VisualFormTest
                     chart.Series[i].ToolTip = "#SERIESNAME \nX=#VALX{M/d H:mm} \nY=#VALY";
                 }
                 //自分の戦果
-                ser_label[n] = "自分";
-                chart.Series.Add(ser_label[n]);
-                chart.Series[n].Color = System.Drawing.Color.FromArgb(250, 104, 0);
-                chart.Series[n].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-                chart.Series[n].BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.Percent50;
-                chart.Series[n].ToolTip = "#SERIESNAME \nX=#VALX{M/d H:mm} \nY=#VALY";
+                if (!info.ExceptSeries.ContainsExceptSeries(SenkaRecord.DisplayRank.Length + 1))
+                {
+                    ser_label[display_rank.Length] = "自分";
+                    chart.Series.Add(ser_label[display_rank.Length]);
+                    chart.Series[display_rank.Length].Color = System.Drawing.Color.FromArgb(250, 104, 0);
+                    chart.Series[display_rank.Length].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+                    chart.Series[display_rank.Length].BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.Percent50;
+                    chart.Series[display_rank.Length].ToolTip = "#SERIESNAME \nX=#VALX{M/d H:mm} \nY=#VALY";
+                }
                 //x軸のスタイル
                 chart.ChartAreas[0].AxisX.LabelStyle.Format = "M/d";
             }
@@ -228,19 +235,22 @@ namespace VisualFormTest
                 var data = from p in HistoricalData.LogSenka
                            where p.StartTime >= mindate
                            select p;
-                if (data.Count() == 0) return;
+                if (data.Count() == 0) return;                
                 //プロット
                 foreach (var x in data)
                 {
                     //ボーダー部分
                     for (int i = 0; i < display_rank.Length; i++)
                     {
-                        int senkaval = x.TopSenka[display_rank[i] - 1];
+                        int senkaval = x.GetPlayerViewSenka(display_rank[i] - 1);
                         if (senkaval >= 0) chart.Series[i].Points.AddXY(x.StartTime, senkaval);
                     }
                     //自分の戦果
-                    int mysenka = x.StartSenka;
-                    if (mysenka >= 0) chart.Series[n].Points.AddXY(x.StartTime, mysenka);
+                    if (!info.ExceptSeries.ContainsExceptSeries(SenkaRecord.DisplayRank.Length + 1))
+                    {
+                        int mysenka = x.StartSenka;
+                        if (mysenka >= 0) chart.Series[display_rank.Length].Points.AddXY(x.StartTime, mysenka);
+                    }
                 }
             }
             //Infoの更新

@@ -36,7 +36,7 @@ namespace VisualFormTest.UserControls
             if (!InitFinished) return;
             UIMethods.UIQueue.Enqueue(new UIMethods(() =>
                 {
-                    CallBacks.SetTextBoxTextAppend(textBox_json, Environment.NewLine + response + Environment.NewLine + body);
+                    CallBacks.SetTextBoxTextAppend(textBox_json, Environment.NewLine + response + Environment.NewLine + body + Environment.NewLine);
                 }));
         }
 
@@ -48,7 +48,6 @@ namespace VisualFormTest.UserControls
                 {
                     textBox_json.Clear();
                 }));
-            //CallBacks.SetTextBoxText(textBox_json, String.Empty);
         }
     }
 }

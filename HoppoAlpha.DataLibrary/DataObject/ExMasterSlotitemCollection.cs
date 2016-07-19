@@ -47,7 +47,7 @@ namespace HoppoAlpha.DataLibrary.DataObject
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
 
-                using (var parser = new TextFieldParser(assembly.GetManifestResourceStream("HoppoAlpha.DataLibrary.slotitems160422.csv"), Encoding.GetEncoding("shift-jis")))
+                using (var parser = new TextFieldParser(assembly.GetManifestResourceStream("HoppoAlpha.DataLibrary.slotitems160718.csv"), Encoding.GetEncoding("shift-jis")))
                 {
                     parser.TextFieldType = FieldType.Delimited;
                     parser.SetDelimiters(",");

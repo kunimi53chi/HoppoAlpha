@@ -79,10 +79,11 @@ namespace HoppoAlpha.DataLibrary.DataObject
         [ProtoMember(13)]
         public int Title { get; set; }
         /// <summary>
-        /// ランキングデータからトップランカーの戦果値を表します
+        /// ランキングデータからトップランカーのapi_rateを表します
         /// </summary>
+        [Obsolete]
         [ProtoMember(14)]
-        public int[] TopSenka { get; set; }
+        public int[] TopApiRate { get; set; }
         /// <summary>
         /// ランキングデータからトップランカーのIDを表します
         /// </summary>
@@ -103,6 +104,17 @@ namespace HoppoAlpha.DataLibrary.DataObject
         /// </summary>
         [ProtoMember(18, AsReference = true)]
         public SenkaRecord PrevContinuousSection { get; set; }
+        /// <summary>
+        /// トップランカーの情報解析用の戦果表示値（2016/7/15以降）
+        /// </summary>
+        [ProtoMember(19)]
+        public int[] TopForAnalyzeSenka { get; set; }
+        /// <summary>
+        /// 戦果の値の記録形式（2016/7/15以前は0、以降は1）
+        /// </summary>
+        [ProtoMember(20)]
+        public int SenkaSetStyle { get; set; }
+        
 
         /// <summary>
         /// トップランカーのデータ取得数を設定します(デフォルト:1000)
@@ -131,14 +143,17 @@ namespace HoppoAlpha.DataLibrary.DataObject
                 this.StartSenka = -1; this.EndSenkaEst = -1;
                 this.Rank = -1; this.Title = -1;
                 this.TopExp = new int[MaxArraySize]; this.TopID = new int[MaxArraySize];
-                this.TopName = new string[MaxArraySize]; this.TopSenka = new int[MaxArraySize];
+                this.TopName = new string[MaxArraySize]; this.TopApiRate = new int[MaxArraySize];
+                this.TopForAnalyzeSenka = new int[MaxArraySize];
                 for (int i = 0; i < MaxArraySize; i++)
                 {
                     this.TopExp[i] = -1;
                     this.TopID[i] = -1;
-                    this.TopSenka[i] = -1;
+                    this.TopApiRate[i] = -1;
                     this.TopName[i] = "";
+                    this.TopForAnalyzeSenka[i] = -1;
                 }
+                this.SenkaSetStyle = 1;
             }
         }
 
@@ -327,7 +342,7 @@ namespace HoppoAlpha.DataLibrary.DataObject
         /// <summary>
         /// 推定戦果を再計算します
         /// </summary>
-        public void CalcEstimateSenka()
+        public void CalcEstimateMySenka()
         {
             if (this.StartSenka == -1) this.EndSenkaEst = -1;
             else
@@ -336,6 +351,40 @@ namespace HoppoAlpha.DataLibrary.DataObject
                 double earnsenka = expdiff * 7 / 10000;
                 this.EndSenkaEst = this.StartSenka + earnsenka + this.SpecialSenka;
             }
+        }
+
+        /// <summary>
+        /// 順位ごとの戦果を計算（api_rateが仕様変更したのでこっちを参照）
+        /// </summary>
+        /// <param name="rankIndex">順位のインデックス</param>
+        /// <returns>順位別戦果</returns>
+        public int GetPlayerViewSenka(int rankIndex)
+        {
+            if (rankIndex < 0 || rankIndex >= MaxArraySize) return -1;
+
+            switch(this.SenkaSetStyle)
+            {
+                //2016/7/15以前の場合
+                case 0:
+                    if (this.TopApiRate == null) return -1;
+                    return this.TopApiRate[rankIndex];
+                case 1:
+                    if (this.TopForAnalyzeSenka == null) return -1;
+                    return this.TopForAnalyzeSenka[rankIndex];
+                default:
+                    throw new NotImplementedException("SenkaSetStyleに対応するGetPlayerViewSenkaが実装されていません");
+            }
+        }
+
+        /// <summary>
+        /// ApiRateのセット
+        /// </summary>
+        /// <param name="rank">順位</param>
+        /// <param name="value">api_rateの値</param>
+        public void SetPlayerApiRate(int rank, int value)
+        {
+            if (TopApiRate == null || rank < 0 || rank >= MaxArraySize) return;
+            TopApiRate[rank] = value;
         }
 
         //獲得経験値の文字列

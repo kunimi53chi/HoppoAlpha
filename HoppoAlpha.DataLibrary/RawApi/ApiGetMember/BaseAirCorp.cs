@@ -139,7 +139,7 @@ namespace HoppoAlpha.DataLibrary.RawApi.ApiGetMember
                     }
                 }
 
-                _airsup = AirSupResult.SingleSlotitemAirSup(mstSlot, (double)_api_count, oslot.api_alv);
+                _airsup = AirSupResult.SingleSlotitemAirSup(mstSlot, (double)_api_count, oslot.api_alv, oslot.api_level);
             }
 
             return _airsup;

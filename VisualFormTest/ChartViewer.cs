@@ -18,7 +18,7 @@ namespace VisualFormTest
         public GraphInfo Info { get; set; }
 
         //メニューアイテムの配列
-        ToolStripMenuItem[] item_subject, item_diff, item_term, item_palette;
+        ToolStripMenuItem[] item_subject, item_diff, item_term, item_palette, item_series;
 
         //カラーパレット
         static System.Windows.Forms.DataVisualization.Charting.ChartColorPalette[] Palette
@@ -78,6 +78,11 @@ namespace VisualFormTest
             item_term = new ToolStripMenuItem[]
             {
                 toolStripMenuItem10, toolStripMenuItem11, toolStripMenuItem12,
+            };
+            item_series = new ToolStripMenuItem[]
+            {
+                toolStripMenuItem_s1, toolStripMenuItem_s2, toolStripMenuItem_s3, toolStripMenuItem_s4, toolStripMenuItem_s5,
+                toolStripMenuItem_s6, toolStripMenuItem_s7, toolStripMenuItem_s8, toolStripMenuItem_s9, toolStripMenuItem_s10,
             };
             //パレットの追加
             item_palette = new ToolStripMenuItem[Palette.Length];
@@ -160,6 +165,12 @@ namespace VisualFormTest
                 if (i == palette_index) item_palette[i].Checked = true;
                 else item_palette[i].Checked = false;
             }
+            //系列
+            for(int i=0; i<item_series.Length; i++)
+            {
+                if (this.Info.ExceptSeries.ContainsExceptSeries(i + 1)) item_series[i].Checked = false;
+                else item_series[i].Checked = true;
+            }
         }
 
         //イベントハンドラー
@@ -172,6 +183,8 @@ namespace VisualFormTest
             this.Target = index / 2;
             //モードの更新
             this.Info.Mode = 1 + (index % 2);
+            //除外系列のリセット
+            this.Info.ExceptSeries = (GraphExceptSeries)0;
             //チェックボタンの更新
             MenuItemCheckRefresh();
             //グラフの再描画
@@ -223,6 +236,29 @@ namespace VisualFormTest
             chart1.Palette = newpalette;
             //チェックボタンの更新
             MenuItemCheckRefresh();
+        }
+
+        //除外系列のクリック
+        private void toolStripMenuItem14_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            int index = Array.IndexOf(item_series, e.ClickedItem);
+            bool newflag = !item_series[index].Checked;
+            item_series[index].Checked = newflag;
+
+            var target = (GraphExceptSeries)((int)Math.Pow(2, index));
+            //除外設定する場合
+            if(!newflag)
+            {
+                this.Info.ExceptSeries = this.Info.ExceptSeries | target;
+            }
+            //フラグを解除する場合
+            else
+            {
+                this.Info.ExceptSeries = this.Info.ExceptSeries & ~target;
+            }
+
+            //グラフの描画
+            DrawChart();
         }
     }
 }

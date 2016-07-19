@@ -36,6 +36,7 @@
             this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem28 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem39 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,12 +87,15 @@
             this.toolStripMenuItem_wo_toolbox = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_wo_mapinfo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_wo_questviewer = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_wo_airbasecorps = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_windowanalyze = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_wa_dropanalyze = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_wa_sortiereport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_wa_ranking = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_wa_preset = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_wa_practice = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_windowkcvdb = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_wv_kisu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_wv_kcvdb = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem30 = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,7 +131,9 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerIdletime = new System.Windows.Forms.Timer(this.components);
             this.vS2012LightTheme1 = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
-            this.toolStripMenuItem_wo_airbasecorps = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_netabare_2_fulloff = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_netabare_1_half = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_netabare_0_none = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -158,6 +164,7 @@
             this.toolStripMenuItem19,
             this.toolStripMenuItem24,
             this.toolStripMenuItem28,
+            this.toolStripMenuItem39,
             this.toolStripMenuItem25,
             this.toolStripSeparator1,
             this.toolStripMenuItem15,
@@ -214,6 +221,13 @@
             this.toolStripMenuItem28.Size = new System.Drawing.Size(254, 22);
             this.toolStripMenuItem28.Text = "戦果予測";
             // 
+            // toolStripMenuItem39
+            // 
+            this.toolStripMenuItem39.Name = "toolStripMenuItem39";
+            this.toolStripMenuItem39.Size = new System.Drawing.Size(254, 22);
+            this.toolStripMenuItem39.Text = "戦果解析用電卓";
+            this.toolStripMenuItem39.Click += new System.EventHandler(this.toolStripMenuItem39_Click);
+            // 
             // toolStripMenuItem25
             // 
             this.toolStripMenuItem25.Enabled = false;
@@ -228,9 +242,14 @@
             // 
             // toolStripMenuItem15
             // 
+            this.toolStripMenuItem15.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_netabare_2_fulloff,
+            this.toolStripMenuItem_netabare_1_half,
+            this.toolStripMenuItem_netabare_0_none});
             this.toolStripMenuItem15.Name = "toolStripMenuItem15";
             this.toolStripMenuItem15.Size = new System.Drawing.Size(254, 22);
-            this.toolStripMenuItem15.Text = "戦闘ネタバレ防止";
+            this.toolStripMenuItem15.Text = "戦闘ネタバレ防止の設定";
+            this.toolStripMenuItem15.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripMenuItem15_DropDownItemClicked);
             // 
             // toolStripMenuItem17
             // 
@@ -377,7 +396,7 @@
             this.toolStripMenuItem_wh_json,
             this.toolStripMenuItem_wh_systemlog});
             this.toolStripMenuItem_windowhorizonal.Name = "toolStripMenuItem_windowhorizonal";
-            this.toolStripMenuItem_windowhorizonal.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_windowhorizonal.Size = new System.Drawing.Size(148, 22);
             this.toolStripMenuItem_windowhorizonal.Text = "基本";
             // 
             // toolStripMenuItem_wh_fleet
@@ -441,7 +460,7 @@
             this.toolStripMenuItem_ws_smaterial,
             this.toolStripMenuItem_ws_ssenka});
             this.toolStripMenuItem_windowhorizonalshort.Name = "toolStripMenuItem_windowhorizonalshort";
-            this.toolStripMenuItem_windowhorizonalshort.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_windowhorizonalshort.Size = new System.Drawing.Size(148, 22);
             this.toolStripMenuItem_windowhorizonalshort.Text = "基本(縮小版)";
             // 
             // toolStripMenuItem_ws_sfleet
@@ -480,7 +499,7 @@
             this.toolStripMenuItem_wo_questviewer,
             this.toolStripMenuItem_wo_airbasecorps});
             this.toolStripMenuItem_windowothers.Name = "toolStripMenuItem_windowothers";
-            this.toolStripMenuItem_windowothers.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_windowothers.Size = new System.Drawing.Size(148, 22);
             this.toolStripMenuItem_windowothers.Text = "その他";
             // 
             // toolStripMenuItem_wo_browser
@@ -561,15 +580,22 @@
             this.toolStripMenuItem_wo_questviewer.Size = new System.Drawing.Size(182, 22);
             this.toolStripMenuItem_wo_questviewer.Text = "任務";
             // 
+            // toolStripMenuItem_wo_airbasecorps
+            // 
+            this.toolStripMenuItem_wo_airbasecorps.Name = "toolStripMenuItem_wo_airbasecorps";
+            this.toolStripMenuItem_wo_airbasecorps.Size = new System.Drawing.Size(182, 22);
+            this.toolStripMenuItem_wo_airbasecorps.Text = "基地航空隊";
+            // 
             // toolStripMenuItem_windowanalyze
             // 
             this.toolStripMenuItem_windowanalyze.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem_wa_dropanalyze,
             this.toolStripMenuItem_wa_sortiereport,
             this.toolStripMenuItem_wa_ranking,
-            this.toolStripMenuItem_wa_preset});
+            this.toolStripMenuItem_wa_preset,
+            this.toolStripMenuItem_wa_practice});
             this.toolStripMenuItem_windowanalyze.Name = "toolStripMenuItem_windowanalyze";
-            this.toolStripMenuItem_windowanalyze.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_windowanalyze.Size = new System.Drawing.Size(148, 22);
             this.toolStripMenuItem_windowanalyze.Text = "解析";
             // 
             // toolStripMenuItem_wa_dropanalyze
@@ -596,13 +622,26 @@
             this.toolStripMenuItem_wa_preset.Size = new System.Drawing.Size(160, 22);
             this.toolStripMenuItem_wa_preset.Text = "プリセット";
             // 
+            // toolStripMenuItem_wa_practice
+            // 
+            this.toolStripMenuItem_wa_practice.Name = "toolStripMenuItem_wa_practice";
+            this.toolStripMenuItem_wa_practice.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem_wa_practice.Text = "演習情報";
+            // 
             // toolStripMenuItem_windowkcvdb
             // 
             this.toolStripMenuItem_windowkcvdb.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_wv_kisu,
             this.toolStripMenuItem_wv_kcvdb});
             this.toolStripMenuItem_windowkcvdb.Name = "toolStripMenuItem_windowkcvdb";
-            this.toolStripMenuItem_windowkcvdb.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem_windowkcvdb.Size = new System.Drawing.Size(148, 22);
             this.toolStripMenuItem_windowkcvdb.Text = "艦これ検証部";
+            // 
+            // toolStripMenuItem_wv_kisu
+            // 
+            this.toolStripMenuItem_wv_kisu.Name = "toolStripMenuItem_wv_kisu";
+            this.toolStripMenuItem_wv_kisu.Size = new System.Drawing.Size(204, 22);
+            this.toolStripMenuItem_wv_kisu.Text = "KISU手帳";
             // 
             // toolStripMenuItem_wv_kcvdb
             // 
@@ -875,11 +914,23 @@
             this.timerIdletime.Interval = 4000000;
             this.timerIdletime.Tick += new System.EventHandler(this.timerIdletime_Tick);
             // 
-            // toolStripMenuItem_wo_airbasecorps
+            // toolStripMenuItem_netabare_2_fulloff
             // 
-            this.toolStripMenuItem_wo_airbasecorps.Name = "toolStripMenuItem_wo_airbasecorps";
-            this.toolStripMenuItem_wo_airbasecorps.Size = new System.Drawing.Size(182, 22);
-            this.toolStripMenuItem_wo_airbasecorps.Text = "基地航空隊";
+            this.toolStripMenuItem_netabare_2_fulloff.Name = "toolStripMenuItem_netabare_2_fulloff";
+            this.toolStripMenuItem_netabare_2_fulloff.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem_netabare_2_fulloff.Text = "完全非表示(ネタバレしない)";
+            // 
+            // toolStripMenuItem_netabare_1_half
+            // 
+            this.toolStripMenuItem_netabare_1_half.Name = "toolStripMenuItem_netabare_1_half";
+            this.toolStripMenuItem_netabare_1_half.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem_netabare_1_half.Text = "戦闘結果のみ非表示";
+            // 
+            // toolStripMenuItem_netabare_0_none
+            // 
+            this.toolStripMenuItem_netabare_0_none.Name = "toolStripMenuItem_netabare_0_none";
+            this.toolStripMenuItem_netabare_0_none.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem_netabare_0_none.Text = "ネタバレあり";
             // 
             // Form1
             // 
@@ -1001,6 +1052,12 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_wa_preset;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem38;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_wo_airbasecorps;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_wa_practice;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem39;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_wv_kisu;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_netabare_2_fulloff;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_netabare_1_half;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_netabare_0_none;
     }
 }
 

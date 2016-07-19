@@ -185,9 +185,9 @@ namespace VisualFormTest
             {
                 SenkaRecord r = HistoricalData.LogSenka[i];
                 //見つかった場合
-                if(r.TopSenka[n] != -1)
+                if(r.GetPlayerViewSenka(n) != -1)
                 {
-                    this.FirstValue = r.TopSenka[n];
+                    this.FirstValue = r.GetPlayerViewSenka(n);
                     this.FirstDate = r.StartTime;
                     this.FirstSection = r.Section;
                     break;
@@ -199,16 +199,16 @@ namespace VisualFormTest
             {
                 SenkaRecord r = HistoricalData.LogSenka[i];
                 //見つかった場合
-                if (r.TopSenka[n] != -1)
+                if (r.GetPlayerViewSenka(n) != -1)
                 {
-                    this.LastValue = r.TopSenka[n];
+                    this.LastValue = r.GetPlayerViewSenka(n);
                     this.LastDate = r.StartTime;
                     this.LastSection = r.Section;
                     break;
                 }
             }
             //有効なデータがあるノードに限定, sec1,2に限定
-            var dataValid = HistoricalData.LogSenka.Where(x => x.TopSenka[n] != -1)
+            var dataValid = HistoricalData.LogSenka.Where(x => x.GetPlayerViewSenka(n) != -1)
                 .Where(x => x.Section == 1 || x.Section == 2).ToList();
             //レコードを午前と午後に分割
             List<ValuePairs<int>> morningValidDiff = new List<ValuePairs<int>>(), afternoonValidDiff = new List<ValuePairs<int>>();
@@ -224,7 +224,7 @@ namespace VisualFormTest
                 var item = new ValuePairs<int>()
                 {
                     ValueX = termdiff,
-                    ValueY = nodenext.TopSenka[n] - node.TopSenka[n],
+                    ValueY = nodenext.GetPlayerViewSenka(n) - node.GetPlayerViewSenka(n),
                 };
                 //今：1→次1or2 午前とみなす
                 if (node.Section == 1) morningValidDiff.Add(item);

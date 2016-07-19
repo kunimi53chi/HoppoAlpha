@@ -50,7 +50,7 @@ namespace VisualFormTest
             //ラベルの取得
             System.Windows.Forms.Label[] labels = uBattleState.Labels;
             //戦闘状態ではない場合
-            if (APIBattle.BattleView.Situation == BattleSituation.None || !Config.ShowBattleInfo)
+            if (APIBattle.BattleView.Situation == BattleSituation.None || Config.ShowBattleInfoState >= 1)
             {
                 uBattleState.BackColor = BattleView.WinRankEnum.Unknown.GetBackColor();
                 foreach (var x in labels) x.Text = "";
@@ -129,7 +129,7 @@ namespace VisualFormTest
             //区切り記号
             string separator = isVertical ? Environment.NewLine : " / ";
             //戦闘状態ではない場合
-            if (APIBattle.BattleView.Situation == BattleSituation.None || !Config.ShowBattleInfo)
+            if (APIBattle.BattleView.Situation == BattleSituation.None || Config.ShowBattleInfoState >= 1)
             {
                 CallBacks.SetLabelTextAndColorDouble(label, "", label.ForeColor, System.Drawing.Color.White);
                 return;
@@ -169,7 +169,7 @@ namespace VisualFormTest
                 sb.AppendFormat("(味方={0} 敵={1}{2})",
                     (Math.Floor(APIBattle.BattleView.FscoreRatio * 100) / 100).ToString("P0"),
                     (Math.Floor(APIBattle.BattleView.EscoreRatio * 100) / 100).ToString("P0"),
-                    (APIBattle.BattleView.IsCombined ? string.Format(",{0}", (Math.Floor(APIBattle.BattleView.EscoreRatioCombined * 100) / 100).ToString()) : ""));
+                    (APIBattle.BattleView.IsCombined ? string.Format(",{0}", (Math.Floor(APIBattle.BattleView.EscoreRatioCombined * 100) / 100).ToString("P0")) : ""));
             }
             //MVP
             if (APIBattle.BattleQueue.Count > 0)
@@ -317,7 +317,7 @@ namespace VisualFormTest
 
         private static void SetBattleDetailInvokerLogic(UserControls.BattleDetailLabelHandler handler, System.Windows.Forms.ToolTip toolTip, bool isSquare)
         {
-            if(!Config.ShowBattleInfo)
+            if(Config.ShowBattleInfoState >= 2)
             {
                 ResetBattleDetail(handler, toolTip, isSquare);
                 return;
@@ -363,16 +363,20 @@ namespace VisualFormTest
             }
             handler.Overview.ID.Text = view.EnemyLocalShortID.ToString();
             if (view.EnemyLocalShortID.ToString().Length > 8) toolTip.SetToolTip(handler.Overview.ID, view.EnemyLocalShortID.ToString());//IDが5桁以上の場合
-            handler.Overview.GaugeRatio.Text = string.Format("{0}{1}倍", view.GaugeString, (view.IsCombined ? string.Format(", {0}", view.GaugeStringCombined) : ""));
-            //handler.Overview.GaugeRatio.Text = string.Format("{0} 倍", view.GaugeString);
-            handler.Overview.GaugeDetail.Text = string.Format(
-                "({0} - {1}{2})",
-                    (Math.Floor(view.FscoreRatio * 100) / 100).ToString("P0"),
-                    (Math.Floor(view.EscoreRatio * 100) / 100).ToString("P0"),
-                    (view.IsCombined ? string.Format(", {0}", (Math.Floor(view.EscoreRatioCombined * 100) / 100).ToString("P0")) : ""));
-            /*handler.Overview.GaugeDetail.Text =
-                string.Format("({0} - {1})", (Math.Floor(view.FscoreRatio * 100) / 100).ToString("P0"),
-                (Math.Floor(view.EscoreRatio * 100) / 100).ToString("P0"));*/
+            if (Config.ShowBattleInfoState == 0)
+            {
+                handler.Overview.GaugeRatio.Text = string.Format("{0}{1}倍", view.GaugeString, (view.IsCombined ? string.Format(", {0}", view.GaugeStringCombined) : ""));
+                handler.Overview.GaugeDetail.Text = string.Format(
+                    "({0} - {1}{2})",
+                        (Math.Floor(view.FscoreRatio * 100) / 100).ToString("P0"),
+                        (Math.Floor(view.EscoreRatio * 100) / 100).ToString("P0"),
+                        (view.IsCombined ? string.Format(", {0}", (Math.Floor(view.EscoreRatioCombined * 100) / 100).ToString("P0")) : ""));
+            }
+            else
+            {
+                handler.Overview.GaugeRatio.Text = "";
+                handler.Overview.GaugeDetail.Text = "";
+            }
             //会戦
             if(info.api_formation != null)
             {
@@ -531,6 +535,8 @@ namespace VisualFormTest
                     handler.AirBattle.Stage2Enemy.Text = "";
                 }
             }
+            //これ以降は戦闘ネタバレがなしのときのみ処理する
+            if (Config.ShowBattleInfoState > 0) return;
             //--通常戦闘
             //ダメージ
             //ダメージ（非タブ画面の場合）

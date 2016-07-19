@@ -19,8 +19,9 @@ namespace HoppoAlpha.DataLibrary.DataObject
         [ProtoMember(1)]
         public bool ShowJson { get; set; }
         /// <summary>
-        /// 戦闘ネタバレを表示するオプション
+        /// 戦闘ネタバレを表示するオプション（旧）
         /// </summary>
+        [Obsolete]
         [ProtoMember(2)]
         public bool ShowBattleInfo { get; set; }
         /// <summary>
@@ -191,6 +192,11 @@ namespace HoppoAlpha.DataLibrary.DataObject
         /// </summary>
         [ProtoMember(35)]
         public bool PresetDuplicateCheckAppliesFlagship { get; set; }
+        /// <summary>
+        /// 戦果解析用電卓の(1)の計算方法
+        /// </summary>
+        [ProtoMember(36)]
+        public int SenkaCalcForAnalyzeFirstMode { get; set; }
 
         //50-(AlphaDashの仕様)
         /// <summary>
@@ -230,6 +236,11 @@ namespace HoppoAlpha.DataLibrary.DataObject
         /// </summary>
         [ProtoMember(57)]
         public SearchModel.Models SearchUsingModel { get; set; }
+        /// <summary>
+        /// 戦闘ネタバレを表示するオプション（新）　0＝ネタバレあり、1＝戦闘結果のみ非表示、2＝完全非表示
+        /// </summary>
+        [ProtoMember(58)]
+        public int ShowBattleInfoState { get; set; }
 
         //100～104は古い仕様なので使用しない
         /// <summary>
@@ -370,6 +381,7 @@ namespace HoppoAlpha.DataLibrary.DataObject
         /// <summary>
         /// 潜水マンのリスト
         /// </summary>
+        [Obsolete]
         [ProtoMember(400)]
         public Dictionary<int, string> RankingSubmarinerList { get; set; }
         /// <summary>
@@ -382,5 +394,10 @@ namespace HoppoAlpha.DataLibrary.DataObject
         /// </summary>
         [ProtoMember(402)]
         public int[] TabSenkaBorderDisplay { get; set; }
+        /// <summary>
+        /// 潜水マンリスト（新）
+        /// </summary>
+        [ProtoMember(403)]
+        public HashSet<string> RankingSubmarinerNew { get; set; }
     }
 }

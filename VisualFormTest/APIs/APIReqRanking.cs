@@ -18,6 +18,10 @@ namespace VisualFormTest
         public static string LastSavedFileName {get; set;}
         public static string LastSavedDirectory { get; set; }
 
+        //設定値（セクションごとに初期化する）
+        public static int MyRank { get; set; }
+        public static int OldRankingsNum { get; set; }
+
         public static string GetDirectory(DateTime date)
         {
             DateTime latedate = date.AddHours(-3);
@@ -41,12 +45,13 @@ namespace VisualFormTest
             return dir + string.Format("ranking{0}_{1}.dat", (date.AddHours(-3)).ToString("yyyyMMdd"), section);
         }
 
-
         public static void Init()
         {
             if (IsInited) return;
             //初期化
             Rankings = new SortedDictionary<int, ApiRanking.ApiList>();
+            MyRank = 0;
+            OldRankingsNum = 0;
             //読み込み
             DateTime now = DateTime.Now;
             string dir = GetDirectory(now);
@@ -55,6 +60,7 @@ namespace VisualFormTest
             var loadResult = HoppoAlpha.DataLibrary.Files.TryLoad(file, HoppoAlpha.DataLibrary.DataType.Ranking);
             LogSystem.AddLogMessage(HoppoAlpha.DataLibrary.DataType.Ranking, loadResult, false);
             Rankings = (SortedDictionary<int, ApiRanking.ApiList>)loadResult.Instance;
+            OldRankingsNum = Rankings.Count;
 
             //ファイル名
             LastSavedDirectory = dir;
@@ -100,6 +106,8 @@ namespace VisualFormTest
             SaveAs(LastSavedDirectory, LastSavedFileName);
             //初期化
             Rankings = new SortedDictionary<int, ApiRanking.ApiList>();
+            MyRank = 0;
+            OldRankingsNum = 0;
             //次のファイル名に
             DateTime now = DateTime.Now;
             LastSavedDirectory = GetDirectory(now);
@@ -116,10 +124,23 @@ namespace VisualFormTest
             {
                 SwitchFile();
             }
-            //追加
+            //ランキングデータに追加
             foreach(var x in rankingdata)
             {
+                //古いEO値を覚えておく
+                ApiRanking.ApiList oldData;
+                Rankings.TryGetValue(x.api_no, out oldData);
+
+                //ランキングのスタイルの記録
+                x.ApiRateStyle = 1;
+
                 Rankings[x.api_no] = x;
+                if (oldData != null)
+                {
+                    Rankings[x.api_no].ForAnalyzeSenkaValue = oldData.ForAnalyzeSenkaValue;
+                    Rankings[x.api_no].IsForAnalyzeSenkaValueSet = oldData.IsForAnalyzeSenkaValueSet;
+                    Rankings[x.api_no].EoMemoValue = oldData.EoMemoValue;
+                }
             }
         }
 
@@ -146,22 +167,22 @@ namespace VisualFormTest
             //--HistoricalData.LogSenka側
             int startidx = (ranking.api_disp_page - 1) * 10;
             int endidx = ranking.api_disp_page * 10 - 1;
-            int[] array_id = ranking.api_list.Select(x => x.api_member_id).ToArray();
-            int[] array_exp = ranking.api_list.Select(x => x.api_experience).ToArray();
-            int[] array_senka = ranking.api_list.Select(x => x.api_rate).ToArray();
+            int[] array_senka = ranking.api_list.GetApiRates();
             string[] array_name = ranking.api_list.Select(x => x.api_nickname).ToArray();
             //自分の戦果
+            var mysenkadata = ranking.api_list.Where(x => x.api_nickname == APIPort.Basic.api_nickname).FirstOrDefault();
             int mysenka;
-            int mysenkaidx = Array.IndexOf(array_id, Convert.ToInt32(APIPort.Basic.api_member_id));
-            if(mysenkaidx != -1)//自分のデータがある場合
+            if(mysenkadata != null)//自分のデータがある場合
             {
-                mysenka = ranking.api_list[mysenkaidx].api_rate;
+                var s = Rankings[mysenkadata.api_no];
+                mysenka = s.ViewSenka;
+                MyRank = mysenkadata.api_no;
             }
             else
             {
                 mysenka = -1;
             }
-            HistoricalData.SetSenkaValue(mysenka, startidx, endidx, array_senka, array_id, array_exp, array_name);
+            HistoricalData.SetSenkaValue(mysenka, startidx, endidx, array_senka, array_name);
         }
     }
 

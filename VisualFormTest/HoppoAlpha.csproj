@@ -69,7 +69,7 @@
     </Reference>
     <Reference Include="KCVDB.Client, Version=0.0.17.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\KCVDB.Client.0.0.17.0\lib\net45\KCVDB.Client.dll</HintPath>
+      <HintPath>..\..\KancolleVerify\KCVDB.Client\KCVDB.Client\bin\Release\KCVDB.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -173,6 +173,18 @@
     <Compile Include="DockingWindows\DockWindowKCVDBLog.Designer.cs">
       <DependentUpon>DockWindowKCVDBLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="DockingWindows\DockWindowKisuTetyo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowKisuTetyo.Designer.cs">
+      <DependentUpon>DockWindowKisuTetyo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowPracticeInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingWindows\DockWindowPracticeInfo.Designer.cs">
+      <DependentUpon>DockWindowPracticeInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="DockingWindows\DockWindowPresetDeckViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +287,7 @@
     </Compile>
     <Compile Include="LogConvertLogic.cs" />
     <Compile Include="LogSystem.cs" />
+    <Compile Include="PracticeInfoDataBase.cs" />
     <Compile Include="QueryEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -419,11 +432,23 @@
     <Compile Include="UserControls\KCVDBLog.Designer.cs">
       <DependentUpon>KCVDBLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\KisuTetyo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\KisuTetyo.Designer.cs">
+      <DependentUpon>KisuTetyo.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MapInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\MapInfo.Designer.cs">
       <DependentUpon>MapInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PracticeInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PracticeInfo.Designer.cs">
+      <DependentUpon>PracticeInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PresetDeckViewer.cs">
       <SubType>UserControl</SubType>
@@ -442,6 +467,12 @@
     </Compile>
     <Compile Include="UserControls\RankingViewer.Designer.cs">
       <DependentUpon>RankingViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RankingViewer_SelfEo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\RankingViewer_SelfEo.Designer.cs">
+      <DependentUpon>RankingViewer_SelfEo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\RankingViewer_SubmarinerSetting.cs">
       <SubType>Form</SubType>
@@ -571,6 +602,12 @@
     <Compile Include="UserControls\TabSenka_Popup.Designer.cs">
       <DependentUpon>TabSenka_Popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TabSenka_ForAnalyzeViewCalc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabSenka_ForAnalyzeViewCalc.Designer.cs">
+      <DependentUpon>TabSenka_ForAnalyzeViewCalc.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\TabSystemLog.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -627,8 +664,14 @@
     <EmbeddedResource Include="DockingWindows\DockWindowKCVDBLog.resx">
       <DependentUpon>DockWindowKCVDBLog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowKisuTetyo.resx">
+      <DependentUpon>DockWindowKisuTetyo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockingWindows\DockWindowMapInfo.resx">
       <DependentUpon>DockWindowMapInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingWindows\DockWindowPracticeInfo.resx">
+      <DependentUpon>DockWindowPracticeInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockingWindows\DockWindowPresetDeckViewer.resx">
       <DependentUpon>DockWindowPresetDeckViewer.cs</DependentUpon>
@@ -742,8 +785,14 @@
     <EmbeddedResource Include="UserControls\KCVDBLog.resx">
       <DependentUpon>KCVDBLog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\KisuTetyo.resx">
+      <DependentUpon>KisuTetyo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MapInfo.resx">
       <DependentUpon>MapInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PracticeInfo.resx">
+      <DependentUpon>PracticeInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PresetDeckViewer.resx">
       <DependentUpon>PresetDeckViewer.cs</DependentUpon>
@@ -753,6 +802,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RankingViewer.resx">
       <DependentUpon>RankingViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RankingViewer_SelfEo.resx">
+      <DependentUpon>RankingViewer_SelfEo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RankingViewer_SubmarinerSetting.resx">
       <DependentUpon>RankingViewer_SubmarinerSetting.cs</DependentUpon>
@@ -813,6 +865,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TabSenka_Popup.resx">
       <DependentUpon>TabSenka_Popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabSenka_ForAnalyzeViewCalc.resx">
+      <DependentUpon>TabSenka_ForAnalyzeViewCalc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TabSystemLog.resx">
       <DependentUpon>TabSystemLog.cs</DependentUpon>

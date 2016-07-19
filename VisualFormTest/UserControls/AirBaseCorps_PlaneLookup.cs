@@ -68,8 +68,8 @@ namespace VisualFormTest.UserControls
                 item.SubItems.Add(dslot.api_cost.ToString());
 
                 var numslot = GetNumSlot(dslot.EquipType);
-                var airsup_max = AirSupResult.SingleSlotitemAirSup(dslot, (double)numslot, 7);
-                var airsup_min = AirSupResult.SingleSlotitemAirSup(dslot, (double)numslot, 0);
+                var airsup_max = AirSupResult.SingleSlotitemAirSup(dslot, (double)numslot, 7, 10);
+                var airsup_min = AirSupResult.SingleSlotitemAirSup(dslot, (double)numslot, 0, 0);
                 item.SubItems.Add((dslot.api_cost * numslot).ToString());
                 item.SubItems.Add(airsup_max.AirSupValueMax.ToString());
                 item.SubItems.Add(airsup_min.AirSupValueMin.ToString());

@@ -114,11 +114,19 @@ namespace VisualFormTest
             };
             if (info.Mode == 1)
             {
-                for (int i = 0; i < 4; i++) chart.Series.Add(series_str[i]);
+                for (int i = 0; i < 4; i++)
+                {
+                    if (info.ExceptSeries.ContainsExceptSeries(i + 1)) continue;
+                    chart.Series.Add(series_str[i]);
+                }
             }
             else if (info.Mode == 2)
             {
-                for (int i = 4; i < series_str.Length; i++) chart.Series.Add(series_str[i]);
+                for (int i = 4; i < series_str.Length; i++)
+                {
+                    if (info.ExceptSeries.ContainsExceptSeries(i - 3)) continue;
+                    chart.Series.Add(series_str[i]);
+                }
             }
             //グラフの種類
             foreach (var x in chart.Series)
@@ -140,9 +148,12 @@ namespace VisualFormTest
                 //カウンター
                 int i_start = info.Mode == 1 ? 0 : 4;
                 int i_end = info.Mode == 1 ? 4 : series_str.Length;
+                int i_except_offset = info.Mode == 1 ? 1 : -3;
                 //データ
                 for (int i = i_start; i < i_end; i++)
                 {
+                    if (info.ExceptSeries.ContainsExceptSeries(i + i_except_offset)) continue;
+
                     int val = d.Value[MaterialRecord.Keys[i]]
                         - Convert.ToInt32(info.IsDiff) * first_record.Value[MaterialRecord.Keys[i]];
                     chart.Series[series_str[i]].Points.AddXY(d.Date, val);

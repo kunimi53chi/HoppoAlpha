@@ -110,22 +110,26 @@ namespace HoppoAlpha.DataLibrary.DataObject
         /// <param name="equip">装備マスターデータ</param>
         /// <param name="onSlotNum">スロット数</param>
         /// <param name="trainingLevel">熟練度レベル</param>
+        /// <param name="reinforcedLevel">改修レベル</param>
         /// <returns>制空値</returns>
-        public static AirSupResult SingleSlotitemAirSup(ExMasterSlotitem equip, double onSlotNum, int trainingLevel)
+        public static AirSupResult SingleSlotitemAirSup(ExMasterSlotitem equip, double onSlotNum, int trainingLevel, int reinforcedLevel)
         {
             if (!equip.IsAirCombatable) return new AirSupResult();
 
             //1スロットあたりの艦載機由来の制空値
             //迎撃ステータスの制空値の追加
             double slotas = ((double)equip.api_tyku + (double)equip.Geigeki * 1.5) * Math.Sqrt(onSlotNum);
+            //改修レベルの制空値
+            double reinas = 0.0;
+            if (equip.EquipType == 6) reinas = (double)reinforcedLevel * 0.2 * Math.Sqrt(onSlotNum);//艦戦のみ
 
             //熟練度ボーナス
             double trainmin = AircraftTrainingBonus(equip, trainingLevel, false);
             double trainmax = AircraftTrainingBonus(equip, trainingLevel, true);
 
             //このスロットの制空値
-            int sum_min = (int)(slotas + trainmin);
-            int sum_max = (int)(slotas + trainmax);
+            int sum_min = (int)(slotas + reinas + trainmin);
+            int sum_max = (int)(slotas + reinas + trainmax);
 
             //ボーナス部分をintに変換
             int trainmin_int = sum_min - (int)slotas;

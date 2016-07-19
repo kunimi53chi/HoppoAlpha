@@ -32,7 +32,6 @@
             this.numericUpDown_eohandicap = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.listView_submariner = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button_deleteselected = new System.Windows.Forms.Button();
             this.button_ok = new System.Windows.Forms.Button();
@@ -73,7 +72,6 @@
             // listView_submariner
             // 
             this.listView_submariner.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
             this.columnHeader2});
             this.listView_submariner.FullRowSelect = true;
             this.listView_submariner.Location = new System.Drawing.Point(25, 90);
@@ -83,15 +81,10 @@
             this.listView_submariner.UseCompatibleStateImageBehavior = false;
             this.listView_submariner.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "提督ID";
-            this.columnHeader1.Width = 80;
-            // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "提督名";
-            this.columnHeader2.Width = 120;
+            this.columnHeader2.Width = 180;
             // 
             // button_deleteselected
             // 
@@ -135,6 +128,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numericUpDown_eohandicap);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "RankingViewer_SubmarinerSetting";
             this.Text = "潜水マン設定";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_eohandicap)).EndInit();
@@ -149,7 +143,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown_eohandicap;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListView listView_submariner;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Button button_deleteselected;
         private System.Windows.Forms.Button button_ok;

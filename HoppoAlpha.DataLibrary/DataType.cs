@@ -67,5 +67,9 @@ namespace HoppoAlpha.DataLibrary
         /// 出撃報告書を表します
         /// </summary>
         SortieReport,
+        /// <summary>
+        /// 演習情報を表します
+        /// </summary>
+        PracticeInfo,
     }
 }

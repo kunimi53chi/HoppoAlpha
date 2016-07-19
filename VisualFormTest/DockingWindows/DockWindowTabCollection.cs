@@ -271,6 +271,22 @@ namespace VisualFormTest.DockingWindows
                 return (Pages[(int)NonTabPageType.AirBaseCorps] as DockingWindows.DockWindowAirBaseCorps).airBaseCorps1; 
             }
         }
+
+        public UserControls.PracticeInfo PracticeInfo
+        {
+            get
+            {
+                return (Pages[(int)NonTabPageType.PracticeInfo] as DockingWindows.DockWindowPracticeInfo).practiceInfo1;
+            }
+        }
+
+        public UserControls.KisuTetyo KisuTetyo
+        {
+            get
+            {
+                return (Pages[(int)NonTabPageType.KisuTetyo] as DockingWindows.DockWindowKisuTetyo).kisuTetyo1;
+            }
+        }
         #endregion
         #endregion
 
@@ -318,6 +334,8 @@ namespace VisualFormTest.DockingWindows
             public ToolStripMenuItem TKCVDBLog { get; set; }
             public ToolStripMenuItem TPresetDeckViewer { get; set; }
             public ToolStripMenuItem TAirBaseCorps { get; set; }
+            public ToolStripMenuItem TPracticeInfo { get; set; }
+            public ToolStripMenuItem TKisuTetyo { get; set; }
         }
 
         public class TabUnitPageFactory
@@ -497,6 +515,8 @@ namespace VisualFormTest.DockingWindows
             else if (content is DockingWindows.DockWindowKCVDBLog) tool = this.ToolStripHandler.TKCVDBLog;
             else if (content is DockingWindows.DockWindowPresetDeckViewer) tool = this.ToolStripHandler.TPresetDeckViewer;
             else if (content is DockingWindows.DockWindowAirBaseCorps) tool = this.ToolStripHandler.TAirBaseCorps;
+            else if (content is DockingWindows.DockWindowPracticeInfo) tool = this.ToolStripHandler.TPracticeInfo;
+            else if (content is DockingWindows.DockWindowKisuTetyo) tool = this.ToolStripHandler.TKisuTetyo;
 
             if (tool == null) throw new NullReferenceException();
             else return tool;
@@ -537,6 +557,8 @@ namespace VisualFormTest.DockingWindows
             if (item == this.ToolStripHandler.TKCVDBLog) return GetDockContent(NonTabPageType.KCVDBLog);
             if (item == this.ToolStripHandler.TPresetDeckViewer) return GetDockContent(NonTabPageType.PresetDeck);
             if (item == this.ToolStripHandler.TAirBaseCorps) return GetDockContent(NonTabPageType.AirBaseCorps);
+            if (item == this.ToolStripHandler.TPracticeInfo) return GetDockContent(NonTabPageType.PracticeInfo);
+            if (item == this.ToolStripHandler.TKisuTetyo) return GetDockContent(NonTabPageType.KisuTetyo);
 
             throw new NullReferenceException();
         }

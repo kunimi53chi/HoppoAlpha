@@ -82,14 +82,17 @@ namespace HoppoAlpha.DataLibrary.RawApi.ApiReqQuest
             //出現タイプ
             switch(this.api_type)
             {
-                case 2://デイリー
+                case 1://デイリー
                     prog = prog + ":D";
                     break;
-                case 3://ウィークリー
+                case 2://ウィークリー
                     prog = prog + ":W";
                     break;
-                case 6:
+                case 3://マンスリー
                     prog = prog + ":M";
+                    break;
+                case 5://クォタリー
+                    prog = prog + ":Q";
                     break;
             }
 
@@ -120,14 +123,17 @@ namespace HoppoAlpha.DataLibrary.RawApi.ApiReqQuest
             //出現タイプ
             switch (this.api_type)
             {
-                case 2://デイリー
+                case 1://デイリー
                     prog = prog + ":D";
                     break;
-                case 3://ウィークリー
+                case 2://ウィークリー
                     prog = prog + ":W";
                     break;
-                case 6:
+                case 3://マンスリー
                     prog = prog + ":M";
+                    break;
+                case 5://クォタリー
+                    prog = prog + ":Q";
                     break;
             }
 

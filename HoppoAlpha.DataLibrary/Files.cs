@@ -164,6 +164,9 @@ namespace HoppoAlpha.DataLibrary
                 case DataType.SortieReport:
                     result.Instance = Serializer.Deserialize<DataObject.SortieReportCollection>(stream);
                     break;
+                case DataType.PracticeInfo:
+                    result.Instance = Serializer.Deserialize<DataObject.PracticeInfoCollection>(stream);
+                    break;
                 default:
                     throw new NotImplementedException("要求されたDataTypeに対する、TryLoad_Internalが実装されていません");
             }
@@ -314,6 +317,9 @@ namespace HoppoAlpha.DataLibrary
                             break;
                         case DataType.SortieReport:
                             Serializer.Serialize<DataObject.SortieReportCollection>(ms, (DataObject.SortieReportCollection)instance);
+                            break;
+                        case DataType.PracticeInfo:
+                            Serializer.Serialize<DataObject.PracticeInfoCollection>(ms, (DataObject.PracticeInfoCollection)instance);
                             break;
                         default:
                             throw new NotImplementedException("要求されたDataTypeに対する、Save_internalが実装されていません");

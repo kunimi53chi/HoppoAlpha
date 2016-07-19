@@ -20,7 +20,7 @@ namespace VisualFormTest.DockingWindows
         BattleDetail, BattleDetailSquare, CompactScreen, DropAnalyzer,
         ToolBox, MapInfo, QuestViewer, BattleDetailSquare2, SFleet,
         SMaterial, SSenka, SortieReportViewer, RankingViewer, CompactScreenVertical,
-        KCVDBLog, PresetDeck, AirBaseCorps,
+        KCVDBLog, PresetDeck, AirBaseCorps, PracticeInfo, KisuTetyo,
     }
 
     public static class NonTabPageExt
@@ -73,6 +73,10 @@ namespace VisualFormTest.DockingWindows
                     return new DockWindowPresetDeckViewer(parent);
                 case NonTabPageType.AirBaseCorps:
                     return new DockWindowAirBaseCorps(parent);
+                case NonTabPageType.PracticeInfo:
+                    return new DockWindowPracticeInfo(parent);
+                case NonTabPageType.KisuTetyo:
+                    return new DockWindowKisuTetyo(parent);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -126,6 +130,10 @@ namespace VisualFormTest.DockingWindows
                     return NonTabPageType.PresetDeck;
                 case "DockWindowAirBaseCorps":
                     return NonTabPageType.AirBaseCorps;
+                case "DockWindowPracticeInfo":
+                    return NonTabPageType.PracticeInfo;
+                case "DockWindowKisuTetyo":
+                    return NonTabPageType.KisuTetyo;
                 default:
                     throw new NotImplementedException();
             }

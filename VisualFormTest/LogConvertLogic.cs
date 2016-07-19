@@ -576,34 +576,8 @@ namespace VisualFormTest
             //個々のデータ
             foreach (var x in val)
             {
-                CsvList<string> row = new CsvList<string>();
                 ApiRanking.ApiList item = x.Value;
-                //順位
-                row.Add(item.api_no.ToString());
-                //提督ID
-                row.Add(item.api_member_id.ToString());
-                //司令部レベル
-                row.Add(item.api_level.ToString());
-                //階級
-                row.Add(Helper.RankToString(item.api_rank));
-                //名前
-                row.Add(item.api_nickname);
-                //-
-                //提督経験値
-                row.Add(item.api_experience.ToString());
-                //コメント
-                row.Add(item.api_comment);
-                //戦果
-                row.Add(item.api_rate.ToString());
-                //api_flag
-                row.Add(item.api_flag.ToString());
-                //名前ID
-                row.Add(item.api_nickname_id);
-                //--
-                //コメントID
-                row.Add(item.api_comment_id);
-                //甲種勲賞
-                row.Add(item.api_medals.ToString());
+                var row = item.ExportToCsvRow(Helper.RankToString(item.api_rank));
                 //行の追加
                 sb.AppendLine(string.Join(",", row.ToArray()));
             }
@@ -672,7 +646,11 @@ namespace VisualFormTest
                 row.Add(x.Title < 0 ? "" : x.Title.ToString());
                 //3行目（ランカー戦果）
                 int[] ranker = new int[] { 0, 1, 2, 4, 19, 99, 499 };
-                foreach (int i in ranker) row.Add(x.TopSenka[i] < 0 ? "" : x.TopSenka[i].ToString());
+                foreach (int i in ranker)
+                {
+                    var rate = x.GetPlayerViewSenka(i);
+                    row.Add(rate < 0 ? "" : rate.ToString());
+                }
                 //4行目（ランカーID）
                 foreach (int i in ranker) row.Add(x.TopID[i] < 0 ? "" : x.TopID[i].ToString());
                 //5行目（ランカー経験値）
@@ -725,7 +703,7 @@ namespace VisualFormTest
                         switch (mode)
                         {
                             case 0:
-                                target = x.TopSenka;
+                                target = Enumerable.Range(0, SenkaRecord.MaxArraySize).Select(k => x.GetPlayerViewSenka(k)).ToArray();
                                 break;
                             case 1:
                                 target = x.TopID;

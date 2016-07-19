@@ -31,10 +31,10 @@ namespace VisualFormTest.UserControls
 
         private string[] columnHeader = new string[]
         {
-            "#", "順", "Lv", "提督名", "提督経験値", 
-            "戦果", "増加", "EO増", "Rankコメント", "甲", 
-            "EO潜水補正戦果", "破壊済EO", "月初戦果", "EO補正戦果", "月初データ", 
-            "潜"
+            "#", "順", "提督名", "戦果", "増加", 
+            "EO増", "Rankコメント", "甲", "EO潜水補正戦果", "破壊済EO", 
+            "月初戦果", "EO補正戦果", "月初データ", "潜", "Lv", 
+            "提督経験値",
         };
 
         public RankingViewer()
@@ -46,11 +46,11 @@ namespace VisualFormTest.UserControls
             listViewSorter.ColumnModes = new Helper.ListViewItemComparer.ComparerMode[]
             {
                 Helper.ListViewItemComparer.ComparerMode.NonSortable,
-                Helper.ListViewItemComparer.ComparerMode.Integer, Helper.ListViewItemComparer.ComparerMode.Integer, Helper.ListViewItemComparer.ComparerMode.String,
-                Helper.ListViewItemComparer.ComparerMode.Integer, Helper.ListViewItemComparer.ComparerMode.Integer, Helper.ListViewItemComparer.ComparerMode.NullableInt,
-                Helper.ListViewItemComparer.ComparerMode.NullableInt, Helper.ListViewItemComparer.ComparerMode.String, Helper.ListViewItemComparer.ComparerMode.Integer,
-                Helper.ListViewItemComparer.ComparerMode.NullableInt, Helper.ListViewItemComparer.ComparerMode.NullableInt, Helper.ListViewItemComparer.ComparerMode.NullableInt,
-                Helper.ListViewItemComparer.ComparerMode.NullableInt, Helper.ListViewItemComparer.ComparerMode.String, Helper.ListViewItemComparer.ComparerMode.String,
+                Helper.ListViewItemComparer.ComparerMode.Integer, Helper.ListViewItemComparer.ComparerMode.String, Helper.ListViewItemComparer.ComparerMode.Integer,
+                Helper.ListViewItemComparer.ComparerMode.NullableInt, Helper.ListViewItemComparer.ComparerMode.NullableInt, Helper.ListViewItemComparer.ComparerMode.String,
+                Helper.ListViewItemComparer.ComparerMode.Integer, Helper.ListViewItemComparer.ComparerMode.NullableInt, Helper.ListViewItemComparer.ComparerMode.NullableInt,
+                Helper.ListViewItemComparer.ComparerMode.NullableInt, Helper.ListViewItemComparer.ComparerMode.NullableInt, Helper.ListViewItemComparer.ComparerMode.String, 
+                Helper.ListViewItemComparer.ComparerMode.String, Helper.ListViewItemComparer.ComparerMode.Integer, Helper.ListViewItemComparer.ComparerMode.Integer,
             };
             listView_ranking.ListViewItemSorter = listViewSorter;
 
@@ -235,6 +235,19 @@ namespace VisualFormTest.UserControls
                 return hash;
             }
 
+            //保存する際のディレクトリ名を求める
+            public string GetSaveDirectoryName()
+            {
+                return @"user/" + APIPort.Basic.api_member_id + @"/ranking/" + this.Year.ToString("0000") + this.Month.ToString("00") + @"/";
+            }
+
+            //保存する際のファイル名を求める
+            public string GetSaveFileName()
+            {
+                var dir = GetSaveDirectoryName();
+                return dir + string.Format("ranking{0}{1}{2}_{3}.dat", this.Year.ToString("0000"), this.Month.ToString("00"), this.Day.ToString("00"), this.Section.ToString());
+            }
+
             #region IEquitrable関連
             public bool Equals(RankingCacheHash other)
             {
@@ -262,6 +275,16 @@ namespace VisualFormTest.UserControls
                 return !hash1.Equals(hash2);
             }
             #endregion
+        }
+
+        //ランキング用のタグ
+        public class RankingListViewTag
+        {
+            public string NickName { get; set; }
+            public RankingCacheHash CacheHash { get; set; }
+            public ApiRanking.ApiList RankingList { get; set; }
+            public ApiRanking.RankingDiff RankingDiff { get; set; }
+            public int SumEo { get; set; }
         }
         #endregion
 
@@ -383,6 +406,7 @@ namespace VisualFormTest.UserControls
             //最新のデータのハッシュ
             DateTime now = DateTime.Now;
             int section = SenkaRecord.GetSection(now);
+            if (now.Hour == 2) now = now.AddDays(1);//2時台のみちょっと変更
             RankingCacheHash latestKey = new RankingCacheHash();
             latestKey.SetValue(APIReqRanking.GetFileName(now, section));
 
@@ -414,6 +438,41 @@ namespace VisualFormTest.UserControls
             return result;
         }
 
+        //データの保存
+        private void SaveData(RankingCacheHash hash)
+        {
+            if (fileCache == null) throw new NullReferenceException("ファイルキャッシュがNullです");
+
+            //保存するデータ
+            SortedDictionary<int, ApiRanking.ApiList> saveData;
+            if (!fileCache.TryGetValue(hash, out saveData)) return;
+
+            //最新のデータのハッシュ
+            DateTime now = DateTime.Now;
+            int section = SenkaRecord.GetSection(now);
+            RankingCacheHash latestKey = new RankingCacheHash();
+            if (now.Hour == 2) now = now.AddDays(1);//2時台のみちょっと変更
+            var hoge = APIReqRanking.GetFileName(now, section);
+            latestKey.SetValue(APIReqRanking.GetFileName(now, section));
+
+            //最新データの場合
+            if (hash == latestKey)
+            {
+                if (APIReqRanking.Rankings != null)
+                {
+                    foreach(var x in saveData)
+                    {
+                        APIReqRanking.Rankings[x.Key] = x.Value;
+                    }
+                    APIReqRanking.Save();
+                }
+            }
+            else
+            {
+                var saveResult = Files.Save(hash.GetSaveFileName(), DataType.Ranking, saveData);
+            }
+        }
+
         //リストビューの更新
         public void RefreshListView(RankingCacheHash selectedHash)
         {
@@ -426,17 +485,17 @@ namespace VisualFormTest.UserControls
             var prevhash = selectedHash.GetPreviousHash();
             SortedDictionary<int, ApiRanking.ApiList> prevdata = null;
             if (prevhash.Month == selectedHash.Month) prevdata = LoadData(prevhash);
-            //月初のデータを取得3つ取得
+            //月初のデータを取得3つ取得（→月全体に変更）
             var firsthash = selectedHash.GetMonthFirstHash();
-            Dictionary<string, SortedDictionary<int, ApiRanking.ApiList>> firstdatas = new Dictionary<string, SortedDictionary<int, ApiRanking.ApiList>>();
-            while(firstdatas.Count < 3)
+            Dictionary<string, SortedDictionary<int, ApiRanking.ApiList>> alldatas = new Dictionary<string, SortedDictionary<int, ApiRanking.ApiList>>();
+            while(true)
             {
                 //選択ハッシュ≦月初ハッシュになってしまったら離脱
                 if (selectedHash.GetHashCode() <= firsthash.GetHashCode()) break;
                 //ファイルが存在すれば読み込み
                 if(firsthash.FilePath != null && File.Exists(firsthash.FilePath))
                 {
-                    firstdatas[firsthash.Display2] = LoadData(firsthash);
+                    alldatas[firsthash.Display2] = LoadData(firsthash);
                 }
                 //ハッシュの繰り下げ
                 firsthash = firsthash.GetNextHash();
@@ -457,7 +516,7 @@ namespace VisualFormTest.UserControls
 
                     //潜水マンのハンデ取得
                     int handicap = 0;
-                    if (Config.RankingSubmarinerList.ContainsKey(x.api_member_id))
+                    if (Config.RankingSubmarinerList.Contains(x.api_nickname))
                     {
                         handicap = Config.RankingSubmarinerEOHandicap;
                     }
@@ -467,24 +526,17 @@ namespace VisualFormTest.UserControls
                     //SubItemの表示変更を受け付ける
                     parent.UseItemStyleForSubItems = false;
 
-                    //タグに提督IDを入れる
-                    parent.Tag = x.api_member_id;
-
                     //順位
-                    parent.SubItems.Add(x.api_no.ToString());
+                    parent.SubItems.Add(x.api_no.ToString(), parent.ForeColor, parent.BackColor, listView_ranking.Font);
                     //増分
-                    var diff = ApiRanking.RankingDiff.CalcDiff(x.api_member_id, nowdata, prevdata);
+                    var diff = ApiRanking.RankingDiff.CalcDiff(x.api_nickname, nowdata, x.api_no, prevdata);
                     //EO計算
-                    var eocalc = ApiRanking.RankingEOCalc.CalcEO(x.api_member_id, nowdata, firstdatas, handicap);
+                    var eocalc = ApiRanking.RankingEOCalc.CalcEO(x.api_nickname, nowdata, x.api_no, alldatas, handicap);
 
-                    //提督Lv
-                    parent.SubItems.Add(x.api_level.ToString(), parent.ForeColor, parent.BackColor, listView_ranking.Font);
                     //提督名
                     parent.SubItems.Add(x.api_nickname, parent.ForeColor, parent.BackColor, listView_ranking.Font);
-                    //提督経験値
-                    parent.SubItems.Add(x.api_experience.ToString("N0"), parent.ForeColor, parent.BackColor, listView_ranking.Font);
                     //戦果
-                    parent.SubItems.Add(x.api_rate.ToString("N0"), parent.ForeColor, parent.BackColor, listView_ranking.Font);
+                    parent.SubItems.Add(x.ViewSenka.ToString("N0"), parent.ForeColor, parent.BackColor, listView_ranking.Font);
                     //戦果増分
                     if (diff.DiffSenka == null) parent.SubItems.Add("?", parent.ForeColor, parent.BackColor, listView_ranking.Font);
                     else parent.SubItems.Add("+" + ((int)(diff.DiffSenka)).ToString("N0"), parent.ForeColor, parent.BackColor, listView_ranking.Font);
@@ -537,6 +589,21 @@ namespace VisualFormTest.UserControls
                     else parent.SubItems.Add(eocalc.FirstSenkaRecordName, parent.ForeColor, parent.BackColor, listView_ranking.Font);
                     //潜水マンフラグ
                     parent.SubItems.Add(handicap > 0 ? "○" : "×", parent.ForeColor, parent.BackColor, listView_ranking.Font);
+
+                    //提督Lv
+                    parent.SubItems.Add(x.api_level.ToString(), parent.ForeColor, parent.BackColor, listView_ranking.Font);
+                    //提督経験値
+                    parent.SubItems.Add(x.api_experience.ToString("N0"), parent.ForeColor, parent.BackColor, listView_ranking.Font);
+
+                    //タグ情報
+                    var tag = new RankingListViewTag();
+                    tag.NickName = x.api_nickname;
+                    tag.CacheHash = selectedHash;
+                    tag.RankingList = x;
+                    tag.RankingDiff = diff;
+                    if (eocalc.DestroiedEO.HasValue) tag.SumEo = eocalc.DestroiedEO.Value;
+
+                    parent.Tag = tag;
 
                     //コレクションに追加
                     items.Add(parent);
@@ -654,21 +721,27 @@ namespace VisualFormTest.UserControls
             HelperScreen.ScreenShot(listView_ranking, "ranking");
         }
 
-        //潜水マンに追加
+        //潜水マンに追加・削除
         private void toolStripMenuItem_addsubmariner_Click(object sender, EventArgs e)
         {
             var selected = listView_ranking.SelectedItems.OfType<ListViewItem>().FirstOrDefault();
             if(selected != null)
             {
-                //提督ID
-                if (selected.Tag == null || !(selected.Tag is int)) return;
-                int id = (int)selected.Tag;
                 //提督名
-                if (selected.SubItems.Count < 3) return;
-                string name = selected.SubItems[2].Text;
+                if (selected.Tag == null || !(selected.Tag is RankingListViewTag)) return;
+                var rankingtag = selected.Tag as RankingListViewTag;
+                string name = rankingtag.NickName;
 
                 //追加
-                Config.RankingSubmarinerList[id] = name;
+                if (!Config.RankingSubmarinerList.Contains(name))
+                {
+                    Config.RankingSubmarinerList.Add(name);
+                }
+                //削除
+                else
+                {
+                    Config.RankingSubmarinerList.Remove(name);
+                }
             }
 
             RefreshListView(selectedRanking);
@@ -683,6 +756,36 @@ namespace VisualFormTest.UserControls
                     if (setting.RefreshRequired) RefreshListView(selectedRanking);
                 };
             setting.ShowDialog();
+        }
+
+        //EO設定
+        private void toolStripMenuItem_selfeo_Click(object sender, EventArgs e)
+        {
+            var selected = listView_ranking.SelectedItems.OfType<ListViewItem>().FirstOrDefault();
+            if(selected == null) return;
+            var tag = selected.Tag as RankingListViewTag;
+
+            var eosetting = new RankingViewer_SelfEo(tag);
+            eosetting.FormClosing += (ss, ee) =>
+                {
+                    if (eosetting.IsOkPressed)
+                    {
+                        if(fileCache.ContainsKey(eosetting.RankingTag.CacheHash))
+                        {
+                            if(fileCache[eosetting.RankingTag.CacheHash].ContainsKey(eosetting.RankingTag.RankingList.api_no))
+                            {
+                                //キャッシュ側の変更
+                                fileCache[eosetting.RankingTag.CacheHash][eosetting.RankingTag.RankingList.api_no].EoMemoValue = eosetting.EoAppend;
+                                //いったん保存
+                                SaveData(eosetting.RankingTag.CacheHash);
+                                //再度更新
+                                RefreshListView(eosetting.RankingTag.CacheHash);
+                            }
+                        }
+                    }
+                };
+
+            eosetting.ShowDialog();
         }
     }
 }

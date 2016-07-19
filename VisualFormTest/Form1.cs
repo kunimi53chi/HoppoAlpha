@@ -491,7 +491,7 @@ namespace VisualFormTest
 
             if (Config.ShowJson)
             {
-                UpdateJson(res, string.Format("【Request】{0}{1}{2}", reqb, Environment.NewLine, body));
+                UpdateJson(res, body);
 
                 if (JsonLogger.IsLogging) JsonLogger.SaveJsonAsync(reqb, body, oSession);
             }
@@ -699,6 +699,20 @@ namespace VisualFormTest
                     }
                     //api_port/portの読み込み（暗黙的に）
                     APIPort.ReadPort(json);
+                    //ランキングの確認
+                    if(APIReqRanking.Rankings != null && APIReqRanking.OldRankingsNum < APIReqRanking.Rankings.Count)
+                    {
+                        if(MessageBox.Show("ランキングデータの追加取得を確認しました！"+Environment.NewLine + 
+                            "戦果情報解析用に使用する提督別戦果の表示値を設定する必要があります。"+Environment.NewLine +
+                            "ダイアログを開きますか？"+Environment.NewLine +
+                            "（この処理をスキップすると戦果表示に反映されません）"+Environment.NewLine + Environment.NewLine +
+                            "後から「ホーム」→「戦果解析用電卓」からも開けます", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            var ranking = new UserControls.TabSenka_ForAnalyzeViewCalc(this);
+                            ranking.ShowDialog();
+                        }
+                    }
+                    APIReqRanking.OldRankingsNum = APIReqRanking.Rankings.Count;
 
                     //basicからのお引越し
                     if (!HistoricalData.IsInited)
@@ -837,6 +851,10 @@ namespace VisualFormTest
                             return;
                         case "remodeling":
                             APIReqKaisou.ReadRemodeling(reqb);
+                            return;
+                        case "slot_deprive":
+                            APIReqKaisou.ReadSlotDeprive(json);
+                            FleetInfoUpdate();
                             return;
                     }
                     break;
@@ -1231,8 +1249,10 @@ namespace VisualFormTest
                 TSortieReportViewer = toolStripMenuItem_wa_sortiereport,
                 TRankingViewer = toolStripMenuItem_wa_ranking,
                 TPresetDeckViewer = toolStripMenuItem_wa_preset,
+                TPracticeInfo = toolStripMenuItem_wa_practice,
 
                 TKCVDBLog = toolStripMenuItem_wv_kcvdb,
+                TKisuTetyo = toolStripMenuItem_wv_kisu,
             };
             //ToolStrip←→DockStateChangedのハンドラー
             foreach (DockContent x in dwPageCollection.TabPages)
@@ -1280,8 +1300,10 @@ namespace VisualFormTest
             toolStripMenuItem_wa_sortiereport.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
             toolStripMenuItem_wa_ranking.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
             toolStripMenuItem_wa_preset.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
+            toolStripMenuItem_wa_practice.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
 
             toolStripMenuItem_wv_kcvdb.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
+            toolStripMenuItem_wv_kisu.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
             //読み込み
             string userlayout_filename = @"config\layout.xml";
             if (File.Exists(userlayout_filename))
@@ -1827,12 +1849,6 @@ namespace VisualFormTest
                 kl.FormClosed += new FormClosedEventHandler(ModalDialog_FormClosed);
                 kl.ShowDialog();
             }
-            //ネタバレ回避
-            else if(e.ClickedItem == toolStripMenuItem15)
-            {
-                Config.ShowBattleInfo = !(Config.ShowBattleInfo);
-                toolStripMenuItem15.Checked = !(toolStripMenuItem15.Checked);
-            }
             //JSONを表示
             else if(e.ClickedItem == toolStripMenuItem17)
             {
@@ -2019,12 +2035,51 @@ namespace VisualFormTest
             }
         }
 
+        //戦果計算機
+        private void toolStripMenuItem39_Click(object sender, EventArgs e)
+        {
+            var senkacalc = new UserControls.TabSenka_ForAnalyzeViewCalc(this);
+            senkacalc.ShowDialog();
+        }
+
+        //ネタバレ防止
+        private void toolStripMenuItem15_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if(e.ClickedItem == toolStripMenuItem_netabare_0_none)
+            {
+                toolStripMenuItem_netabare_0_none.Checked = true;
+                toolStripMenuItem_netabare_1_half.Checked = false; toolStripMenuItem_netabare_2_fulloff.Checked = false;
+                Config.ShowBattleInfoState = 0;
+            }
+            else if(e.ClickedItem == toolStripMenuItem_netabare_1_half)
+            {
+                toolStripMenuItem_netabare_1_half.Checked = true;
+                toolStripMenuItem_netabare_0_none.Checked = false; toolStripMenuItem_netabare_2_fulloff.Checked = false;
+                Config.ShowBattleInfoState = 1;
+            }
+            else if(e.ClickedItem == toolStripMenuItem_netabare_2_fulloff)
+            {
+                toolStripMenuItem_netabare_2_fulloff.Checked = true;
+                toolStripMenuItem_netabare_0_none.Checked = false; toolStripMenuItem_netabare_1_half.Checked = false;
+                Config.ShowBattleInfoState = 2;
+            }
+        }
+
+
         //ホーム画面の初期化
         private void HomeButtonInit()
         {
             //ネタバレ15 JSON17
-            //戦闘ネタバレ回避ボタン
-            toolStripMenuItem15.Checked = !Config.ShowBattleInfo;
+            //戦闘ネタバレの状態
+            switch(Config.ShowBattleInfoState)
+            {
+                case 0: 
+                    toolStripMenuItem_netabare_0_none.Checked = true; break;
+                case 1:
+                    toolStripMenuItem_netabare_1_half.Checked = true; break;
+                case 2:
+                    toolStripMenuItem_netabare_2_fulloff.Checked = true; break;
+            }
             //JSONを表示
             toolStripMenuItem17.Checked = Config.ShowJson;
             //最前面
@@ -2152,7 +2207,10 @@ namespace VisualFormTest
         #endregion
 
 
-        
+
+
+
+
 
     }
 }

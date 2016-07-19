@@ -38,10 +38,9 @@
             this.splitContainer_main = new System.Windows.Forms.SplitContainer();
             this.treeView_files = new System.Windows.Forms.TreeView();
             this.listView_ranking = new System.Windows.Forms.ListView();
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,9 +52,12 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem_selfeo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem_addsubmariner = new System.Windows.Forms.ToolStripMenuItem();
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer_main)).BeginInit();
             this.splitContainer_main.Panel1.SuspendLayout();
@@ -144,9 +146,7 @@
             this.listView_ranking.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader16,
             this.columnHeader1,
-            this.columnHeader2,
             this.columnHeader3,
-            this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7,
@@ -157,7 +157,9 @@
             this.columnHeader12,
             this.columnHeader13,
             this.columnHeader14,
-            this.columnHeader15});
+            this.columnHeader15,
+            this.columnHeader2,
+            this.columnHeader4});
             this.listView_ranking.ContextMenuStrip = this.contextMenuStrip1;
             this.listView_ranking.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView_ranking.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -170,28 +172,21 @@
             this.listView_ranking.View = System.Windows.Forms.View.Details;
             this.listView_ranking.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_ranking_ColumnClick);
             // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "#";
+            this.columnHeader16.Width = 40;
+            // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "順";
             this.columnHeader1.Width = 40;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Lv";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 40;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "提督名";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader3.Width = 120;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "提督経験値";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 100;
             // 
             // columnHeader5
             // 
@@ -254,24 +249,45 @@
             this.columnHeader15.Text = "潜";
             this.columnHeader15.Width = 40;
             // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Lv";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 20;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "提督経験値";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 20;
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_selfeo,
+            this.toolStripSeparator1,
             this.toolStripMenuItem_addsubmariner});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(190, 54);
+            // 
+            // toolStripMenuItem_selfeo
+            // 
+            this.toolStripMenuItem_selfeo.Name = "toolStripMenuItem_selfeo";
+            this.toolStripMenuItem_selfeo.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItem_selfeo.Text = "EO補正値";
+            this.toolStripMenuItem_selfeo.Click += new System.EventHandler(this.toolStripMenuItem_selfeo_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
             // 
             // toolStripMenuItem_addsubmariner
             // 
             this.toolStripMenuItem_addsubmariner.Name = "toolStripMenuItem_addsubmariner";
-            this.toolStripMenuItem_addsubmariner.Size = new System.Drawing.Size(160, 22);
-            this.toolStripMenuItem_addsubmariner.Text = "潜水マンに追加";
+            this.toolStripMenuItem_addsubmariner.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItem_addsubmariner.Text = "潜水マンに追加/削除";
             this.toolStripMenuItem_addsubmariner.Click += new System.EventHandler(this.toolStripMenuItem_addsubmariner_Click);
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "#";
-            this.columnHeader16.Width = 40;
             // 
             // RankingViewer
             // 
@@ -322,5 +338,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_addsubmariner;
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_selfeo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

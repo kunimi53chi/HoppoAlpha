@@ -148,7 +148,7 @@ namespace VisualFormTest
             if (APIBattle.BattleQueue == null || APIBattle.BattleView == null) return;
             if (APIGetMember.BaseAirCorps == null) return;
 
-            if(!Config.ShowBattleInfo)
+            if(Config.ShowBattleInfoState >= 1)
             {
                 foreach(var i in Enumerable.Range(0, handler.AirCombats.Length))
                     ResetAirBaseBattle(handler, tooltip, i);

@@ -22,12 +22,7 @@ namespace VisualFormTest.UserControls
             numericUpDown_eohandicap.Value = Config.RankingSubmarinerEOHandicap;
             //潜水マン一覧
             listView_submariner.SuspendLayout();
-            var listitems = Config.RankingSubmarinerList.Select(delegate(KeyValuePair<int, string> x)
-            {
-                var item = new ListViewItem(x.Key.ToString());
-                item.SubItems.Add(x.Value);
-                return item;
-            }).ToArray();
+            var listitems = Config.RankingSubmarinerList.Select(x => new ListViewItem(x)).ToArray();
             listView_submariner.Items.Clear();
             listView_submariner.Items.AddRange(listitems);
             listView_submariner.ResumeLayout();
@@ -39,20 +34,13 @@ namespace VisualFormTest.UserControls
             //潜水マンハンデ
             Config.RankingSubmarinerEOHandicap = (int)numericUpDown_eohandicap.Value;
             //潜水マンリスト
-            Dictionary<int, string> submariner = new Dictionary<int, string>();
-            foreach(var i in listView_submariner.Items.OfType<ListViewItem>())
+            var submariner = listView_submariner.Items.OfType<ListViewItem>().Where(x => x.SubItems.Count >= 1).Select(x => x.SubItems[0].Text);
+            var hashset = new HashSet<string>();
+            foreach(var s in submariner)
             {
-                if (i.SubItems.Count < 2) continue;
-                //提督ID
-                int id;
-                int.TryParse(i.SubItems[0].Text, out id);
-                if(id != 0)
-                {
-                    submariner[id] = i.SubItems[1].Text;//提督名
-                }
+                hashset.Add(s);
             }
-
-            Config.RankingSubmarinerList = submariner;
+            Config.RankingSubmarinerList = hashset;
 
             RefreshRequired = true;
         }

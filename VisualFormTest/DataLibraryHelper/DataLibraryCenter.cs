@@ -117,6 +117,8 @@ namespace VisualFormTest
                 DropDataBase.Save();
                 //出撃報告書の保存
                 SortieReportDataBase.Save(onclosing);
+                //演習情報の保存
+                PracticeInfoDataBase.Save();
 
                 //検証DBのエラーログ
                 KancolleVerifyDb.KCVDBObjects.SaveDbErrorLog();

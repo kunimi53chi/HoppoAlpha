@@ -55,6 +55,7 @@
     <Compile Include="DataObject\ExMasterSlotitem.cs" />
     <Compile Include="DataObject\ExMasterSlotitemCollection.cs" />
     <Compile Include="DataObject\HPCondition.cs" />
+    <Compile Include="DataObject\PracticeInfoCollection.cs" />
     <Compile Include="DataObject\QuestRecord.cs" />
     <Compile Include="DataObject\SortieReport.cs" />
     <Compile Include="DataObject\SortieReportCollection.cs" />
@@ -69,6 +70,8 @@
     <Compile Include="RawApi\ApiGetMember\RequireInfo.cs" />
     <Compile Include="RawApi\ApiReqAirCorps\SetPlane.cs" />
     <Compile Include="RawApi\ApiReqAirCorps\Supply.cs" />
+    <Compile Include="RawApi\ApiReqKaisou\SlotDeprive.cs" />
+    <Compile Include="RawApi\ApiReqMember\GetPracticeEnemyinfo.cs" />
     <Compile Include="RawApi\ApiReqQuest\ApiQuest.cs" />
     <Compile Include="DataObject\CounterItem.cs" />
     <Compile Include="DataType.cs" />
@@ -126,8 +129,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <EmbeddedResource Include="slotitems160422.csv" />
-    <EmbeddedResource Include="ships160422.csv" />
+    <EmbeddedResource Include="ships160718.csv" />
+    <EmbeddedResource Include="slotitems160718.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

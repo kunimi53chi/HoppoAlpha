@@ -23,10 +23,11 @@ namespace VisualFormTest
                     sb.AppendLine(x.Value.api_detail);//任務名
                     switch (x.Value.api_type)
                     {
-                        case 1: sb.AppendLine("[ワンオフ]"); break;
-                        case 2: sb.AppendLine("[デイリー]"); break;
-                        case 3: sb.AppendLine("[ウィークリー]"); break;
-                        case 6: sb.AppendLine("[マンスリー]"); break;
+                        case 1: sb.AppendLine("[デイリー]"); break;
+                        case 2: sb.AppendLine("[ウィークリー]"); break;
+                        case 3: sb.AppendLine("[マンスリー]"); break;
+                        case 4: sb.AppendLine("[単発]"); break;
+                        case 5: sb.AppendLine("[クォタリー]"); break;
                     }
 
                     return sb.ToString();

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HoppoAlpha.DataLibrary.RawApi.ApiPort;
 using HoppoAlpha.DataLibrary.RawApi.ApiGetMember;
+using HoppoAlpha.DataLibrary.RawApi.ApiReqKaisou;
 using Codeplex.Data;
 
 namespace VisualFormTest
@@ -81,6 +82,34 @@ namespace VisualFormTest
             //改装開始
             OnRemodeling = true;
             DefaultSlotitemDataBase.StartRemodeling(shipid);
+        }
+
+        //slot_deprive : 他の艦から装備をはぎ取る
+        public static void ReadSlotDeprive(string json)
+        {
+            if (APIPort.ShipsDictionary == null) return;
+            if (APIGetMember.Unsetslots == null || APIGetMember.Unsetslots.slottype == null) return;
+
+            var ojson = DynamicJson.Parse(json).api_data;
+            ApiSlotDeprive deprive = ojson.Deserialize<ApiSlotDeprive>();
+
+            //船
+            if (deprive.api_ship_data == null || deprive.api_ship_data.api_set_ship == null || deprive.api_ship_data.api_unset_ship == null) return;
+            if(APIPort.ShipsDictionary.ContainsKey(deprive.api_ship_data.api_set_ship.api_id))
+            {
+                APIPort.ShipsDictionary[deprive.api_ship_data.api_set_ship.api_id] = deprive.api_ship_data.api_set_ship;
+            }
+            if(APIPort.ShipsDictionary.ContainsKey(deprive.api_ship_data.api_unset_ship.api_id))
+            {
+                APIPort.ShipsDictionary[deprive.api_ship_data.api_unset_ship.api_id] = deprive.api_ship_data.api_unset_ship;
+            }
+
+            //装備
+            if (deprive.api_unset_list == null || deprive.api_unset_list.api_slot_list == null) return;
+            if(deprive.api_unset_list.api_type3No <= APIGetMember.Unsetslots.slottype.Count)
+            {
+                APIGetMember.Unsetslots.slottype[deprive.api_unset_list.api_type3No - 1] = deprive.api_unset_list.api_slot_list;
+            }
         }
     }
 }

@@ -48,6 +48,8 @@ namespace HoppoAlpha.DataLibrary
                     return typeof(DataObject.ExMasterSlotitemCollection);
                 case DataType.SortieReport:
                     return typeof(DataObject.SortieReportCollection);
+                case DataType.PracticeInfo:
+                    return typeof(DataObject.PracticeInfoCollection);
                 default:
                     throw new NotImplementedException("要求されたDataTypeに対する、GetCollectionTypeが実装されていません");
             }
@@ -109,6 +111,9 @@ namespace HoppoAlpha.DataLibrary
                 case DataType.SortieReport:
                     var sortie = (DataObject.SortieReportCollection)collection;
                     return sortie.IsNullOrEmpty();
+                case DataType.PracticeInfo:
+                    var prac = (DataObject.PracticeInfoCollection)collection;
+                    return prac.IsNullOfEmpty();
                 default:
                     throw new NotImplementedException("要求されたDataTypeに対する、IsNullOrEmptyが実装されていません");
             }
@@ -169,7 +174,7 @@ namespace HoppoAlpha.DataLibrary
                 case DataType.Quest:
                     return ((DataObject.QuestRecord)newSource).IsIncreasing((DataObject.QuestRecord)oldSource);
                 case DataType.Ranking:
-                    return _IsIncreasing(newSource, oldSource);
+                    return _IsIncreasing(newSource, oldSource) || (newSource.Count == oldSource.Count);
                 case DataType.Senka:
                     var oldSenka = (List<DataObject.SenkaRecord>)oldSource;
                     var newSenka = (List<DataObject.SenkaRecord>)newSource;
@@ -184,6 +189,8 @@ namespace HoppoAlpha.DataLibrary
                     return _IsIncreasing(newSource, oldSource) || (newSource.Count == oldSource.Count);
                 case DataType.SortieReport:
                     return ((DataObject.SortieReportCollection)newSource).IsIncreasing((DataObject.SortieReportCollection)oldSource);
+                case DataType.PracticeInfo:
+                    return ((DataObject.PracticeInfoCollection)newSource).IsIncreasing((DataObject.PracticeInfoCollection)oldSource);
                 default:
                     throw new NotImplementedException("要求されたDataTypeに対する、IsIncreasingが実装されていません");
             }

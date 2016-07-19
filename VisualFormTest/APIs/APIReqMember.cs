@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Codeplex.Data;
+using HoppoAlpha.DataLibrary.RawApi.ApiReqMember;
 
 namespace VisualFormTest
 {
@@ -18,6 +19,10 @@ namespace VisualFormTest
             //形勢オブジェクト
             view.EnemyPracticeID = (int)ojson.api_member_id;
             APIBattle.BattleView = view;
+
+            //PracticeInfoのデータの保存
+            var pinfo = ojson.Deserialize<GetPracticeEnemyinfo>();
+            PracticeInfoDataBase.AddDataBase(pinfo);
         }
     }
 }

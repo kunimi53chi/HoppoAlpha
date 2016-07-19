@@ -311,13 +311,13 @@ namespace VisualFormTest
             target.EndTime = date;
             target.EndExp = exp;
             target.SpecialSenka += special;
-            target.CalcEstimateSenka();
+            target.CalcEstimateMySenka();
             target.Title = title;
         }
 
         //戦果の画面
         public static void SetSenkaValue(int startSenka, int startIndex, int endIndex, 
-            int[] rankingSenka, int[] rankingID, int[] rankingExp, string[] rankingName)
+            int[] rankingApiRate, string[] rankingName)
         {
             //ベース
             SetSenkaValue();
@@ -326,16 +326,14 @@ namespace VisualFormTest
             if (startSenka >= 0)
             {
                 target.StartSenka = startSenka;
-                target.CalcEstimateSenka();
+                target.CalcEstimateMySenka();
             }
             //配列部分
             if (endIndex >= SenkaRecord.MaxArraySize) return;
             for(int i=startIndex; i<=endIndex; i++)
             {
                 int validx = i - startIndex;
-                target.TopSenka[i] = rankingSenka[validx];
-                target.TopID[i] = rankingID[validx];
-                target.TopExp[i] = rankingExp[validx];
+                target.SetPlayerApiRate(i, rankingApiRate[validx]);
                 target.TopName[i] = rankingName[validx];
             }
         }
@@ -349,12 +347,29 @@ namespace VisualFormTest
         public int Mode { get; set; }
         public GraphInfoTerm Term { get; set; }
         public bool IsDiff { get; set; }
+        public GraphExceptSeries ExceptSeries { get; set; }
     }
 
     public enum GraphInfoTerm
     {
         None, All, Week, Day,
     }
+
+    [Flags]
+    public enum GraphExceptSeries
+    {
+        Series1 = 1,
+        Series2 = 2,
+        Series3 = 4,
+        Series4 = 8,
+        Series5 = 16,
+        Series6 = 32,
+        Series7 = 64,
+        Series8 = 128,
+        Series9 = 256,
+        Series10 = 512,
+    }
+
     public static class GraphInfoTermExt
     {
         public static DateTime GetMinDate(this GraphInfoTerm g)
@@ -366,6 +381,16 @@ namespace VisualFormTest
                 case GraphInfoTerm.Week: return DateTime.Now - new TimeSpan(7, 0, 0, 0);
                 default: return DateTime.Today;
             }
+        }
+
+        public static bool ContainsExceptSeries(this GraphExceptSeries graphExceptSeries, int series)
+        {
+            if (series <= 0 || series > 10) throw new ArgumentOutOfRangeException();
+
+            int val = (int)Math.Pow(2, series - 1);
+            var flag = (GraphExceptSeries)val;
+
+            return graphExceptSeries.HasFlag(flag);
         }
     }
     #endregion

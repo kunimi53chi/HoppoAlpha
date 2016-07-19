@@ -171,6 +171,12 @@ namespace VisualFormTest
                     binfo.AddDamage(d_support_hourai);
                 }
             }
+            //開幕対潜
+            if(ojson.api_opening_taisen != null)
+            {
+                DamageHougeki d_opening_taisen = ojson.api_opening_taisen.Deserialize<DamageHougeki>();
+                binfo.AddDamage(d_opening_taisen);
+            }
             //開幕雷撃 : atackというスペルミスがデフォルトなので注意
             if(ojson.api_opening_atack != null)
             {
@@ -559,6 +565,12 @@ namespace VisualFormTest
                     binfo.AddDamage(d_support_hourai);
                 }
             }
+            //開幕対潜
+            if (ojson.api_opening_taisen != null)
+            {
+                DamageHougeki d_opening_taisen = ojson.api_opening_taisen.Deserialize<DamageHougeki>();
+                binfo.AddDamage(d_opening_taisen);
+            }
             //開幕雷撃（第2艦隊） : atackというスペルミスがデフォルトなので注意
             if (ojson.IsDefined("api_opening_atack") && ojson.api_opening_atack != null)
             {
@@ -658,6 +670,12 @@ namespace VisualFormTest
                     };
                     binfo.AddDamage(d_support_hourai);
                 }
+            }
+            //開幕対潜
+            if (ojson.api_opening_taisen != null)
+            {
+                DamageHougeki d_opening_taisen = ojson.api_opening_taisen.Deserialize<DamageHougeki>();
+                binfo.AddDamage(d_opening_taisen);
             }
             //開幕雷撃（第2艦隊） : atackというスペルミスがデフォルトなので注意
             if (ojson.IsDefined("api_opening_atack") && ojson.api_opening_atack != null)
