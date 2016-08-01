@@ -42,7 +42,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::VisualFormTest.Properties.Resources.kvt;
             this.pictureBox1.Location = new System.Drawing.Point(20, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);

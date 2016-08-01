@@ -53,7 +53,6 @@
             // 
             this.extraWebBrowser1.AllowWebBrowserDrop = false;
             this.extraWebBrowser1.ContextMenuStrip = this.contextMenuStrip1;
-            this.extraWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.extraWebBrowser1.Location = new System.Drawing.Point(0, 0);
             this.extraWebBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.extraWebBrowser1.Name = "extraWebBrowser1";
@@ -61,7 +60,6 @@
             this.extraWebBrowser1.ScrollBarsEnabled = false;
             this.extraWebBrowser1.Size = new System.Drawing.Size(800, 480);
             this.extraWebBrowser1.TabIndex = 1;
-            this.extraWebBrowser1.WebBrowserShortcutsEnabled = false;
             // 
             // KisuTetyo
             // 

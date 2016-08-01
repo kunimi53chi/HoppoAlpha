@@ -743,11 +743,24 @@ namespace VisualFormTest
                         var slotobj = new ToDeckBuilder.SlotItem()
                         {
                             Id = oslot.api_slotitem_id,
-                            EnhancedLevel = Math.Max(oslot.api_level, oslot.api_alv)
+                            ReinforcedLevel = oslot.api_level,
+                            MasterLevel = oslot.api_alv,
                         };
                         slots.Add(slotobj);
                     }
                     ship.Items = slots;
+                    //拡張スロットのオブジェクト
+                    SlotItem exslot;
+                    if(APIGetMember.SlotItemsDictionary.TryGetValue(oship.api_slot_ex, out exslot))
+                    {
+                        var exobj = new ToDeckBuilder.SlotItem()
+                        {
+                            Id = exslot.api_slotitem_id,
+                            ReinforcedLevel = exslot.api_level,
+                            MasterLevel = exslot.api_alv,
+                        };
+                        ship.ExItem = exobj;
+                    }
                     //キャラアイテムの追加
                     convDeck.Add(ship);
                 }

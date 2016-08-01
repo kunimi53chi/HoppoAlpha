@@ -122,7 +122,7 @@ namespace VisualFormTest.UserControls
                         val = measure / rank;
                         break;
                     case 3://剰余
-                        val = measure & rank;
+                        val = measure % rank;
                         break;
                     default:
                         val = 0;
@@ -297,6 +297,7 @@ namespace VisualFormTest.UserControls
         //変更を適用する
         private void Apply()
         {
+            if (HistoricalData.LogSenka == null || HistoricalData.LogSenka.Count == 0) return;
             //セクションが異なる場合は閉じる
             if (APIPort.Basic == null) return;
             if (APIReqRanking.GetFileName(DateTime.Now) != APIReqRanking.LastSavedFileName)

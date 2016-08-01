@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DockWindowKCVDBLog));
+            this.components = new System.ComponentModel.Container();
             this.kcvdbLog1 = new VisualFormTest.UserControls.KCVDBLog();
             this.SuspendLayout();
             // 
             // kcvdbLog1
             // 
             this.kcvdbLog1.BackColor = System.Drawing.Color.Gainsboro;
+            this.kcvdbLog1.IsShown = false;
             this.kcvdbLog1.Location = new System.Drawing.Point(0, 0);
             this.kcvdbLog1.Name = "kcvdbLog1";
             this.kcvdbLog1.Size = new System.Drawing.Size(640, 160);
@@ -48,7 +49,6 @@
             this.Controls.Add(this.kcvdbLog1);
             this.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.HideOnClose = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DockWindowKCVDBLog";
             this.Text = "艦これ検証DB(KCVDB)";
             this.DockStateChanged += new System.EventHandler(this.DockWindowKCVDBLog_DockStateChanged);

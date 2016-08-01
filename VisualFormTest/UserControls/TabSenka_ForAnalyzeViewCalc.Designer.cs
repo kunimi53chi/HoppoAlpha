@@ -567,6 +567,7 @@
             // 
             // button_ok
             // 
+            this.button_ok.Enabled = false;
             this.button_ok.Location = new System.Drawing.Point(50, 410);
             this.button_ok.Name = "button_ok";
             this.button_ok.Size = new System.Drawing.Size(100, 23);
@@ -587,6 +588,7 @@
             // 
             // button_apply
             // 
+            this.button_apply.Enabled = false;
             this.button_apply.Location = new System.Drawing.Point(290, 410);
             this.button_apply.Name = "button_apply";
             this.button_apply.Size = new System.Drawing.Size(100, 23);

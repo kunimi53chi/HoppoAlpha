@@ -40,6 +40,8 @@
             this.admiralExpTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem_screenshot = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem_setval = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -185,9 +187,11 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_setval,
+            this.toolStripSeparator1,
             this.toolStripMenuItem_screenshot});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 76);
             // 
             // toolStripMenuItem_screenshot
             // 
@@ -195,6 +199,18 @@
             this.toolStripMenuItem_screenshot.Size = new System.Drawing.Size(184, 22);
             this.toolStripMenuItem_screenshot.Text = "スクリーンショット";
             this.toolStripMenuItem_screenshot.Click += new System.EventHandler(this.toolStripMenuItem_screenshot_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
+            // 
+            // toolStripMenuItem_setval
+            // 
+            this.toolStripMenuItem_setval.Name = "toolStripMenuItem_setval";
+            this.toolStripMenuItem_setval.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem_setval.Text = "自分の戦果を設定";
+            this.toolStripMenuItem_setval.Click += new System.EventHandler(this.toolStripMenuItem_setval_Click);
             // 
             // TabSenkaShort
             // 
@@ -225,5 +241,7 @@
         private System.Windows.Forms.Timer admiralExpTimer;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_screenshot;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_setval;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

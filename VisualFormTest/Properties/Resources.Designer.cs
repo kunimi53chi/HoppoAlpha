@@ -254,16 +254,6 @@ namespace VisualFormTest.Properties {
         }
         
         /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Bitmap kvt {
-            get {
-                object obj = ResourceManager.GetObject("kvt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   try {
         ///	var hideStyle = {width:&quot;0px&quot;,height:&quot;0px&quot;,visibility:&quot;hidden&quot;,display:&quot;none&quot;};
         ///	var fillStyle = {margin:&quot;0px&quot;,padding:&quot;0px&quot;,position:&quot;fixed&quot;,left:&quot;0px&quot;,top:&quot;0px&quot;,width:&quot;100%&quot;,height:&quot;100%&quot;,overflow:&quot;hidden&quot;};

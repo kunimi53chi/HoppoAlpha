@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.contextMenuStrip_senka = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem_senka_predict = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_border = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,6 +88,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem_setval = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_senka.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_senka)).BeginInit();
             this.contextMenuStrip_sgraph.SuspendLayout();
@@ -100,23 +102,27 @@
             // contextMenuStrip_senka
             // 
             this.contextMenuStrip_senka.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_setval,
             this.toolStripMenuItem_senka_predict,
             this.toolStripMenuItem_border,
+            this.toolStripSeparator1,
             this.toolStripMenuItem_screenshot});
             this.contextMenuStrip_senka.Name = "contextMenuStrip_senka";
-            this.contextMenuStrip_senka.Size = new System.Drawing.Size(185, 70);
+            this.contextMenuStrip_senka.Size = new System.Drawing.Size(185, 120);
             // 
             // toolStripMenuItem_senka_predict
             // 
             this.toolStripMenuItem_senka_predict.Name = "toolStripMenuItem_senka_predict";
             this.toolStripMenuItem_senka_predict.Size = new System.Drawing.Size(184, 22);
             this.toolStripMenuItem_senka_predict.Text = "戦果予測の表示";
+            this.toolStripMenuItem_senka_predict.Visible = false;
             // 
             // toolStripMenuItem_border
             // 
             this.toolStripMenuItem_border.Name = "toolStripMenuItem_border";
             this.toolStripMenuItem_border.Size = new System.Drawing.Size(184, 22);
             this.toolStripMenuItem_border.Text = "ボーダー表示の設定";
+            this.toolStripMenuItem_border.Visible = false;
             this.toolStripMenuItem_border.Click += new System.EventHandler(this.toolStripMenuItem_border_Click);
             // 
             // toolStripMenuItem_screenshot
@@ -128,24 +134,24 @@
             // 
             // chart_senka
             // 
-            chartArea1.AxisX.IsLabelAutoFit = false;
-            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            chartArea1.AxisX.LabelStyle.Format = "\\\'d H:mm";
-            chartArea1.AxisY.IsLabelAutoFit = false;
-            chartArea1.AxisY.IsStartedFromZero = false;
-            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            chartArea1.AxisY.LabelStyle.Format = "N0";
-            chartArea1.Name = "ChartArea1";
-            this.chart_senka.ChartAreas.Add(chartArea1);
+            chartArea2.AxisX.IsLabelAutoFit = false;
+            chartArea2.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
+            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            chartArea2.AxisX.LabelStyle.Format = "\\\'d H:mm";
+            chartArea2.AxisY.IsLabelAutoFit = false;
+            chartArea2.AxisY.IsStartedFromZero = false;
+            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
+            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            chartArea2.AxisY.LabelStyle.Format = "N0";
+            chartArea2.Name = "ChartArea1";
+            this.chart_senka.ChartAreas.Add(chartArea2);
             this.chart_senka.ContextMenuStrip = this.contextMenuStrip_sgraph;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.chart_senka.Legends.Add(legend1);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            legend2.IsTextAutoFit = false;
+            legend2.Name = "Legend1";
+            this.chart_senka.Legends.Add(legend2);
             this.chart_senka.Location = new System.Drawing.Point(3, 3);
             this.chart_senka.Name = "chart_senka";
             this.chart_senka.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
@@ -909,6 +915,18 @@
             this.panel1.Size = new System.Drawing.Size(431, 153);
             this.panel1.TabIndex = 15;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
+            // 
+            // toolStripMenuItem_setval
+            // 
+            this.toolStripMenuItem_setval.Name = "toolStripMenuItem_setval";
+            this.toolStripMenuItem_setval.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem_setval.Text = "自分の戦果を設定";
+            this.toolStripMenuItem_setval.Click += new System.EventHandler(this.toolStripMenuItem_setval_Click);
+            // 
             // TabSenka
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -994,5 +1012,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_screenshot;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_border;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_setval;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

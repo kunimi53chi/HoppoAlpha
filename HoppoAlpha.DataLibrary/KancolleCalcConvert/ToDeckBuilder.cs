@@ -11,7 +11,7 @@ namespace HoppoAlpha.DataLibrary.KancolleCalcConvert
     public class ToDeckBuilder
     {
         public InternalList<DeckItem> Decks { get; set; }
-        public const int Version = 3;
+        public const int Version = 4;
 
         public ToDeckBuilder()
         {
@@ -79,6 +79,10 @@ namespace HoppoAlpha.DataLibrary.KancolleCalcConvert
             /// キャラの装備のリストを表します
             /// </summary>
             public InternalList<SlotItem> Items { get; set; }
+            /// <summary>
+            /// キャラの拡張スロットを表します
+            /// </summary>
+            public SlotItem ExItem { get; set; }
 
             public ShipItem()
             {
@@ -86,9 +90,11 @@ namespace HoppoAlpha.DataLibrary.KancolleCalcConvert
                 this.Items = new InternalList<SlotItem>();
             }
 
+            /// 例：{"id":"136","lv":0,"luck":-1,"items":{"i1":{"id":128,"rf":4},"i2":{"id":128,"rf":3},"i3":{"id":59,"rf":2},"i4":{"id":116,"rf":1}}}
+
             /// <summary>
             /// 船をJSON文字列に変換
-            /// 例：{"id":"136","lv":0,"luck":-1,"items":{"i1":{"id":128,"rf":4},"i2":{"id":128,"rf":3},"i3":{"id":59,"rf":2},"i4":{"id":116,"rf":1}}}
+            /// 例：{version: 4, f1: {s1: {id: '100', lv: 40, luck: -1, items:{i1:{id:1, rf: 4, mas:7},{i2:{id:3, rf: 0}}...,ix:{id:43}}}, s2:{}...},...}
             /// </summary>
             /// <returns>船のJSON文字列</returns>
             public override string ToString()
@@ -105,6 +111,9 @@ namespace HoppoAlpha.DataLibrary.KancolleCalcConvert
                     var item = this.Items[i];
                     itemstr.Add(string.Format("\"i{0}\":{1}", (i + 1).ToString(), item.ToString()));
                 }
+
+                //拡張スロット
+                if (ExItem != null) itemstr.Add(string.Format("\"ix\":{0}", ExItem.ToString()));
 
                 buf.Add(string.Format("\"items\":{0}", itemstr.ToStr()));
 
@@ -124,17 +133,22 @@ namespace HoppoAlpha.DataLibrary.KancolleCalcConvert
             /// <summary>
             /// 改修レベルを表します
             /// </summary>
-            public int EnhancedLevel { get; set; }
+            public int ReinforcedLevel { get; set; }
+            /// <summary>
+            /// 熟練度レベルを表します
+            /// </summary>
+            public int MasterLevel { get; set; }
 
             /// <summary>
-            /// 装備1個をJSONに変換（例：{"id":128,"rf":4}）
+            /// 装備1個をJSONに変換（例：{id:1, rf: 4, mas:7}）
             /// </summary>
             /// <returns>JSON文字列</returns>
             public override string ToString()
             {
                 InternalList<string> buf = new InternalList<string>();
                 buf.Add(string.Format("\"id\":{0}", this.Id));
-                buf.Add(string.Format("\"rf\":{0}", this.EnhancedLevel));
+                if(ReinforcedLevel > 0) buf.Add(string.Format("\"rf\":{0}", this.ReinforcedLevel));
+                if (MasterLevel > 0) buf.Add(string.Format("\"mas\":{0}", this.MasterLevel));
                 return buf.ToStr();
             }
 

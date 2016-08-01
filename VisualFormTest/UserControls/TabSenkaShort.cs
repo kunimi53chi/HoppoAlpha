@@ -68,5 +68,12 @@ namespace VisualFormTest.UserControls
         {
             HelperScreen.ScreenShot(this, "ssenka");
         }
+
+        private void toolStripMenuItem_setval_Click(object sender, EventArgs e)
+        {
+            var window = (this.FindForm() as DockingWindows.DockWindowShortTabSenka).MainForm;
+            TabSenka_SetMySenka setval = new TabSenka_SetMySenka(window);
+            setval.ShowDialog();
+        }
     }
 }

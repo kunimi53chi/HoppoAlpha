@@ -154,7 +154,7 @@ namespace VisualFormTest
 
              */
             //進化後がない場合
-            if (ship.api_aftershipid == "0" || ship.api_aftershipid == null)
+            if (ship.api_aftershipid == "0" || ship.api_aftershipid == null || ship.api_afterlv <= 0)
             {
                 node.Data = ship;
                 Nodes[id] = node;

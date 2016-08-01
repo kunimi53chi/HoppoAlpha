@@ -121,7 +121,15 @@ namespace HoppoAlpha.DataLibrary.DataObject
             double slotas = ((double)equip.api_tyku + (double)equip.Geigeki * 1.5) * Math.Sqrt(onSlotNum);
             //改修レベルの制空値
             double reinas = 0.0;
-            if (equip.EquipType == 6) reinas = (double)reinforcedLevel * 0.2 * Math.Sqrt(onSlotNum);//艦戦のみ
+            switch(equip.EquipType)
+            {
+                case 6://艦戦
+                    reinas = (double)reinforcedLevel * 0.2 * Math.Sqrt(onSlotNum);
+                    break;
+                case 7://艦爆（爆戦）
+                    reinas = (double)reinforcedLevel * 0.25 * Math.Sqrt(onSlotNum);
+                    break;
+            }
 
             //熟練度ボーナス
             double trainmin = AircraftTrainingBonus(equip, trainingLevel, false);

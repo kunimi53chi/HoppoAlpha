@@ -40,6 +40,9 @@
             this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_netabare_2_fulloff = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_netabare_1_half = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_netabare_0_none = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem34 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,9 +134,6 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerIdletime = new System.Windows.Forms.Timer(this.components);
             this.vS2012LightTheme1 = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
-            this.toolStripMenuItem_netabare_2_fulloff = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem_netabare_1_half = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem_netabare_0_none = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -220,6 +220,7 @@
             this.toolStripMenuItem28.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.toolStripMenuItem28.Size = new System.Drawing.Size(254, 22);
             this.toolStripMenuItem28.Text = "戦果予測";
+            this.toolStripMenuItem28.Visible = false;
             // 
             // toolStripMenuItem39
             // 
@@ -250,6 +251,24 @@
             this.toolStripMenuItem15.Size = new System.Drawing.Size(254, 22);
             this.toolStripMenuItem15.Text = "戦闘ネタバレ防止の設定";
             this.toolStripMenuItem15.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripMenuItem15_DropDownItemClicked);
+            // 
+            // toolStripMenuItem_netabare_2_fulloff
+            // 
+            this.toolStripMenuItem_netabare_2_fulloff.Name = "toolStripMenuItem_netabare_2_fulloff";
+            this.toolStripMenuItem_netabare_2_fulloff.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem_netabare_2_fulloff.Text = "完全非表示(ネタバレしない)";
+            // 
+            // toolStripMenuItem_netabare_1_half
+            // 
+            this.toolStripMenuItem_netabare_1_half.Name = "toolStripMenuItem_netabare_1_half";
+            this.toolStripMenuItem_netabare_1_half.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem_netabare_1_half.Text = "戦闘結果のみ非表示";
+            // 
+            // toolStripMenuItem_netabare_0_none
+            // 
+            this.toolStripMenuItem_netabare_0_none.Name = "toolStripMenuItem_netabare_0_none";
+            this.toolStripMenuItem_netabare_0_none.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem_netabare_0_none.Text = "ネタバレあり";
             // 
             // toolStripMenuItem17
             // 
@@ -913,24 +932,6 @@
             // 
             this.timerIdletime.Interval = 4000000;
             this.timerIdletime.Tick += new System.EventHandler(this.timerIdletime_Tick);
-            // 
-            // toolStripMenuItem_netabare_2_fulloff
-            // 
-            this.toolStripMenuItem_netabare_2_fulloff.Name = "toolStripMenuItem_netabare_2_fulloff";
-            this.toolStripMenuItem_netabare_2_fulloff.Size = new System.Drawing.Size(230, 22);
-            this.toolStripMenuItem_netabare_2_fulloff.Text = "完全非表示(ネタバレしない)";
-            // 
-            // toolStripMenuItem_netabare_1_half
-            // 
-            this.toolStripMenuItem_netabare_1_half.Name = "toolStripMenuItem_netabare_1_half";
-            this.toolStripMenuItem_netabare_1_half.Size = new System.Drawing.Size(230, 22);
-            this.toolStripMenuItem_netabare_1_half.Text = "戦闘結果のみ非表示";
-            // 
-            // toolStripMenuItem_netabare_0_none
-            // 
-            this.toolStripMenuItem_netabare_0_none.Name = "toolStripMenuItem_netabare_0_none";
-            this.toolStripMenuItem_netabare_0_none.Size = new System.Drawing.Size(230, 22);
-            this.toolStripMenuItem_netabare_0_none.Text = "ネタバレあり";
             // 
             // Form1
             // 

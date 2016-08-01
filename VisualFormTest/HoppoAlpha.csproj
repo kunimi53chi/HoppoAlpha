@@ -608,6 +608,12 @@
     <Compile Include="UserControls\TabSenka_ForAnalyzeViewCalc.Designer.cs">
       <DependentUpon>TabSenka_ForAnalyzeViewCalc.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TabSenka_SetMySenka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\TabSenka_SetMySenka.Designer.cs">
+      <DependentUpon>TabSenka_SetMySenka.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\TabSystemLog.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -869,6 +875,9 @@
     <EmbeddedResource Include="UserControls\TabSenka_ForAnalyzeViewCalc.resx">
       <DependentUpon>TabSenka_ForAnalyzeViewCalc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabSenka_SetMySenka.resx">
+      <DependentUpon>TabSenka_SetMySenka.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TabSystemLog.resx">
       <DependentUpon>TabSystemLog.cs</DependentUpon>
     </EmbeddedResource>
@@ -1025,9 +1034,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\config\300\compact.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\kvt.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\091.png" />

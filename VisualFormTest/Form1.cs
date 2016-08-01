@@ -700,19 +700,19 @@ namespace VisualFormTest
                     //api_port/portの読み込み（暗黙的に）
                     APIPort.ReadPort(json);
                     //ランキングの確認
-                    if(APIReqRanking.Rankings != null && APIReqRanking.OldRankingsNum < APIReqRanking.Rankings.Count)
-                    {
-                        if(MessageBox.Show("ランキングデータの追加取得を確認しました！"+Environment.NewLine + 
-                            "戦果情報解析用に使用する提督別戦果の表示値を設定する必要があります。"+Environment.NewLine +
-                            "ダイアログを開きますか？"+Environment.NewLine +
-                            "（この処理をスキップすると戦果表示に反映されません）"+Environment.NewLine + Environment.NewLine +
-                            "後から「ホーム」→「戦果解析用電卓」からも開けます", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-                        {
-                            var ranking = new UserControls.TabSenka_ForAnalyzeViewCalc(this);
-                            ranking.ShowDialog();
-                        }
-                    }
-                    APIReqRanking.OldRankingsNum = APIReqRanking.Rankings.Count;
+                    //if(APIReqRanking.Rankings != null && APIReqRanking.OldRankingsNum < APIReqRanking.Rankings.Count)
+                    //{
+                    //    if(MessageBox.Show("ランキングデータの追加取得を確認しました！"+Environment.NewLine + 
+                    //        "戦果情報解析用に使用する提督別戦果の表示値を設定する必要があります。"+Environment.NewLine +
+                    //        "ダイアログを開きますか？"+Environment.NewLine +
+                    //        "（この処理をスキップすると戦果表示に反映されません）"+Environment.NewLine + Environment.NewLine +
+                    //        "後から「ホーム」→「戦果解析用電卓」からも開けます", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    //    {
+                    //        var ranking = new UserControls.TabSenka_ForAnalyzeViewCalc(this);
+                    //        ranking.ShowDialog();
+                    //    }
+                    //}
+                    //APIReqRanking.OldRankingsNum = APIReqRanking.Rankings.Count;
 
                     //basicからのお引越し
                     if (!HistoricalData.IsInited)
@@ -1103,6 +1103,7 @@ namespace VisualFormTest
                     }
                     break;
                 //戦果ランキング
+                /*
                 case "api_req_ranking":
                     switch(secondAddress)
                     {
@@ -1112,7 +1113,7 @@ namespace VisualFormTest
                             UpdateSenka();
                             return;
                     }
-                    break;
+                    break;*/
                 //基地航空隊
                 case "api_req_air_corps":
                     switch(secondAddress)
@@ -1303,7 +1304,10 @@ namespace VisualFormTest
             toolStripMenuItem_wa_practice.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
 
             toolStripMenuItem_wv_kcvdb.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
-            toolStripMenuItem_wv_kisu.Click += new EventHandler(toolStripMenuItem_Window_Single_Click);
+            toolStripMenuItem_wv_kisu.Click += (ss, ee) =>
+                {
+                    System.Diagnostics.Process.Start("http://kcvdb.jp/KISU_2");
+                };
             //読み込み
             string userlayout_filename = @"config\layout.xml";
             if (File.Exists(userlayout_filename))

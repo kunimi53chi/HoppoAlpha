@@ -179,6 +179,13 @@ namespace VisualFormTest.UserControls
             setting.ShowDialog();
         }
 
+        private void toolStripMenuItem_setval_Click(object sender, EventArgs e)
+        {
+            var window = (this.FindForm() as DockingWindows.DockWindowTabPage).MainScreen;
+            TabSenka_SetMySenka setval = new TabSenka_SetMySenka(window);
+            setval.ShowDialog();
+        }
+
         //戦果ポップアップ
         private void label_senka_admiral_1_Click(object sender, EventArgs e)
         {

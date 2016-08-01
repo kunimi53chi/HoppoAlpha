@@ -22,7 +22,7 @@ namespace Updater
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            string downloadpage = @"http://kcvdb.jp/hoppoalpha";
+            string downloadpage = @"http://nekokan333.web.fc2.com/hoppoalpha.html";
             //最新バージョン
             string latest_version = webBrowser1.Document.GetElementById("latestversion").GetAttribute("value");
             //本体のバージョン
